@@ -10,7 +10,6 @@ export interface CategorySectionHeaderProps {
 }
 
 const CategorySectionHeader: React.FC<CategorySectionHeaderProps> = ({
-  title,
   seeMoreLink,
 }) => {
   return (

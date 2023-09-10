@@ -13,7 +13,7 @@ import StyledAppLayout from "./AppLayoutStyle";
 const AppLayout: React.FC<Props> = ({
   children,
   navbar,
-  title = "React Next.js Ecommerce Template",
+  title = "Kyoto Tool & power Japan",
 }) => (
   <StyledAppLayout>
     <Head>
