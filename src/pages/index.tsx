@@ -1,28 +1,10 @@
-import Section1 from "@component/HomePage/Section1";
-import Section11 from "@component/HomePage/Section11";
-import Section13 from "@component/HomePage/Section13";
-import Section5 from "@component/HomePage/Section5";
+import Home from "./home";
+import AppLayout from "@component/layout/AppLayout";
 
-import AppLayout from "../components/layout/AppLayout";
-import ButtonSearch from "@component/HomePage/ButtonSearch";
-import BestSeller from "@component/HomePage/BestSeller";
-import Distribution from "@component/HomePage/Distribution";
-import ShopSystem from "@component/HomePage/ShopSystem";
-import Advise from "@component/HomePage/Advise";
-import Summary from "@component/HomePage/Summary";
 const IndexPage = () => {
   return (
     <main>
-      <Section1 />
-      <Section5 />
-      <ButtonSearch />
-      <Section13 />
-      <BestSeller />
-      <Section11 />
-      <Distribution />
-      <ShopSystem />
-      <Advise />
-      <Summary />
+      <Home />
     </main>
   );
 };

@@ -22,9 +22,10 @@
       "@component/*": ["components/*"],
       "@data/*": ["data/*"],
       "@context/*": ["contexts/*"],
-      "@hook/*": ["hooks/*"],
+      "@hooks/*": ["hooks/*"],
       "@utils/*": ["utils/*"],
-      "@reducer/*": ["reducers/*"]
+      "@reducer/*": ["reducers/*"],
+      "@constants/*": ["constants/*"],
     }
   },
   "exclude": ["node_modules"],
