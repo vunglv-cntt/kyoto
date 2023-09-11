@@ -7,6 +7,7 @@ import ShopSystem from "@component/HomePage/ShopSystem";
 import Advise from "@component/HomePage/Advise";
 import Summary from "@component/HomePage/Summary";
 import { Banners, Categories } from "@component/HomePage";
+import { Container } from "@component/container";
 
 type Props = {};
 
@@ -14,9 +15,11 @@ const Home = (props: Props) => {
   return (
     <>
       <Banners />
-      <Categories />
-      <ButtonSearch />
-      <FlashSale />
+      <Container className="gap-[40px]">
+        <Categories />
+        <ButtonSearch />
+        <FlashSale />
+      </Container>
       <BestSeller />
       <BestProduct />
       <Distribution />

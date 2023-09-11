@@ -5,7 +5,7 @@ import Container from "@component/Container";
 import Image from "@component/Image";
 import { useAsync } from "@hooks/useAsync";
 
-import React, { Fragment, useMemo } from "react";
+import React, { useMemo } from "react";
 import { apiGetBanners } from "services/home";
 import { Banner } from "services/main/models";
 import StyledBanners from "./homepagecss/Banners.style";
@@ -14,29 +14,32 @@ const Banners: React.FC = () => {
   const [, bannerData] = useAsync(apiGetBanners, {
     callOnFirst: true,
   });
-  const banners = useMemo(() => bannerData.data?.data || [], [bannerData]);
-
-  console.log(banners);
-
-  const contentStyle: React.CSSProperties = {};
+  const banners = useMemo(
+    () =>
+      bannerData?.data?.data?.map((img) => ({
+        ...img,
+        image: img?.image?.replace(
+          "http://kyoto-dev-apis.addevops.store",
+          "https://kyoto-api-dev.tasvietnam.com"
+        ),
+      })) || [],
+    [bannerData]
+  );
 
   return (
     <StyledBanners className="mb-4">
-      <Container pb="2rem">
+      <div className="max-w-screen-2xl mx-auto relative">
         <Carousel>
           {banners?.map((banner: Banner) => {
             let { id, image } = banner;
             return (
-              <div
-                key={id}
-                style={contentStyle}
-                className="h-[273px] md:h-[404px]"
-              >
+              <div key={id} className="carousel-box h-[273px] md:h-[644px]">
                 <Image src={image} />
               </div>
             );
           })}
         </Carousel>
+
         <div className="overlay">
           <div>
             <div>
@@ -61,7 +64,7 @@ const Banners: React.FC = () => {
             </div>
           </div>
         </div>
-      </Container>
+      </div>
     </StyledBanners>
   );
 };

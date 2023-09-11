@@ -24,7 +24,6 @@ const StyledBanners = styled.div`
     left: 0;
     width: 100%;
     height: 99%;
-    background-color: rgba(0, 173, 239, 0.2);
     display: flex;
     justify-content: flex-start;
     align-items: center;
@@ -72,6 +71,12 @@ const StyledBanners = styled.div`
 
   .banner-button:hover {
     background-color: #0079b6;
+  }
+
+  .carousel-box img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
   }
 `;
 export default StyledBanners;
