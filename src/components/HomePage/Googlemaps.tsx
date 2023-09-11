@@ -1,32 +1,47 @@
-import React from "react";
-import { GoogleMap, Marker, useLoadScript } from "@react-google-maps/api";
-import { functions } from "lodash";
+import { GoogleMap, useLoadScript } from "@react-google-maps/api";
+import { GG_MAP_KEY } from "@constants/schema";
+import { memo, useCallback, useState } from "react";
 
 const containerStyle = {
-  width: "100%",
-  height: "100%",
+  width: "400px",
+  height: "400px",
 };
 
 const center = {
-  lat:  21.0285 , 
-  lng: 105.8542 , 
+  lat: 21.0285,
+  lng: 105.8542,
 };
 
-function Googlemap()  {
-  const { isLoaded, loadError } = useLoadScript({
-    googleMapsApiKey: "YOUR_API_KEY", 
+function Googlemap() {
+  const [map, setMap] = useState(null);
+  const { isLoaded } = useLoadScript({
+    googleMapsApiKey: GG_MAP_KEY,
   });
 
-  if (loadError) return <div>Đã xảy ra lỗi khi tải bản đồ</div>;
-  if (!isLoaded) return <div>Đang tải bản đồ...</div>;
+  console.log(GG_MAP_KEY);
 
-  return (
-    <div style={{ width: "100%", height: "100%" }}>
-      <GoogleMap mapContainerStyle={containerStyle} center={center} zoom={15}>
-  
-      </GoogleMap>
-    </div>
+  const onLoad = useCallback(function callback(map) {
+    const bounds = new window.google.maps.LatLngBounds(center);
+    map.fitBounds(bounds);
+
+    setMap(map);
+  }, []);
+
+  const onUnmount = useCallback(function callback(map) {
+    setMap(null);
+  }, []);
+
+  return isLoaded ? (
+    <GoogleMap
+      mapContainerStyle={containerStyle}
+      center={center}
+      zoom={15}
+      onLoad={onLoad}
+      onUnmount={onUnmount}
+    ></GoogleMap>
+  ) : (
+    <></>
   );
-};
+}
 
-export default Googlemap;
+export default memo(Googlemap);

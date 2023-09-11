@@ -1,6 +1,7 @@
 import { Product } from "@component/product";
-import { Text } from "@component/text";
-import React from "react";
+import { Title } from "@component/title";
+import { Col, Row } from "antd";
+import React, { memo } from "react";
 import { ProductType } from "services/main/models";
 
 type Props = {
@@ -8,19 +9,23 @@ type Props = {
   products?: ProductType[];
 };
 
-const CategoryProducts = (props: Props) => {
+const CategoryProducts = memo((props: Props) => {
   const { categoryName = "", products = [] } = props;
 
   return (
     <div>
-      <Text>{categoryName}</Text>
+      <Title>{categoryName}</Title>
 
       {/* Products */}
-      {products.map((product) => (
-        <Product />
-      ))}
+      <Row gutter={[16, 16]} className="mt-4">
+        {products.map((product) => (
+          <Col key={product.id} className="w-[50%] md:w-[20%]">
+            <Product {...{ product }} />
+          </Col>
+        ))}
+      </Row>
     </div>
   );
-};
+});
 
 export { CategoryProducts };

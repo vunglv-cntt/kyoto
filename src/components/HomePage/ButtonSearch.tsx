@@ -3,7 +3,7 @@ import CategorySectionCreator from "../CategorySectionCreator";
 
 function ButtonSearch() {
   return (
-    <CategorySectionCreator>
+    <div>
       <Box mt="-0.25rem" mb="-0.25rem">
         <div
           style={{
@@ -73,7 +73,7 @@ function ButtonSearch() {
           </div>
         </div>
       </Box>
-    </CategorySectionCreator>
+    </div>
   );
 }
 

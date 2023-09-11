@@ -1,6 +1,5 @@
-import React from "react";
-
-import "./index.css";
+import { imageSrc } from "helpers/file";
+import { StyledImage } from "./styles";
 
 interface ImageProps {
   src?: string;
@@ -8,6 +7,7 @@ interface ImageProps {
   ratio?: "ratio16x9" | "ratio1x1" | "ratio42x159";
   loading?: "lazy" | "eager";
   size?: "cover" | "contain";
+  className?: string;
 }
 
 export const Image: React.FC<ImageProps> = ({
@@ -16,9 +16,10 @@ export const Image: React.FC<ImageProps> = ({
   ratio,
   size,
   loading = "lazy",
+  className = "",
 }) => (
-  <div className={`kyoto-image ${ratio} ${size}`}>
-    <img src={src} alt={alt} loading={loading} />
+  <div className={`kyoto-image ${ratio} ${size} ${className}`}>
+    <StyledImage src={imageSrc(src)} alt={alt} loading={loading} />
   </div>
 );
 
