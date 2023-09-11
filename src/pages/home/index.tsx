@@ -19,9 +19,9 @@ const Home = (props: Props) => {
         <Categories />
         <ButtonSearch />
         <FlashSale />
+        <BestSeller />
+        <BestProduct />
       </Container>
-      <BestSeller />
-      <BestProduct />
       <Distribution />
       <ShopSystem />
       <Advise />

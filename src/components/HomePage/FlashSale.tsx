@@ -1,54 +1,17 @@
-import React from "react";
-import styled from "styled-components";
-import Card from "@component/Card";
-import CategorySectionCreator from "../CategorySectionCreator";
-import Box from "@component/Box";
+import { useMemo } from "react";
+import { useAsync } from "@hooks/useAsync";
+import { apiGetProductsByCategoryId } from "services/product";
+import { CategoryProducts } from "@component/category-products";
 // Styled-components cho container
-const Container = styled.div`
-  display: flex;
-  gap: 25px;
-`;
-
-const CardItem = styled(Card)`
-  width: 223px;
-  height: 307px;
-`;
 
 function FlashSale() {
-  return (
-    <CategorySectionCreator iconName="gift" title="Khuyến Mãi " seeMoreLink="#">
-      <Box style={{ width: "100%" }} my="-0.25rem">
-        <h1>Khuyến Mãi</h1>
-        <Container>
-          {/* Thẻ card 1 */}
-          <CardItem>
-            <p>Card 1</p>
-          </CardItem>
+  const [, productsData] = useAsync(apiGetProductsByCategoryId, {
+    callOnFirst: true,
+    callOnFirstArgs: ["25"],
+  });
+  const products = useMemo(() => productsData?.data?.data, [productsData]);
 
-          {/* Thẻ card 2 */}
-          <CardItem>
-            <p>Card 1</p>
-          </CardItem>
-
-          {/* Thẻ card 3 */}
-          <CardItem>
-            <p>Card 1</p>
-          </CardItem>
-
-          {/* Thẻ card 4 */}
-          <CardItem>
-            <p>Card 1</p>
-          </CardItem>
-
-          {/* Thẻ card 5 */}
-
-          <CardItem>
-            <p>Card 1</p>
-          </CardItem>
-        </Container>
-      </Box>
-    </CategorySectionCreator>
-  );
+  return <CategoryProducts categoryName="Khuyến mãi" products={products} />;
 }
 
 export default FlashSale;

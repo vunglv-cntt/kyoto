@@ -1,4 +1,3 @@
-import * as Icons from "assets/icons";
 
 export enum SOURCE_ROUTES {
   HOME = "",
