@@ -7,6 +7,7 @@ export interface CategorySectionCreatorProps {
   iconName?: string;
   title?: string;
   seeMoreLink?: string;
+  children: React.ReactNode;
 }
 
 const CategorySectionCreator: React.FC<CategorySectionCreatorProps> = ({
