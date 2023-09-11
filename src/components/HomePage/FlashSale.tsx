@@ -2,30 +2,23 @@ import React from "react";
 import styled from "styled-components";
 import Card from "@component/Card";
 import CategorySectionCreator from "../CategorySectionCreator";
-// import HoverBox from "@component/HoverBox";
-// import LazyImage from "@component/LazyImage";
 import Box from "@component/Box";
-// import Link from "next/link";
 // Styled-components cho container
 const Container = styled.div`
   display: flex;
   gap: 25px;
 `;
 
-
 const CardItem = styled(Card)`
-  width: 291px;
-  height: 408px;
+  width: 223px;
+  height: 307px;
 `;
 
-function Section11() {
+function FlashSale() {
   return (
-    <CategorySectionCreator
-      iconName="gift"
-      title="Sản Phẩm Nổi Bật "
-      seeMoreLink="#"
-    >
+    <CategorySectionCreator iconName="gift" title="Khuyến Mãi " seeMoreLink="#">
       <Box style={{ width: "100%" }} my="-0.25rem">
+        <h1>Khuyến Mãi</h1>
         <Container>
           {/* Thẻ card 1 */}
           <CardItem>
@@ -46,10 +39,16 @@ function Section11() {
           <CardItem>
             <p>Card 1</p>
           </CardItem>
+
+          {/* Thẻ card 5 */}
+
+          <CardItem>
+            <p>Card 1</p>
+          </CardItem>
         </Container>
       </Box>
     </CategorySectionCreator>
   );
 }
 
-export default Section11;
+export default FlashSale;
