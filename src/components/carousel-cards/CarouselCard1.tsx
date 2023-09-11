@@ -2,6 +2,7 @@
 import React from "react";
 import { StyledCarouselCard1 } from "./CarouselCardStyle";
 
+
 function CarouselCard1() {
   return (
     <StyledCarouselCard1>
