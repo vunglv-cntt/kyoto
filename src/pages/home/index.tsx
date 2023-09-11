@@ -1,6 +1,5 @@
-import Section11 from "@component/HomePage/Section11";
-import Section13 from "@component/HomePage/Section13";
-
+import BestProduct from "@component/HomePage/BestProduct";
+import FlashSale from "@component/HomePage/FlashSale";
 import ButtonSearch from "@component/HomePage/ButtonSearch";
 import BestSeller from "@component/HomePage/BestSeller";
 import Distribution from "@component/HomePage/Distribution";
@@ -17,9 +16,9 @@ const Home = (props: Props) => {
       <Banners />
       <Categories />
       <ButtonSearch />
-      <Section13 />
+      <FlashSale />
       <BestSeller />
-      <Section11 />
+      <BestProduct />
       <Distribution />
       <ShopSystem />
       <Advise />
