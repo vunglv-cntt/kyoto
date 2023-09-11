@@ -1,5 +1,5 @@
 import http from "../http";
-import { Banner } from "./types";
+import { GetBanners } from "../main/models";
 
 export const apiGetBanners = () =>
-  http.get<BaseAPIResponse<Banner>>(`/api/banner`);
+  http.get<BaseAPIResponse<GetBanners | any>>(`/api/banner`);

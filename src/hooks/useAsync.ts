@@ -204,7 +204,7 @@ export const useAsync = <P, A extends unknown[], E = unknown>(
   }, options?.deps || []);
 
   return useMemo(
-    () => [execute, exportState, reset, update, cancel] as const,
+    () => [execute, exportState.data, reset, update, cancel] as const,
     [exportState, execute, reset, update, cancel]
   );
 };
