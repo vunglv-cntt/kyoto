@@ -1,8 +1,8 @@
 // import Box from "@component/Box";
 import Carousel from "@component/carousel-cards/Carousel";
 // import Carousel from "@component/carousel/Carousel";
-import Container from "@component/Container";
-import Image from "@component/Image";
+// import Container from "@component/Container";
+import {Image} from "@component/image";
 import { useAsync } from "@hooks/useAsync";
 
 import React, { useMemo } from "react";

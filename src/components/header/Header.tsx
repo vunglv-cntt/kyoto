@@ -1,6 +1,6 @@
-import Image from "@component/Image";
+import { Image } from "@component/image";
 import Link from "next/link";
-import Container from "../Container";
+// import Container from "../Container";
 import FlexBox from "../FlexBox";
 import StyledHeader from "./HeaderStyle";
 import TopbarHeader from "@component/topbar/TopbarHeader";
@@ -13,7 +13,7 @@ type HeaderProps = {
 const Header: React.FC<HeaderProps> = ({  className }) => {
   return (
     <StyledHeader className={className}>
-      <Container>
+      <div>
         <div
           style={{ height: "100%", display: "flex", flexDirection: "column" }}
         >
@@ -44,7 +44,7 @@ const Header: React.FC<HeaderProps> = ({  className }) => {
             </FlexBox>
           </div>
         </div>
-      </Container>
+      </div>
     </StyledHeader>
   );
 };

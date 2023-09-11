@@ -1,7 +1,7 @@
 import React from "react";
 import Box from "./Box";
 import CategorySectionHeader from "./CategorySectionHeader";
-import Container from "./Container";
+// import Container from "./Container";
 
 export interface CategorySectionCreatorProps {
   iconName?: string;
@@ -18,7 +18,7 @@ const CategorySectionCreator: React.FC<CategorySectionCreatorProps> = ({
 }) => {
   return (
     <Box mb="3.75rem">
-      <Container pb="1rem">
+      <div  >
         {title && (
           <CategorySectionHeader
             title={title}
@@ -28,7 +28,7 @@ const CategorySectionCreator: React.FC<CategorySectionCreatorProps> = ({
         )}
 
         {children}
-      </Container>
+      </div>
     </Box>
   );
 };
