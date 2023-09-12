@@ -3,8 +3,7 @@ import { layoutConstant } from "utils/constants";
 import { getTheme } from "../../utils/utils";
 
 const StyledHeader = styled.header`
-  position: relative;
-  z-index: 1;
+   z-index: 1;
   height: 178px;
   background: ${getTheme("colors.body.paper")};
 
