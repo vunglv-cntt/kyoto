@@ -25,6 +25,23 @@ const footerText = {
 };
 const imagePayment = {
   display: "flex",
+  justifyContent: "left",
+};
+const lineStyle = {
+  borderLeft: "5px solid #E0E0E0 ",
+  height: "100%",
+  marginLeft: "-7px",
+  marginRight: "3px",
+  width: "5px",
+  borderRadius: "5px",
+};
+const lineStyleButton = {
+  borderLeft: "5px solid #E0E0E0 ",
+  height: "100%",
+  marginLeft: "-7px",
+  marginRight: "3px",
+  width: "5px",
+  borderRadius: "5px",
   justifyContent: "center",
 };
 const headerStyle = {
@@ -34,12 +51,14 @@ const headerStyle = {
   fontSize: "20px",
   marginBottom: "10px",
   lineHeight: "24px",
+  alignItem: "center",
 };
 const headerStylePayment = {
-  textAlign: "center" as const,
+  textAlign: "left" as const,
+  display: "inline-block",
   color: "#F7DD04",
   fontSize: "20px",
-  marginBottom: "15px",
+  marginBottom: "10px",
   lineHeight: "24px",
 };
 const paragraphStyle: React.CSSProperties = {
@@ -56,7 +75,7 @@ const paragraphStyleBottom: React.CSSProperties = {
   marginBottom: "15px",
   lineHeight: "16px",
   justifyContent: "center",
-  textAlign : "center"
+  textAlign: "center",
 };
 const paragraphStyleBottomLast: React.CSSProperties = {
   fontWeight: "Montserrat",
@@ -65,7 +84,7 @@ const paragraphStyleBottomLast: React.CSSProperties = {
   marginBottom: "15px",
   lineHeight: "16px",
   justifyContent: "center",
-  textAlign : "center"
+  textAlign: "center",
 };
 const columnStyle: React.CSSProperties = {
   marginTop: "50px",
@@ -87,7 +106,8 @@ const Footer: React.FC = () => {
             <Row gutter={[16, 16]}>
               <Col xs={24} sm={12} md={8} lg={4}>
                 <div style={columnStyle}>
-                  <h1 style={headerStyle}>Tiêu đề</h1>
+                  <span style={lineStyle}></span>
+                  <h1 style={headerStyle}>Về TND GROUP</h1>
                   <p style={paragraphStyle}>Giới thiệu TND Group</p>
                   <p style={paragraphStyle}>Chính sách giải quyết khiếu nại</p>
                   <p style={paragraphStyle}>Chính sách bảo mật thanh toán</p>
@@ -95,14 +115,15 @@ const Footer: React.FC = () => {
                   <p style={paragraphStyle}>Liên hệ</p>
                   <p style={paragraphStyle}>KYOTO VIỆT NAM</p>
                   <img
-                      src="/assets/images/badges/wmfXpoW 1.png"
-                      alt="chungnhan"
-                    />
+                    src="/assets/images/badges/wmfXpoW 1.png"
+                    alt="chungnhan"
+                  />
                 </div>
               </Col>
 
               <Col xs={24} sm={12} md={8} lg={4}>
                 <div style={columnStyle}>
+                  <span style={lineStyle}></span>
                   <h1 style={headerStyle}>Hỗ Trợ Khách Hàng</h1>
                   <p style={paragraphStyle}>
                     Hotline 0377 222 777 (1000đ/phút, 24/7)
@@ -114,12 +135,12 @@ const Footer: React.FC = () => {
                   <p style={paragraphStyle}>Chính sách đổi trả</p>
                   <p style={paragraphStyle}>CSKH: ctykyoto@gmail.com</p>
                   <p style={paragraphStyle}>Tin tức / Blog</p>
-                  
                 </div>
               </Col>
 
               <Col xs={24} sm={12} md={8} lg={4}>
                 <div style={columnStyle}>
+                  <span style={lineStyle}></span>
                   <h1 style={headerStyle}>Hệ Thống kênh phân phối</h1>
                   <p style={paragraphStyle}>
                     141 Phan Đăng Lưu, P.7, Q. Phú Nhuận
@@ -140,10 +161,15 @@ const Footer: React.FC = () => {
                   <p style={paragraphStyle}>509 Quang Trung, Quận Gò Vấp</p>
                 </div>
               </Col>
-
-              <Col xs={24} sm={24} md={24} lg={10}>
+              <Col xs={24} sm={12} md={8} lg={4}>
+                <div style={columnStyle}>
+                 
+                </div>
+              </Col>
+              <Col xs={24} sm={24} md={24} lg={6}>
                 <div style={columnStyle}>
                   {" "}
+                  <span style={lineStyleButton}></span>
                   <h1 style={headerStylePayment}>Thanh toán</h1>
                   <div style={imagePayment}>
                     <img
@@ -162,6 +188,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div style={columnStyle}>
                   {" "}
+                  <span style={lineStyleButton}></span>
                   <h1 style={headerStylePayment}>Kết Nối Với Chúng Tôi</h1>
                   <div style={imagePayment}>
                     <img
@@ -172,6 +199,7 @@ const Footer: React.FC = () => {
                 </div>
                 <div style={columnStyle}>
                   {" "}
+                  <span style={lineStyleButton}></span>
                   <h1 style={headerStylePayment}>
                     Tải ứng dụng trên điện thoại
                   </h1>
