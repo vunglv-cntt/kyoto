@@ -13,21 +13,21 @@ const BreadCrumbs = () => {
   const { router } = useNavigate();
   const pathSnippets = router.pathname.split("/");
 
-  const breadcrumbItems = pathSnippets
-    .filter((i) => !!i)
-    .map((i) => {
-      const url = `/${i}`;
-      return {
-        key: url,
-        title: (
-          <Link href={url}>
-            <Text>{ROUTES.find((i) => url === i.href)?.title}</Text>
-          </Link>
-        ),
-      };
-    });
+  const breadcrumbItems = pathSnippets.map((i) => {
+    const url = `/${i}`;
+    return {
+      key: url,
+      title: (
+        <Link href={url}>
+          <Text>{ROUTES.find((i) => url === i.href)?.title}</Text>
+        </Link>
+      ),
+    };
+  });
 
-  return <Breadcrumb items={breadcrumbItems} className="mb-6" />;
+  console.log(breadcrumbItems);
+
+  return <Breadcrumb items={breadcrumbItems} className="mb-6" separator=">" />;
 };
 
 export default memo(BreadCrumbs);

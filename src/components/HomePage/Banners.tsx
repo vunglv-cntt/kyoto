@@ -9,7 +9,6 @@ import React, { useMemo } from "react";
 import { apiGetBanners } from "services/home";
 import { Banner } from "services/main/models";
 import StyledBanners from "./homepagecss/Banners.style";
-import { fontWeight } from "styled-system";
 
 const Banners: React.FC = () => {
   const [, bannerData] = useAsync(apiGetBanners, {

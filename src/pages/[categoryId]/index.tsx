@@ -2,6 +2,7 @@ import { Banners, Categories } from "@component/HomePage";
 import Advise from "@component/HomePage/Advise";
 import ButtonSearch from "@component/HomePage/ButtonSearch";
 import FlashSale from "@component/HomePage/FlashSale";
+import Breadcrumbs from "@component/breadcrumbs";
 import { Container } from "@component/container";
 import AppLayout from "@component/layout/AppLayout";
 
@@ -14,6 +15,7 @@ const Category = (props: Props) => {
       <Container className="gap-[40px] mb-6">
         <Categories />
         <ButtonSearch />
+        <Breadcrumbs />
         <FlashSale />
         <Advise />
         <Categories />

@@ -13,7 +13,7 @@ const Advise: React.FC<HeaderProps> = ({ className }) => {
   const { state } = useAppContext();
   return (
     <StyledAdvise>
-      <Col xs={24} md={10} className="px-4 py-6">
+      <Col xs={24} md={10} className={`px-4 py-6 ${className}`}>
         <Text className="title">TƯ VẤN MIỄN PHÍ</Text>
 
         <Row gutter={[16, 16]}>

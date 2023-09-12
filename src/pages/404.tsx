@@ -20,12 +20,7 @@ const Error404 = () => {
       alignItems="center"
       px="1rem"
     >
-      <Image
-        src="/assets/images/illustrations/404.svg"
-        maxWidth="320px"
-        width="100%"
-        mb="2rem"
-      />
+      <Image src="/assets/images/illustrations/404.svg" />
       <FlexBox flexWrap="wrap">
         <Button
           variant="outlined"

@@ -1,14 +1,14 @@
 export enum SOURCE_ROUTES {
-  HOME = "",
+  HOME = "/",
 }
 
 export const PATHS = {
   home: SOURCE_ROUTES.HOME,
   category(categoryId: string) {
-    return `${this.home}/${categoryId}`;
+    return `${this.home}${categoryId}`;
   },
   item(categoryId: string, productId: string) {
-    return `${this.home}/${categoryId}/${productId}`;
+    return `${this.home}${categoryId}/${productId}`;
   },
 };
 
