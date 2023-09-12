@@ -2,8 +2,8 @@
 // const CarIcon =require("@assets/icons/car.svg");
 // const ShipIcon =require("@assets/icons/ship.svg");
 // const MapIcon = require("@assets/icons/map.svg");
+// export { BoxIcon, CarIcon, ShipIcon, MapIcon };
 
 export * from "./cart.icon";
 export * from "./next.icon";
 export * from "./location.icon";
-// export { BoxIcon, CarIcon, ShipIcon, MapIcon };

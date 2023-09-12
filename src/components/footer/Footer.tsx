@@ -1,26 +1,14 @@
 import React, { CSSProperties } from "react";
 import styled from "styled-components";
-import { getTheme } from "../../utils/utils";
-import Box from "../Box";
-import { Row, Col, Menu, Typography, Card } from "antd";
+import { Row, Col } from "antd";
 import { Text } from "@component/text";
 import { Container } from "@component/container";
 import { useAppContext } from "@context/app/AppContext";
 import { formatAddress } from "helpers/address";
 import { LocationIcon } from "@assets/icons";
 import { Image } from "@component/image";
+import { facebookImg, instagramImg, tiktokImg, youtubeImg, zaloImg } from "@constants/images";
 
-const StyledLink = styled.a`
-  position: relative;
-  display: block;
-  padding: 0.3rem 0rem;
-  color: ${getTheme("colors.gray.500")};
-  cursor: pointer;
-  border-radius: 4px;
-  :hover {
-    color: ${getTheme("colors.gray.100")};
-  }
-`;
 const StyledContainer = styled(Container)`
   .title::before {
     content: "";
@@ -58,6 +46,18 @@ const StyledContainer = styled(Container)`
     span {
       font-size: 14px;
     }
+  }
+
+  .social-box > div {
+    border-radius: 4px;
+    width: 38px;
+    height: 38px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 4px;
+    cursor: pointer;
+    background-color: #fff;
   }
 `;
 
@@ -127,7 +127,13 @@ const Footer: React.FC = () => {
 
   const mediaSocialInfors = {
     title: "Kết Nối Với Chúng Tôi",
-    children: [{ image: "/assets/images/brands/socical.png" }],
+    children: [
+      { image: facebookImg },
+      { image: zaloImg },
+      { image: youtubeImg },
+      { image: tiktokImg },
+      { image: instagramImg },
+    ],
   };
 
   const branchInfos = {
@@ -173,7 +179,7 @@ const Footer: React.FC = () => {
             </Text>
             {branchInfos.children.map((info, id) => (
               <Text key={id} className="text ">
-                <LocationIcon className="inline-block mr-1" />
+                <LocationIcon className="inline-block mr-1 mb-1" />
                 {info.label}
               </Text>
             ))}
@@ -190,9 +196,13 @@ const Footer: React.FC = () => {
             </Row>
 
             <Text className="title2 mt-4">{mediaSocialInfors.title}</Text>
-            {mediaSocialInfors.children.map((bank) => (
-              <Image src={bank.image} alt="img" className="w-full" />
-            ))}
+            <Row gutter={[8, 8]}>
+              {mediaSocialInfors.children.map((bank, id) => (
+                <Col key={id} className="social-box">
+                  <Image src={bank.image} alt="img" className="w-full" />
+                </Col>
+              ))}
+            </Row>
           </Col>
 
           <Col className="basis-[100%] md:basis-[19%]">
@@ -214,7 +224,10 @@ const Footer: React.FC = () => {
               Giấy chứng nhận Đăng ký Kinh doanh số 031555666 do Sở Kế hoạch và
               Đầu tư Thành phố Hồ Chí Minh cấp ngày 23/10/2017
             </Text>
-            <Text style={{ color: "var(--app-sub-color)" }} className="font-[500]">
+            <Text
+              style={{ color: "var(--app-sub-color)" }}
+              className="font-[500]"
+            >
               Thuộc bản quyền TND Group @2023 được phát triển bới
               tasvietnam.com.vn
             </Text>
