@@ -1,9 +1,10 @@
-import { Typography } from "antd";
-import React, { ReactNode } from "react";
+import { Typography, TypographyProps } from "antd";
+import { CSSProperties, ReactNode } from "react";
 
 type Props = {
   className?: string;
   children?: ReactNode | string;
+  style?: CSSProperties;
 };
 
 const Text = (props: Props) => {
