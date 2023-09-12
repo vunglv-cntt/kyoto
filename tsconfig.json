@@ -7,7 +7,7 @@
     "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
     "jsx": "preserve",
-    "lib": ["dom", "ES2017"],
+    "lib": ["dom", "ES2021"],
     "module": "esnext",
     "moduleResolution": "node",
     "noEmit": true,
@@ -26,6 +26,7 @@
       "@utils/*": ["utils/*"],
       "@reducer/*": ["reducers/*"],
       "@constants/*": ["constants/*"],
+      "@assets/*": ["assets/*"],
     }
   },
   "exclude": ["node_modules"],

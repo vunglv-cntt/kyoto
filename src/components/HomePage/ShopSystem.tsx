@@ -1,4 +1,4 @@
-import { Text } from "@component/text";
+import { Title } from "@component/title";
 import { useAsync } from "@hooks/useAsync";
 import { useMemo } from "react";
 import { apiGetBranchs } from "services/branch";
@@ -9,12 +9,12 @@ function ShopSystem() {
   });
   const banners = useMemo(() => branchsData?.data?.data || [], [branchsData]);
   return (
-    <>
-      <Text>Hệ thống cửa hàng</Text>
+    <div>
+      <Title>Hệ thống cửa hàng</Title>
       {banners?.map((banner) => (
         <div>{banner?.name}</div>
       ))}
-    </>
+    </div>
   );
 }
 

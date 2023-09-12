@@ -17,9 +17,10 @@ export const Image: React.FC<ImageProps> = ({
   size,
   loading = "lazy",
   className = "",
+  ...props
 }) => (
   <div className={`kyoto-image ${ratio} ${size} ${className}`}>
-    <StyledImage src={imageSrc(src)} alt={alt} loading={loading} />
+    <StyledImage {...props} src={imageSrc(src)} alt={alt} loading={loading} />
   </div>
 );
 

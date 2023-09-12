@@ -10,4 +10,13 @@ const StyledButton = (props: Props) => {
   return <Button {...props} className={`flex items-center ${className}`} />;
 };
 
-export { StyledButton as Button };
+const ViewMoreButton = (props: Props) => {
+  const { className, children = "Xem tất cả" } = props;
+  return (
+    <Button {...props} className={`${className}`}>
+      {children}
+    </Button>
+  );
+};
+
+export { StyledButton as Button, ViewMoreButton };

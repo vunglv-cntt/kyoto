@@ -1,5 +1,5 @@
 export const breakpointSize = {
-  xs: "320px",
+  xs: "480px",
   md: "768px",
   lg: "1200px",
 };
