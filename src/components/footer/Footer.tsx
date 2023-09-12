@@ -20,6 +20,8 @@ const footerText = {
   color: "white",
   textAlign: "center" as const,
   padding: "20px 0",
+  fontWeight: "Montserrat",
+  fontSize: "14px",
 };
 const imagePayment = {
   display: "flex",
@@ -56,6 +58,15 @@ const paragraphStyleBottom: React.CSSProperties = {
   justifyContent: "center",
   textAlign : "center"
 };
+const paragraphStyleBottomLast: React.CSSProperties = {
+  fontWeight: "Montserrat",
+  fontSize: "14px",
+  color: "#F7DD04",
+  marginBottom: "15px",
+  lineHeight: "16px",
+  justifyContent: "center",
+  textAlign : "center"
+};
 const columnStyle: React.CSSProperties = {
   marginTop: "50px",
   marginLeft: "70px",
@@ -83,6 +94,10 @@ const Footer: React.FC = () => {
                   <p style={paragraphStyle}>Tuyển dụng</p>
                   <p style={paragraphStyle}>Liên hệ</p>
                   <p style={paragraphStyle}>KYOTO VIỆT NAM</p>
+                  <img
+                      src="/assets/images/badges/wmfXpoW 1.png"
+                      alt="chungnhan"
+                    />
                 </div>
               </Col>
 
@@ -99,6 +114,7 @@ const Footer: React.FC = () => {
                   <p style={paragraphStyle}>Chính sách đổi trả</p>
                   <p style={paragraphStyle}>CSKH: ctykyoto@gmail.com</p>
                   <p style={paragraphStyle}>Tin tức / Blog</p>
+                  
                 </div>
               </Col>
 
@@ -179,7 +195,7 @@ const Footer: React.FC = () => {
                   Giấy chứng nhận Đăng ký Kinh doanh số 031555666 do Sở Kế hoạch
                   và Đầu tư Thành phố Hồ Chí Minh cấp ngày 23/10/2017
                 </p>
-                <p style={paragraphStyleBottom}>
+                <p style={paragraphStyleBottomLast}>
                   Thuộc bản quyền TND Group @2023 được phát triển bới
                   tasvietnam.com.vn
                 </p>
