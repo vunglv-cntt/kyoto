@@ -6,6 +6,7 @@
     "build": "next build",
     "build-static-page": "next build && next export",
     "start": "next start -p $PORT",
+    "start:dev": "next start -p 3232",
     "type-check": "tsc",
     "heroku-postbuild": "npm run build"
   },
