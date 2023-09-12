@@ -4,4 +4,5 @@
 // const MapIcon = require("@assets/icons/map.svg");
 
 export * from "./cart.icon";
+export * from "./next.icon";
 // export { BoxIcon, CarIcon, ShipIcon, MapIcon };

@@ -1,4 +1,4 @@
-export type Branch = {
+export type BranchType = {
   id: number;
   image: string;
   name: string;
@@ -13,6 +13,6 @@ export type Branch = {
 
 export type GetBranchs = {
   data: {
-    data: Branch[];
+    data: BranchType[];
   };
 };

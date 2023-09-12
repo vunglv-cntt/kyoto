@@ -1,5 +1,5 @@
+import { NextIcon } from "@assets/icons";
 import { Button, ButtonProps } from "antd";
-import React from "react";
 
 type Props = {
   className?: string;
@@ -13,8 +13,12 @@ const StyledButton = (props: Props) => {
 const ViewMoreButton = (props: Props) => {
   const { className, children = "Xem tất cả" } = props;
   return (
-    <Button {...props} className={`${className}`}>
-      {children}
+    <Button
+      {...props}
+      className={`flex items-center gap-2 font-[500] text-[#1F86C8] ${className}`}
+      type="link"
+    >
+      {children} <NextIcon />
     </Button>
   );
 };
