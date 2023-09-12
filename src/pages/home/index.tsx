@@ -14,7 +14,7 @@ const Home = (props: Props) => {
   return (
     <>
       <Banners />
-      <Container className="gap-[40px]">
+      <Container className="gap-[40px] mb-4">
         <Categories />
         <ButtonSearch />
         <FlashSale />
@@ -23,7 +23,7 @@ const Home = (props: Props) => {
         <Distributors />
         <ShopSystem />
         <Advise />
-        <Summary />
+        <Categories />
       </Container>
     </>
   );

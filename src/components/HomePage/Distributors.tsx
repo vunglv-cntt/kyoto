@@ -1,6 +1,3 @@
-import Box from "@component/Box";
-import CategorySectionCreator from "../CategorySectionCreator";
-import Card from "@component/Card";
 import { Col, Row } from "antd";
 import { Title } from "@component/title";
 import { Text } from "@component/text";

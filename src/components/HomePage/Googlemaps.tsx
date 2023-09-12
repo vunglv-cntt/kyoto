@@ -1,29 +1,27 @@
-import { GoogleMap, useLoadScript } from "@react-google-maps/api";
+import {
+  GoogleMap,
+  GoogleMapProps,
+  Marker,
+  useLoadScript,
+} from "@react-google-maps/api";
 import { GG_MAP_KEY } from "@constants/schema";
-import { memo, useCallback, useState } from "react";
+import { memo, useCallback, useMemo, useState } from "react";
 
-const containerStyle = {
-  width: "400px",
-  height: "400px",
+type MyProps = {
+  marks?: { lat: number; lng: number }[];
 };
 
-const center = {
-  lat: 21.0285,
-  lng: 105.8542,
-};
-
-function Googlemap() {
+function Googlemap(props: GoogleMapProps & MyProps) {
+  const { mapContainerClassName, marks = [] } = props;
   const [map, setMap] = useState(null);
   const { isLoaded } = useLoadScript({
     googleMapsApiKey: GG_MAP_KEY,
   });
-
-  console.log(GG_MAP_KEY);
+  const currentCenter = useMemo(() => {
+    return marks.length > 0 ? marks[0] : { lat: 0, lng: 0 };
+  }, [marks]);
 
   const onLoad = useCallback(function callback(map) {
-    const bounds = new window.google.maps.LatLngBounds(center);
-    map.fitBounds(bounds);
-
     setMap(map);
   }, []);
 
@@ -33,12 +31,17 @@ function Googlemap() {
 
   return isLoaded ? (
     <GoogleMap
-      mapContainerStyle={containerStyle}
-      center={center}
+      center={currentCenter}
       zoom={15}
       onLoad={onLoad}
       onUnmount={onUnmount}
-    ></GoogleMap>
+      {...props}
+      mapContainerClassName={`w-[100%] ${mapContainerClassName}`}
+    >
+      {marks.map((mark) => (
+        <Marker position={mark} />
+      ))}
+    </GoogleMap>
   ) : (
     <></>
   );

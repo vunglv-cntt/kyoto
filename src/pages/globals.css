@@ -4,4 +4,10 @@
 
 :root {
   --app-main-color: #01ABEC;
+  --app-input-bg: #f0f0f3;
+}
+
+
+.ant-form-item {
+  margin-bottom: 0;
 }

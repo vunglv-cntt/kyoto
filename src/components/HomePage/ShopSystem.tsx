@@ -9,16 +9,24 @@ import { Image } from "@component/image";
 import { BranchType } from "services/main/models";
 import { Text } from "@component/text";
 import { formatAddress } from "helpers/address";
+import { useAppContext } from "@context/app/AppContext";
 
 function ShopSystem() {
   const [, branchsData] = useAsync(apiGetBranchs, {
     callOnFirst: true,
   });
-  const branches: BranchType[] = useMemo(
-    () =>
-      branchsData?.data?.data?.slice(0, 3)?.filter((branch) => branch) || [],
-    [branchsData]
-  );
+  const branches: BranchType[] = useMemo(() => {
+    let newBranches =
+      branchsData?.data?.data?.slice(0, 3)?.map((branch) => ({
+        ...branch,
+        lat: branch.latitude,
+        lng: branch.longitude,
+      })) || [];
+
+    const { dispatch } = useAppContext();
+    dispatch({ type: "SET_BRANCHES", payload: newBranches });
+    return newBranches;
+  }, [branchsData]);
 
   const showInfors = (branch: BranchType) => {
     return [{ label: "Địa chỉ", value: formatAddress(branch) }];
@@ -41,7 +49,7 @@ function ShopSystem() {
           let { name, id, image } = branch;
 
           return (
-            <Col xs={24} md={8}>
+            <Col xs={24} md={8} key={id}>
               <div className="branch-box">
                 <Image src={image} alt="image" className="image" />
 

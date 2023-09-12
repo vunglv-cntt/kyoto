@@ -7,7 +7,16 @@ type Props = {
 
 const StyledButton = (props: Props) => {
   const { className } = props;
-  return <Button {...props} className={`flex items-center ${className}`} />;
+  return (
+    <Button
+      {...props}
+      className={`
+        flex items-center text-white justify-center 
+        px-3 py-2 h-[auto]
+        font-[500] bg-[var(--app-main-color)] 
+        ${className}`}
+    />
+  );
 };
 
 const ViewMoreButton = (props: Props) => {
@@ -15,7 +24,7 @@ const ViewMoreButton = (props: Props) => {
   return (
     <Button
       {...props}
-      className={`flex items-center gap-2 font-[500] text-[#1F86C8] ${className}`}
+      className={`flex items-center gap-2 font-[600] text-[var(--app-main-color)] ${className}`}
       type="link"
     >
       {children} <NextIcon />

@@ -3,18 +3,16 @@ import styled from "styled-components";
 
 export const StyledDistributors = styled(Row)`
   .button {
-    padding: 22px 32px;
     font-weight: 600;
   }
 
   .left-button {
-    background-color: var(--app-main-color);
-    color: #fff;
   }
 
   .right-button {
     border: 2px solid var(--app-main-color);
     color: var(--app-main-color);
+    background-color: #fff;
   }
 
   .distributor {

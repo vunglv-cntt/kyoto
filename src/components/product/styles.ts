@@ -25,10 +25,8 @@ export const StyledProduct = styled.div`
   }
 
   .order-button {
-    background-color: #00adef;
     border-radius: 8px;
     width: fit-content;
-    color: #fff;
     font-weight: 600;
   }
 `;

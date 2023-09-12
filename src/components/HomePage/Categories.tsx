@@ -20,22 +20,23 @@ const Categories = () => {
 
   return (
     <StyledCategories
-      gutter={[8, 8]}
+      gutter={[16, 16]}
       className="flex-nowrap overflow-x-scroll md:flex-wrap md:overflow-x-hidden"
     >
       {categories.map((category) => {
         let { id, icon, name } = category;
         return (
-          <Link href={PATHS.category(id.toString())}>
-            <Col
-              key={id}
-              span={4}
-              className="category-box flex flex-col gap-2 items-start"
-            >
-              <Logo src={icon} alt="icon" />
-              <Text className="font-bold">{name}</Text>
-            </Col>
-          </Link>
+          <Col
+            key={id}
+            className="flex flex-col gap-2 items-start basis-[224px] md:basis-1/6"
+          >
+            <Link href={PATHS.category(id.toString())}>
+              <div className="category-box">
+                <Logo src={icon} alt="icon" />
+                <Text className="font-bold">{name}</Text>
+              </div>
+            </Link>
+          </Col>
         );
       })}
     </StyledCategories>

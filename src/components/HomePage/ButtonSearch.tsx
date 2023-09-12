@@ -1,79 +1,36 @@
-import Box from "@component/Box";
-import CategorySectionCreator from "../CategorySectionCreator";
+import { Col, Row, RowProps } from "antd";
+import { Button } from "@component/button";
+import { BaseInput } from "@component/input";
 
-function ButtonSearch() {
+function ButtonSearch(props: RowProps) {
   return (
-    <div>
-      <Box mt="-0.25rem" mb="-0.25rem">
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          <button
-            style={{
-              width: "169px",
-              height: "43px",
-              background: "#01ABEC",
-              color: "white", 
-              border: "none", 
-              borderRadius : "5px"
-            }}
-          >
-            Button 1
-          </button>
-          <button
-            style={{
-              marginLeft: "33px",
-              width: "169px",
-              height: "43px",
-              background: "#01ABEC",
-              color: "white", 
-              border: "none", 
-              borderRadius : "5px"
-            }}
-          >
-            Button 2
-          </button>
-          <button
-            style={{
-              marginLeft: "33px",
-              width: "169px",
-              height: "43px",
-              background: "#01ABEC",
-              color: "white", 
-              border: "none", 
-              borderRadius : "5px"
-            }}
-          >
-            Button 3
-          </button>
-          <div
-            style={{ flexGrow: 1, display: "flex", justifyContent: "flex-end" }}
-          >
-            <input
-              type="text"
-              placeholder="Search..."
-              style={{ width: "383px" }}
+    <Row gutter={[32, 32]} {...props}>
+      <Col md={12} className="hidden md:flex">
+        <Col span={8}>
+          <Button>Xả kho thanh lí</Button>
+        </Col>
+        <Col span={8}>
+          <Button>Hỗ trợ kỹ thuật</Button>
+        </Col>
+        <Col span={8}>
+          <Button>Chat trực tuyến</Button>
+        </Col>
+      </Col>
+
+      <Col xs={24} md={12}>
+        <Row>
+          <Col className="flex-1">
+            <BaseInput
+              className="bg-[#fff]"
+              placeholder="Nhập từ tên sản phẩm cần tìm"
             />
-            <button
-              style={{
-                width: "169px",
-                height: "43px",
-                background: "#01ABEC",
-                color: "white", 
-                border: "none", 
-                borderRadius : "5px"
-              }}
-            >
-              Search
-            </button>
-          </div>
-        </div>
-      </Box>
-    </div>
+          </Col>
+          <Col span={6}>
+            <Button className="h-full w-full">Tìm kiếm</Button>
+          </Col>
+        </Row>
+      </Col>
+    </Row>
   );
 }
 
