@@ -4,10 +4,21 @@ export enum SOURCE_ROUTES {
 
 export const PATHS = {
   home: SOURCE_ROUTES.HOME,
-  category(id: string) {
-    return `${this.home}/${id}`;
+  category(categoryId: string) {
+    return `${this.home}/${categoryId}`;
   },
   item(categoryId: string, productId: string) {
     return `${this.home}/${categoryId}/${productId}`;
   },
 };
+
+export const ROUTES = [
+  {
+    title: "Trang chủ",
+    href: PATHS.home,
+  },
+  {
+    title: "Máy bay nông nghiệp",
+    href: PATHS.category(":categoryId"),
+  },
+];
