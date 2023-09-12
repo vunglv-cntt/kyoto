@@ -24,4 +24,4 @@ jobs:
             cd Kyoto-Website
             git checkout develop
             cp ../env/kyoto-website-dev.env.development ./.env
-            # bash run.development.sh
+            bash run.development.sh
