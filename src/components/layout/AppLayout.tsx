@@ -25,9 +25,7 @@ const AppLayout: React.FC<Props> = ({
 
     <Topbar />
 
-    <Sticky fixedOn={0}>
-      <Header />
-    </Sticky>
+    <Header />
 
     {navbar && <div className="section-after-sticky">{navbar}</div>}
     {!navbar ? (

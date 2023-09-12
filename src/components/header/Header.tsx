@@ -9,26 +9,33 @@ type HeaderProps = {
 };
 const { Title } = Typography;
 const menuItemStyle = {
-  margin: "0 30px",
+  margin: "0 65px",
   fontWeight: "bold",
   fontSize: "16px",
+  fontFamily: "Be Vietnam Pro, sans-serif",
 };
 const menuItemStyleTop = {
-  margin: "0 15px",
+  fontFamily: "SF Pro Text, sans-serif",
+  margin: "0 2px",
   fontWeight: "bold",
-  fontSize: "12px",
+  marginTop : "20px",
+  fontSize: "15px",
+  letterSpacing: "0em",
   color: " #00ADEF",
   display: "flex",
 };
 const menuItemStylepplus = {
-  margin: "0 15px",
+  fontFamily: "SF Pro Text, sans-serif",
+  margin: "0 25px",
+  marginTop : "21px",
   fontWeight: "bold",
-  fontSize: "12px",
+  letterSpacing: "0em",
+  fontSize: "15px",
   color: "#DF3E23",
 };
 const logoImageStyle = {
   // width: '241px',
-  height: "66px",
+  height: "85px",
 };
 const logoImageStyleIcon = {
   width: "auto",
@@ -58,7 +65,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                   </a>
                 </Col>
                 <Col span={12}>
-                  <Menu mode="horizontal" className="top-menu">
+                  <Menu mode="horizontal" style={{marginLeft : "50px"}}>
                     <Menu.Item key="home" style={menuItemStyleTop}>
                       <div style={{ display: "flex" }}>
                         <img
@@ -90,12 +97,12 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                       </div>
                     </Menu.Item>
 
-                    <Menu.SubMenu style={menuItemStylepplus} title="Ngôn ngữ">
+                    <Menu.SubMenu style={menuItemStylepplus} title="Tiếng Việt">
                       <Menu.Item key="english">Tiếng Anh</Menu.Item>
                       <Menu.Item key="vietnamese">
                         <div style={{ display: "flex" }}>
                           <img
-                            src="/assets/images/logos/VietNam.png"
+                            src="/assets/images/logos/Vietnam.png"
                             alt="logo"
                             style={logoImageStyleIcon}
                           />
@@ -114,9 +121,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </Col>
           </Row>
           <Row>
-            <Col span={24} style={{ marginTop: "30px" }}>
+            <Col  style={{ marginTop: "30px" }}>
               <Row justify="center">
-                <Col span={12}>
+                <Col span={18}>
                   <Menu mode="horizontal" defaultSelectedKeys={["home"]}>
                     <Menu.Item key="home" style={menuItemStyle}>
                       Trang chủ
