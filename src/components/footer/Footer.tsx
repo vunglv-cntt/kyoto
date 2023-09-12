@@ -1,8 +1,14 @@
-import React from "react";
+import React, { CSSProperties } from "react";
 import styled from "styled-components";
 import { getTheme } from "../../utils/utils";
 import Box from "../Box";
 import { Row, Col, Menu, Typography, Card } from "antd";
+import { Text } from "@component/text";
+import { Container } from "@component/container";
+import { useAppContext } from "@context/app/AppContext";
+import { formatAddress } from "helpers/address";
+import { LocationIcon } from "@assets/icons";
+import { Image } from "@component/image";
 
 const StyledLink = styled.a`
   position: relative;
@@ -15,195 +21,206 @@ const StyledLink = styled.a`
     color: ${getTheme("colors.gray.100")};
   }
 `;
-const footerText = {
-  backgroundColor: "#00ADEF",
-  color: "white",
-  textAlign: "center" as const,
-  padding: "20px 0",
-  fontWeight: "Montserrat",
-  fontSize: "14px",
-};
-const imagePayment = {
-  display: "flex",
-  justifyContent: "center",
-};
-const headerStyle = {
-  textAlign: "left" as const,
-  display: "inline-block",
-  color: "#F7DD04",
-  fontSize: "20px",
-  marginBottom: "10px",
+const StyledContainer = styled(Container)`
+  .title::before {
+    content: "";
+    height: 12px;
+    width: 4px;
+    background-color: #e0e0e0;
+    border-radius: 8px;
+    margin-right: 6px;
+    display: inline-block;
+  }
+  .title,
+  .title2 {
+    margin-bottom: 16px;
+    color: var(--app-sub-color);
+    font-weight: 700;
+  }
+
+  .text {
+    font-size: 12px;
+    margin-bottom: 12px;
+    color: #fff;
+    cursor: pointer;
+    width: fit-content;
+  }
+
+  .text-white {
+    p,
+    span {
+      color: #fff;
+    }
+  }
+
+  .end-box {
+    p,
+    span {
+      font-size: 14px;
+    }
+  }
+`;
+
+const titleStyle: CSSProperties = {
   lineHeight: "24px",
 };
-const headerStylePayment = {
-  textAlign: "center" as const,
-  color: "#F7DD04",
-  fontSize: "20px",
-  marginBottom: "15px",
-  lineHeight: "24px",
-};
-const paragraphStyle: React.CSSProperties = {
-  fontWeight: "Montserrat",
-  fontSize: "14px",
-  color: "white",
-  marginBottom: "15px",
-  lineHeight: "16px",
-};
-const paragraphStyleBottom: React.CSSProperties = {
-  fontWeight: "Montserrat",
-  fontSize: "14px",
-  color: "white",
-  marginBottom: "15px",
-  lineHeight: "16px",
-  justifyContent: "center",
-  textAlign : "center"
-};
-const paragraphStyleBottomLast: React.CSSProperties = {
-  fontWeight: "Montserrat",
-  fontSize: "14px",
-  color: "#F7DD04",
-  marginBottom: "15px",
-  lineHeight: "16px",
-  justifyContent: "center",
-  textAlign : "center"
-};
-const columnStyle: React.CSSProperties = {
-  marginTop: "50px",
-  marginLeft: "70px",
-};
+
 const Footer: React.FC = () => {
+  const { state } = useAppContext();
+
+  const aboutInfors = {
+    title: "Về TND GROUP",
+    children: [
+      {
+        label: (
+          <>
+            Giới thiệu <b>TND Group</b>
+          </>
+        ),
+        href: null,
+      },
+      { label: "Chính sách giải quyết khiếu nại", href: null },
+      { label: "Chính sách bảo mật thanh toán", href: null },
+      { label: "Tuyển dụng", href: null },
+      { label: "Liên hệ", href: null },
+      { label: "KYOTO VIỆT NAM", href: null },
+      { label: "Chính sách giải quyết khiếu nại", href: null },
+    ],
+  };
+
+  const helperInfors = {
+    title: "Hỗ Trợ Khách Hàng",
+    children: [
+      {
+        label: (
+          <>
+            <b>Hotline</b>
+            <b color="var(--app-sub-color)"> 0377 222 777</b> (1000đ/phút ,
+            24/7)
+          </>
+        ),
+        href: null,
+      },
+      { label: "Các câu hỏi thường gặp", href: null },
+      { label: "Hướng dẫn đặt hàng", href: null },
+      { label: "Phương thức thanh toán", href: null },
+      { label: "Phương thức vận chuyển", href: null },
+      { label: "Chính sách đổi trả", href: null },
+      { label: "CSKH: ctykyoto@gmail.com", href: null },
+      { label: "Tin tức / Blog", href: null },
+    ],
+  };
+
+  const bankInfors = {
+    title: "Thanh toán",
+    children: [
+      { image: "/assets/images/payment-card/mastercard.png" },
+      { image: "/assets/images/payment-card/JCB.png" },
+      { image: "/assets/images/payment-card/visakyoto.png" },
+    ],
+  };
+
+  const downloadInfors = {
+    title: "Tải ứng dụng trên điện thoại",
+    children: [{ image: "/assets/images/brands/dowload.png" }],
+  };
+
+  const mediaSocialInfors = {
+    title: "Kết Nối Với Chúng Tôi",
+    children: [{ image: "/assets/images/brands/socical.png" }],
+  };
+
+  const branchInfos = {
+    title: "Hệ Thống kênh phân phối",
+    children: state.branch.branches.map((branch) => ({
+      id: branch.id,
+      label: formatAddress(branch),
+      value: branch.id,
+    })),
+  };
+
   return (
-    <footer>
-      <Box>
-        <Box>
-          <div
-            style={{
-              backgroundColor: "#00ADEF",
-              width: "100%",
-              display: "flex",
-              flexDirection: "column",
-            }}
-          >
-            <Row gutter={[16, 16]}>
-              <Col xs={24} sm={12} md={8} lg={4}>
-                <div style={columnStyle}>
-                  <h1 style={headerStyle}>Tiêu đề</h1>
-                  <p style={paragraphStyle}>Giới thiệu TND Group</p>
-                  <p style={paragraphStyle}>Chính sách giải quyết khiếu nại</p>
-                  <p style={paragraphStyle}>Chính sách bảo mật thanh toán</p>
-                  <p style={paragraphStyle}>Tuyển dụng</p>
-                  <p style={paragraphStyle}>Liên hệ</p>
-                  <p style={paragraphStyle}>KYOTO VIỆT NAM</p>
-                  <img
-                      src="/assets/images/badges/wmfXpoW 1.png"
-                      alt="chungnhan"
-                    />
-                </div>
-              </Col>
+    <footer className="bg-[var(--app-main-color)]">
+      <StyledContainer className="mx-auto py-[32px] md:py-[60px]">
+        <Row gutter={[16, 16]}>
+          <Col className="basis-[100%] md:basis-[20%]">
+            <Text className="title" style={titleStyle}>
+              {aboutInfors.title}
+            </Text>
+            {aboutInfors.children.map((info, id) => (
+              <Text key={id} className="text">
+                {info.label}
+              </Text>
+            ))}
 
-              <Col xs={24} sm={12} md={8} lg={4}>
-                <div style={columnStyle}>
-                  <h1 style={headerStyle}>Hỗ Trợ Khách Hàng</h1>
-                  <p style={paragraphStyle}>
-                    Hotline 0377 222 777 (1000đ/phút, 24/7)
-                  </p>
-                  <p style={paragraphStyle}>Các câu hỏi thường gặp</p>
-                  <p style={paragraphStyle}>Hướng dẫn đặt hàng</p>
-                  <p style={paragraphStyle}>Phương thức thanh toán</p>
-                  <p style={paragraphStyle}>Phương thức vận chuyển</p>
-                  <p style={paragraphStyle}>Chính sách đổi trả</p>
-                  <p style={paragraphStyle}>CSKH: ctykyoto@gmail.com</p>
-                  <p style={paragraphStyle}>Tin tức / Blog</p>
-                  
-                </div>
-              </Col>
+            <img src="/assets/images/badges/wmfXpoW 1.png" alt="chungnhan" />
+          </Col>
 
-              <Col xs={24} sm={12} md={8} lg={4}>
-                <div style={columnStyle}>
-                  <h1 style={headerStyle}>Hệ Thống kênh phân phối</h1>
-                  <p style={paragraphStyle}>
-                    141 Phan Đăng Lưu, P.7, Q. Phú Nhuận
-                  </p>
-                  <p style={paragraphStyle}>
-                    314 Đ. Trường Chinh, P.13, Q. Tân Bình
-                  </p>
-                  <p style={paragraphStyle}>
-                    198A Mã Lò, P. Bình Trị Đông A, Q. Bình Tân
-                  </p>
-                  <p style={paragraphStyle}>
-                    236K Lê Văn Sỹ, P. 1, Q. Tân Bình
-                  </p>
-                  <p style={paragraphStyle}>
-                    388 - 390 Nguyễn Thị Thập, P. Tân Quy, Q.7
-                  </p>
-                  <p style={paragraphStyle}>410 Hậu Giang, Phường 12, Quận 6</p>
-                  <p style={paragraphStyle}>509 Quang Trung, Quận Gò Vấp</p>
-                </div>
-              </Col>
+          <Col className="basis-[100%] md:basis-[19%]">
+            <Text className="title" style={titleStyle}>
+              {aboutInfors.title}
+            </Text>
+            {helperInfors.children.map((info, id) => (
+              <Text key={id} className="text">
+                {info.label}
+              </Text>
+            ))}
+          </Col>
 
-              <Col xs={24} sm={24} md={24} lg={10}>
-                <div style={columnStyle}>
-                  {" "}
-                  <h1 style={headerStylePayment}>Thanh toán</h1>
-                  <div style={imagePayment}>
-                    <img
-                      src="/assets/images/payment-card/mastercard.png"
-                      alt="payment"
-                    />
-                    <img
-                      src="/assets/images/payment-card/JCB.png"
-                      alt="payment"
-                    />
-                    <img
-                      src="/assets/images/payment-card/visakyoto.png"
-                      alt="payment"
-                    />
-                  </div>
-                </div>
-                <div style={columnStyle}>
-                  {" "}
-                  <h1 style={headerStylePayment}>Kết Nối Với Chúng Tôi</h1>
-                  <div style={imagePayment}>
-                    <img
-                      src="/assets/images/brands/socical.png"
-                      alt="payment"
-                    />
-                  </div>
-                </div>
-                <div style={columnStyle}>
-                  {" "}
-                  <h1 style={headerStylePayment}>
-                    Tải ứng dụng trên điện thoại
-                  </h1>
-                  <div style={imagePayment}>
-                    <img
-                      src="/assets/images/brands/dowload.png"
-                      alt="payment"
-                    />
-                  </div>
-                </div>
-              </Col>
+          <Col className="basis-[100%] md:basis-[22%]">
+            <Text className="title" style={titleStyle}>
+              {branchInfos.title}
+            </Text>
+            {branchInfos.children.map((info, id) => (
+              <Text key={id} className="text ">
+                <LocationIcon className="inline-block mr-1" />
+                {info.label}
+              </Text>
+            ))}
+          </Col>
+
+          <Col className="basis-[100%] md:basis-[20%]">
+            <Text className="title" style={titleStyle}>
+              {bankInfors.title}
+            </Text>
+            <Row className="gap-3">
+              {bankInfors.children.map((bank) => (
+                <Image src={bank.image} alt="img" className="w-[50px]" />
+              ))}
             </Row>
-            <Row>
-              <Col xs={24} sm={24} md={24} lg={24}>
-                <div style={footerText}>TND GROUP</div>
-                <p style={paragraphStyleBottom}>
-                  Địa chỉ: 7B2 Khu biệt thự Thạnh Xuân, Phường Thạnh Xuân, Quận
-                  12, Thành Phố Hồ Chí Minh
-                </p>
-                <p style={paragraphStyleBottom}>
-                  Giấy chứng nhận Đăng ký Kinh doanh số 031555666 do Sở Kế hoạch
-                  và Đầu tư Thành phố Hồ Chí Minh cấp ngày 23/10/2017
-                </p>
-                <p style={paragraphStyleBottomLast}>
-                  Thuộc bản quyền TND Group @2023 được phát triển bới
-                  tasvietnam.com.vn
-                </p>
-              </Col>
-            </Row>
-          </div>
-        </Box>
-      </Box>
+
+            <Text className="title2 mt-4">{mediaSocialInfors.title}</Text>
+            {mediaSocialInfors.children.map((bank) => (
+              <Image src={bank.image} alt="img" className="w-full" />
+            ))}
+          </Col>
+
+          <Col className="basis-[100%] md:basis-[19%]">
+            <Text className="title">{downloadInfors.title}</Text>
+            <Image src={downloadInfors.children[0].image} alt="img" />
+          </Col>
+        </Row>
+
+        <div className="w-full border-[1px] border-b-[#828282] border-dashed my-4" />
+
+        <Row>
+          <Col span={24} className="text-white text-center end-box">
+            <Text className="font-bold text-center">TND GROUP</Text>
+            <Text className="my-4">
+              Địa chỉ: 7B2 Khu biệt thự Thạnh Xuân, Phường Thạnh Xuân, Quận 12,
+              Thành Phố Hồ Chí Minh
+            </Text>
+            <Text className="mb-4">
+              Giấy chứng nhận Đăng ký Kinh doanh số 031555666 do Sở Kế hoạch và
+              Đầu tư Thành phố Hồ Chí Minh cấp ngày 23/10/2017
+            </Text>
+            <Text style={{ color: "var(--app-sub-color)" }} className="font-[500]">
+              Thuộc bản quyền TND Group @2023 được phát triển bới
+              tasvietnam.com.vn
+            </Text>
+          </Col>
+        </Row>
+      </StyledContainer>
     </footer>
   );
 };

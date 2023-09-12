@@ -5,4 +5,5 @@
 
 export * from "./cart.icon";
 export * from "./next.icon";
+export * from "./location.icon";
 // export { BoxIcon, CarIcon, ShipIcon, MapIcon };
