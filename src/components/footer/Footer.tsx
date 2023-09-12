@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import { getTheme } from "../../utils/utils";
 import Box from "../Box";
+import { Row, Col, Menu, Typography, Card } from "antd";
 
 const StyledLink = styled.a`
   position: relative;
@@ -14,7 +15,51 @@ const StyledLink = styled.a`
     color: ${getTheme("colors.gray.100")};
   }
 `;
-
+const footerText = {
+  backgroundColor: "#00ADEF",
+  color: "white",
+  textAlign: "center" as const,
+  padding: "20px 0",
+};
+const imagePayment = {
+  display: "flex",
+  justifyContent: "center",
+};
+const headerStyle = {
+  textAlign: "left" as const,
+  display: "inline-block",
+  color: "#F7DD04",
+  fontSize: "20px",
+  marginBottom: "10px",
+  lineHeight: "24px",
+};
+const headerStylePayment = {
+  textAlign: "center" as const,
+  color: "#F7DD04",
+  fontSize: "20px",
+  marginBottom: "15px",
+  lineHeight: "24px",
+};
+const paragraphStyle: React.CSSProperties = {
+  fontWeight: "Montserrat",
+  fontSize: "14px",
+  color: "white",
+  marginBottom: "15px",
+  lineHeight: "16px",
+};
+const paragraphStyleBottom: React.CSSProperties = {
+  fontWeight: "Montserrat",
+  fontSize: "14px",
+  color: "white",
+  marginBottom: "15px",
+  lineHeight: "16px",
+  justifyContent: "center",
+  textAlign : "center"
+};
+const columnStyle: React.CSSProperties = {
+  marginTop: "50px",
+  marginLeft: "70px",
+};
 const Footer: React.FC = () => {
   return (
     <footer>
@@ -23,73 +68,128 @@ const Footer: React.FC = () => {
           <div
             style={{
               backgroundColor: "#00ADEF",
-              height: "596px",
               width: "100%",
               display: "flex",
               flexDirection: "column",
             }}
           >
-            <div
-              style={{
-                flex: "60%",
-                display: "flex",
-                backgroundColor: "#00ADEF",
-              }}
-            >
-              <div
-                style={{
-                  flex: "25%",
+            <Row gutter={[16, 16]}>
+              <Col xs={24} sm={12} md={8} lg={4}>
+                <div style={columnStyle}>
+                  <h1 style={headerStyle}>Tiêu đề</h1>
+                  <p style={paragraphStyle}>Giới thiệu TND Group</p>
+                  <p style={paragraphStyle}>Chính sách giải quyết khiếu nại</p>
+                  <p style={paragraphStyle}>Chính sách bảo mật thanh toán</p>
+                  <p style={paragraphStyle}>Tuyển dụng</p>
+                  <p style={paragraphStyle}>Liên hệ</p>
+                  <p style={paragraphStyle}>KYOTO VIỆT NAM</p>
+                </div>
+              </Col>
 
-                  textAlign: "center",
-                }}
-              >
-                Item 1
-              </div>
-              <div
-                style={{
-                  flex: "25%",
+              <Col xs={24} sm={12} md={8} lg={4}>
+                <div style={columnStyle}>
+                  <h1 style={headerStyle}>Hỗ Trợ Khách Hàng</h1>
+                  <p style={paragraphStyle}>
+                    Hotline 0377 222 777 (1000đ/phút, 24/7)
+                  </p>
+                  <p style={paragraphStyle}>Các câu hỏi thường gặp</p>
+                  <p style={paragraphStyle}>Hướng dẫn đặt hàng</p>
+                  <p style={paragraphStyle}>Phương thức thanh toán</p>
+                  <p style={paragraphStyle}>Phương thức vận chuyển</p>
+                  <p style={paragraphStyle}>Chính sách đổi trả</p>
+                  <p style={paragraphStyle}>CSKH: ctykyoto@gmail.com</p>
+                  <p style={paragraphStyle}>Tin tức / Blog</p>
+                </div>
+              </Col>
 
-                  textAlign: "center",
-                }}
-              >
-                Item 2
-              </div>
-              <div
-                style={{
-                  flex: "25%",
+              <Col xs={24} sm={12} md={8} lg={4}>
+                <div style={columnStyle}>
+                  <h1 style={headerStyle}>Hệ Thống kênh phân phối</h1>
+                  <p style={paragraphStyle}>
+                    141 Phan Đăng Lưu, P.7, Q. Phú Nhuận
+                  </p>
+                  <p style={paragraphStyle}>
+                    314 Đ. Trường Chinh, P.13, Q. Tân Bình
+                  </p>
+                  <p style={paragraphStyle}>
+                    198A Mã Lò, P. Bình Trị Đông A, Q. Bình Tân
+                  </p>
+                  <p style={paragraphStyle}>
+                    236K Lê Văn Sỹ, P. 1, Q. Tân Bình
+                  </p>
+                  <p style={paragraphStyle}>
+                    388 - 390 Nguyễn Thị Thập, P. Tân Quy, Q.7
+                  </p>
+                  <p style={paragraphStyle}>410 Hậu Giang, Phường 12, Quận 6</p>
+                  <p style={paragraphStyle}>509 Quang Trung, Quận Gò Vấp</p>
+                </div>
+              </Col>
 
-                  textAlign: "center",
-                }}
-              >
-                Item 3
-              </div>
-              <div
-                style={{
-                  flex: "25%",
-
-                  textAlign: "center",
-                }}
-              >
-                Item 4
-              </div>
-            </div>
-            <div
-              style={{
-                flex: "40%",
-                backgroundColor: "#00ADEF",
-                color: "white",
-                textAlign: "center",
-                display: "flex",
-                justifyContent: "center",
-                alignItems: "center",
-              }}
-            >
-              &copy; 2023 Your Company Name
-            </div>
+              <Col xs={24} sm={24} md={24} lg={10}>
+                <div style={columnStyle}>
+                  {" "}
+                  <h1 style={headerStylePayment}>Thanh toán</h1>
+                  <div style={imagePayment}>
+                    <img
+                      src="/assets/images/payment-card/mastercard.png"
+                      alt="payment"
+                    />
+                    <img
+                      src="/assets/images/payment-card/JCB.png"
+                      alt="payment"
+                    />
+                    <img
+                      src="/assets/images/payment-card/visakyoto.png"
+                      alt="payment"
+                    />
+                  </div>
+                </div>
+                <div style={columnStyle}>
+                  {" "}
+                  <h1 style={headerStylePayment}>Kết Nối Với Chúng Tôi</h1>
+                  <div style={imagePayment}>
+                    <img
+                      src="/assets/images/brands/socical.png"
+                      alt="payment"
+                    />
+                  </div>
+                </div>
+                <div style={columnStyle}>
+                  {" "}
+                  <h1 style={headerStylePayment}>
+                    Tải ứng dụng trên điện thoại
+                  </h1>
+                  <div style={imagePayment}>
+                    <img
+                      src="/assets/images/brands/dowload.png"
+                      alt="payment"
+                    />
+                  </div>
+                </div>
+              </Col>
+            </Row>
+            <Row>
+              <Col xs={24} sm={24} md={24} lg={24}>
+                <div style={footerText}>TND GROUP</div>
+                <p style={paragraphStyleBottom}>
+                  Địa chỉ: 7B2 Khu biệt thự Thạnh Xuân, Phường Thạnh Xuân, Quận
+                  12, Thành Phố Hồ Chí Minh
+                </p>
+                <p style={paragraphStyleBottom}>
+                  Giấy chứng nhận Đăng ký Kinh doanh số 031555666 do Sở Kế hoạch
+                  và Đầu tư Thành phố Hồ Chí Minh cấp ngày 23/10/2017
+                </p>
+                <p style={paragraphStyleBottom}>
+                  Thuộc bản quyền TND Group @2023 được phát triển bới
+                  tasvietnam.com.vn
+                </p>
+              </Col>
+            </Row>
           </div>
         </Box>
       </Box>
     </footer>
   );
 };
+
 export default Footer;
