@@ -61,6 +61,7 @@ const headerStylePayment = {
   marginBottom: "10px",
   lineHeight: "24px",
 };
+
 const paragraphStyle: React.CSSProperties = {
   fontWeight: "Montserrat",
   fontSize: "14px",
@@ -108,7 +109,9 @@ const Footer: React.FC = () => {
                 <div style={columnStyle}>
                   <span style={lineStyle}></span>
                   <h1 style={headerStyle}>Về TND GROUP</h1>
-                  <p style={paragraphStyle}>Giới thiệu TND Group</p>
+                  <p style={paragraphStyle}>
+                    Giới thiệu <b> TND Group </b>
+                  </p>
                   <p style={paragraphStyle}>Chính sách giải quyết khiếu nại</p>
                   <p style={paragraphStyle}>Chính sách bảo mật thanh toán</p>
                   <p style={paragraphStyle}>Tuyển dụng</p>
@@ -126,7 +129,7 @@ const Footer: React.FC = () => {
                   <span style={lineStyle}></span>
                   <h1 style={headerStyle}>Hỗ Trợ Khách Hàng</h1>
                   <p style={paragraphStyle}>
-                    Hotline 0377 222 777 (1000đ/phút, 24/7)
+                    <b>Hotline </b> 0377 222 777 (1000đ/phút, 24/7)
                   </p>
                   <p style={paragraphStyle}>Các câu hỏi thường gặp</p>
                   <p style={paragraphStyle}>Hướng dẫn đặt hàng</p>
@@ -162,9 +165,7 @@ const Footer: React.FC = () => {
                 </div>
               </Col>
               <Col xs={24} sm={12} md={8} lg={4}>
-                <div style={columnStyle}>
-                 
-                </div>
+                <div style={columnStyle}></div>
               </Col>
               <Col xs={24} sm={24} md={24} lg={6}>
                 <div style={columnStyle}>
