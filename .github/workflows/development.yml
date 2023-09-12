@@ -20,7 +20,7 @@ jobs:
           port: 22
           script: |
             rm -rf Kyoto-Website
-            git clone https://${{ secrets.GIT_KEY }}@github.com/anhocva214/Kyoto-Website Kyoto-Website
+            git clone https://${{ secrets.GIT_KEY }}@github.com/tasvn/Kyoto-Website Kyoto-Website
             cd Kyoto-Website
             git checkout develop
             cp ../env/kyoto-website-dev.env.development ./.env
