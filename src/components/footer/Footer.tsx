@@ -63,8 +63,8 @@ const StyledContainer = styled(Container)`
 
 const titleStyle: CSSProperties = {
   lineHeight: "24px",
+  alignItems: "center",
 };
-
 const Footer: React.FC = () => {
   const { state } = useAppContext();
 
