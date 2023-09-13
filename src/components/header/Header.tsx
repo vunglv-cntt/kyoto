@@ -136,7 +136,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         onClose={closeMobileBar}
         placement="left"
       >
-        <Space direction="vertical">
+        <Space direction="vertical" className="w-full">
           <ArrowLeftOutlined
             className="cursor-pointer w-[48px] h-[48px]"
             onClick={closeMobileBar}
@@ -184,12 +184,11 @@ const StyledDrawer = styled(Drawer)`
   .ant-drawer-header {
     display: none;
   }
-
   .ant-menu li {
     padding-inline: 0;
-
     span {
       padding: 16px;
+      font-weight: 600;
     }
   }
 
