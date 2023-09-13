@@ -1,4 +1,4 @@
-import { Row, Col, Typography, Button, Drawer, Menu, Space } from "antd";
+import { Row, Col, Button, Drawer, Menu, Space } from "antd";
 import { Container, Text } from "..";
 import Link from "next/link";
 import { Image } from "@component/image";
@@ -60,7 +60,11 @@ const Header: React.FC<HeaderProps> = () => {
           gutter={[16, 16]}
         >
           <Col className="block lg:hidden">
-            <Button type="text flex items-center" onClick={showMobileBar}>
+            <Button
+              type="text"
+              className="flex items-center"
+              onClick={showMobileBar}
+            >
               <MenuOutlined className="cursor-pointer" />
             </Button>
           </Col>
