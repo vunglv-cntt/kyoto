@@ -129,7 +129,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                         href="
                       "
                       >
-                        Đăng Nhập/đăng Ký
+                         <span style={{color : "#DF3E23"}}>  Đăng Nhập/đăng Ký</span>
                       </a>
                     </div>
                     <img
