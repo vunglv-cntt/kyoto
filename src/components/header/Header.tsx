@@ -9,7 +9,7 @@ type HeaderProps = {
 };
 const { Title } = Typography;
 const menuItemStyle = {
-  margin: "0 65px",
+  margin: "0 10px",
   fontWeight: "bold",
   fontSize: "16px",
   fontFamily: "Be Vietnam Pro, sans-serif",
@@ -121,9 +121,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </Col>
           </Row>
           <Row>
-            <Col  style={{ marginTop: "30px" }}>
+            <Col span={24} style={{ marginTop: "30px" }}>
               <Row justify="center">
-                <Col span={18}>
+                <Col span={12}>
                   <Menu mode="horizontal" defaultSelectedKeys={["home"]}>
                     <Menu.Item key="home" style={menuItemStyle}>
                       Trang chủ
