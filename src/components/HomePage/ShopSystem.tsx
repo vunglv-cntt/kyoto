@@ -6,13 +6,14 @@ import { Image } from "@component/image";
 import { BranchType } from "services/main/models";
 import { Text } from "@component/text";
 import { formatAddress } from "helpers/address";
-import { useAppContext } from "@context/app/AppContext";
 
 function ShopSystem() {
-  const { state } = useAppContext();
-
   const showInfors = (branch: BranchType) => {
-    return [{ label: "Địa chỉ", value: formatAddress(branch) }];
+    return [
+      { label: "Địa chỉ", value: formatAddress(branch) },
+      { label: "Hotline", value: branch.hotline },
+      { label: "Email", value: branch.email },
+    ];
   };
 
   return (
@@ -28,7 +29,7 @@ function ShopSystem() {
 
       {/* Branches */}
       <Row gutter={[16, 16]} className="mt-4">
-        {state.branch.branches?.map((branch) => {
+        {branches?.map((branch) => {
           let { name, id, image } = branch;
 
           return (
@@ -40,7 +41,7 @@ function ShopSystem() {
                   <Text className="name">{name}</Text>
                   <Text className="description">
                     {showInfors(branch).map((info, id) => (
-                      <div key={id}>
+                      <div key={id} className="mt-1">
                         {info.label}: {info.value}
                       </div>
                     ))}
@@ -54,5 +55,53 @@ function ShopSystem() {
     </StyledBranches>
   );
 }
+
+const branches = [
+  {
+    id: 1,
+    image:
+      "http://kyoto-api-dev.tasvietnam.com/71eb5fdc3d3cb20ca16b56c38605a64f.png",
+    name: "Trạm Đồng Nai - 0160",
+    address: "Ấp Tân Thành",
+    city: "Đồng Nai",
+    district: "Huyện Trảng Bom",
+    ward: "Xã Thanh Bình",
+    longitude: 106.607188,
+    latitude: 10.8157407,
+    deleted_at: null,
+    hotline: "0799534156",
+    email: "tramdongnai@gmail.com ",
+  },
+  {
+    id: 1,
+    image:
+      "http://kyoto-api-dev.tasvietnam.com/6ac064bbd94f10eb348210e613426998fd.png",
+    name: "Trạm Đồng Nai - 0160",
+    address: "Ấp Tân Thành",
+    city: "Đồng Nai",
+    district: "Huyện Trảng Bom",
+    ward: "Xã Thanh Bình",
+    longitude: 106.607188,
+    latitude: 10.8157407,
+    deleted_at: null,
+    hotline: "0799534156",
+    email: "tramdongnai@gmail.com ",
+  },
+  {
+    id: 1,
+    image:
+      "http://kyoto-api-dev.tasvietnam.com/ec4cdc9918c7c20171058e505d3413d8.png",
+    name: "Trạm Đồng Nai - 0160",
+    address: "Ấp Tân Thành",
+    city: "Đồng Nai",
+    district: "Huyện Trảng Bom",
+    ward: "Xã Thanh Bình",
+    longitude: 106.607188,
+    latitude: 10.8157407,
+    deleted_at: null,
+    hotline: "0799534156",
+    email: "tramdongnai@gmail.com ",
+  },
+];
 
 export default ShopSystem;

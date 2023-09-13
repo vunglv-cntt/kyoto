@@ -1,4 +1,4 @@
-import { Banners, Categories } from "@component/HomePage";
+import { Banners, Categories, Features } from "@component/HomePage";
 import Advise from "@component/HomePage/Advise";
 import ButtonSearch from "@component/HomePage/ButtonSearch";
 import FlashSale from "@component/HomePage/FlashSale";
@@ -18,8 +18,8 @@ const Category = (props: Props) => {
         <Breadcrumbs />
         <FlashSale />
         <Advise />
-        <Categories />
       </Container>
+      <Features />
     </main>
   );
 };

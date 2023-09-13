@@ -56,10 +56,10 @@ const Header: React.FC<HeaderProps> = () => {
         {/* Top box */}
         <StyledRowTop
           justify="space-between"
-          className="items-center my-4"
+          className="items-center my-4 ju"
           gutter={[16, 16]}
         >
-          <Col className="block lg:hidden">
+          <Col className="flex lg:hidden">
             <Button
               type="text"
               className="flex items-center"
@@ -67,9 +67,10 @@ const Header: React.FC<HeaderProps> = () => {
             >
               <MenuOutlined className="cursor-pointer" />
             </Button>
+            <div className="px-2 lg:px-0" />
           </Col>
 
-          <Col style={{ textAlign: "right", marginRight: "30px" }}>
+          <Col>
             <Link href="/link-cua-trang-chu">
               <Image src={logoKyotoImg} alt="logo" className="logo" />
             </Link>
@@ -159,9 +160,11 @@ const Header: React.FC<HeaderProps> = () => {
 
 const StyledRowTop = styled(Row)`
   .logo {
-    width: 96px;
+    height: 27px;
+    width: auto;
+    max-width: 200px;
     @media ${breakpointDevice.md} {
-      width: 196px;
+      height: 54px;
     }
     img {
       height: 100%;
@@ -193,6 +196,10 @@ const StyledDrawer = styled(Drawer)`
       padding: 16px;
       font-weight: 600;
     }
+  }
+  
+  .ant-drawer-content-wrapper {
+    width: 75% !important;
   }
 
   .ant-menu-item-selected {

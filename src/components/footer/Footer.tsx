@@ -1,9 +1,8 @@
-import React, { CSSProperties, useMemo } from "react";
+import React, { CSSProperties } from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
 import { Text } from "@component/text";
 import { Container } from "@component/container";
-import { useAppContext } from "@context/app/AppContext";
 import { formatAddress } from "helpers/address";
 import { LocationIcon } from "@assets/icons";
 import { Image } from "@component/image";
@@ -14,9 +13,9 @@ import {
   youtubeImg,
   zaloImg,
 } from "@constants/images";
-import { BranchType } from "services/main/models";
-import { useAsync } from "@hooks/useAsync";
-import { apiGetBranchs } from "services/branch";
+// import { BranchType } from "services/main/models";
+// import { useAsync } from "@hooks/useAsync";
+// import { apiGetBranchs } from "services/branch";
 
 const StyledContainer = styled(Container)`
   .title::before {
@@ -75,21 +74,32 @@ const titleStyle: CSSProperties = {
   alignItems: "center",
 };
 const Footer: React.FC = () => {
-  const [, branchsData] = useAsync(apiGetBranchs, {
-    callOnFirst: true,
-  });
-  const branches: BranchType[] = useMemo(() => {
-    let newBranches =
-      branchsData?.data?.data?.slice(0, 3)?.map((branch) => ({
-        ...branch,
-        lat: branch.latitude,
-        lng: branch.longitude,
-      })) || [];
+  // const [, branchsData] = useAsync(apiGetBranchs, {
+  //   callOnFirst: true,
+  // });
+  // const branches: BranchType[] = useMemo(() => {
+  //   let newBranches =
+  //     branchsData?.data?.data?.slice(0, 3)?.map((branch) => ({
+  //       ...branch,
+  //       lat: branch.latitude,
+  //       lng: branch.longitude,
+  //     })) || [];
 
-    const { dispatch } = useAppContext();
-    dispatch({ type: "SET_BRANCHES", payload: newBranches });
-    return newBranches;
-  }, [branchsData]);
+  //   const { dispatch } = useAppContext();
+  //   dispatch({ type: "SET_BRANCHES", payload: newBranches });
+  //   return newBranches;
+  // }, [branchsData]);
+
+  const branches = [
+    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
+    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
+    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
+    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
+    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
+    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
+    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
+    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
+  ];
 
   const aboutInfors = {
     title: "Về TND GROUP",
@@ -161,11 +171,7 @@ const Footer: React.FC = () => {
 
   const branchInfos = {
     title: "Hệ Thống kênh phân phối",
-    children: branches.map((branch) => ({
-      id: branch.id,
-      label: formatAddress(branch),
-      value: branch.id,
-    })),
+    children: branches,
   };
 
   return (

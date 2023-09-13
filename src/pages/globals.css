@@ -3,12 +3,20 @@
 @tailwind utilities;
 
 :root {
-  --app-main-color: #01ABEC;
-  --app-sub-color: #F7DD04;
+  --app-main-color: #01abec;
+  --app-sub-color: #f7dd04;
   --app-input-bg: #f0f0f3;
 }
 
-
 .ant-form-item {
   margin-bottom: 0;
+}
+
+.styled-scroll::-webkit-scrollbar {
+  height: 4px;
+}
+
+.styled-scroll::-webkit-scrollbar-thumb {
+  background-color: #d9d9d9;
+  border-radius: 4px;
 }

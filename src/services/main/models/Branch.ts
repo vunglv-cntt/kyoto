@@ -9,6 +9,8 @@ export type BranchType = {
   longitude: number;
   latitude: number;
   deleted_at: string;
+  hotline: string;
+  email: string;
 };
 
 export type GetBranchs = {

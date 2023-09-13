@@ -16,14 +16,6 @@ export const StyledCategories = styled.div`
     @media ${breakpointDevice.md} {
       padding: 24px;
     }
-    ::-webkit-scrollbar {
-      height: 4px;
-    }
-
-    ::-webkit-scrollbar-thumb {
-      background-color: #d9d9d9;
-      border-radius: 4px;
-    }
   }
 
   .ant-col {

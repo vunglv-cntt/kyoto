@@ -7,6 +7,7 @@ const StyledBranches = styled.div`
     box-shadow: 0px 4px 20px 0px rgba(2, 53, 95, 0.1);
     border-radius: 16px;
     background-color: #fff;
+    overflow: hidden;
 
     .image {
       height: 200px;
@@ -16,6 +17,7 @@ const StyledBranches = styled.div`
 
       img {
         height: 100%;
+        width: 100%;
         object-fit: cover;
         margin: 0 auto;
       }

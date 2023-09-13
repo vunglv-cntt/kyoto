@@ -7,23 +7,28 @@ type Props = {} & InputProps;
 const { TextArea } = Input;
 
 const BaseInput = (props: Props) => {
-  return <StyledBaseInput {...props} size="large" />;
+  const { className } = props;
+  return (
+    <Input
+      {...props}
+      size="large"
+      className={`${commonCss} ${className}`}
+    />
+  );
 };
 
 const BaseTextArea = (props: TextAreaProps) => {
-  return <StyledTextAreaInput {...props} size="large" />;
+  const { className } = props;
+
+  return (
+    <TextArea
+      {...props}
+      size="large"
+      className={`${commonCss} ${className}`}
+    />
+  );
 };
 
-const commonCss = `
-padding: 10px 16px !important;
-`;
-
-const StyledBaseInput = styled(Input)`
-  ${commonCss}
-`;
-
-const StyledTextAreaInput = styled(TextArea)`
-  ${commonCss}
-`;
+const commonCss = `py-[10px] px[16px]`;
 
 export { BaseInput, BaseTextArea };

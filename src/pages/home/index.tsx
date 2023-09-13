@@ -9,6 +9,7 @@ import {
   Categories,
   Distributors,
   DemoVideo,
+  Features,
 } from "@component/HomePage";
 import { Container } from "@component/container";
 
@@ -20,7 +21,7 @@ const Home = (props: Props) => {
       <Banners />
       <Container className="gap-[40px] mb-4">
         <Categories />
-        <ButtonSearch />
+        <ButtonSearch className="hidden lg:flex"/>
         <FlashSale />
         <BestSeller />
         <DemoVideo />
@@ -28,8 +29,8 @@ const Home = (props: Props) => {
         <Distributors />
         <ShopSystem />
         <Advise />
-        <Categories />
       </Container>
+      <Features />
     </>
   );
 };

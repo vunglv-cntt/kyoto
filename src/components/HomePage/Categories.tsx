@@ -4,7 +4,6 @@ import { useAsync } from "@hooks/useAsync";
 import { apiGetCategories } from "services/home";
 import { useMemo } from "react";
 import { Col, Row } from "antd";
-import { Category } from "services/main/models";
 import { Text } from "@component/text";
 import Link from "next/link";
 import { PATHS } from "@constants/routes";
@@ -49,7 +48,7 @@ const Categories = () => {
 
       <Row
         gutter={[16, 16]}
-        className="flex-nowrap overflow-x-scroll md:hidden"
+        className="flex-nowrap overflow-x-scroll md:hidden styled-scroll"
       >
         {[].concat(...categoryParts).map((category) => {
           let { id } = category;
@@ -74,7 +73,10 @@ const CategoryBox = (category: any) => {
           <Text className="font-bold">{name}</Text>
         </div>
 
-        <Text className="text-[12px] text-[var(--app-main-color)] font-bold">
+        <Text
+          className="text-[var(--app-main-color)] font-bold"
+          style={{ fontSize: 12 }}
+        >
           Xem danh mục
         </Text>
       </div>

@@ -3,6 +3,8 @@ import { breakpointDevice } from "@constants/breakpoints";
 import { Col, Row } from "antd";
 import styled from "styled-components";
 import { ViewMoreButton } from "..";
+import { Image } from "@component/image";
+import { productPlaneImg } from "@constants/images";
 
 type Props = {};
 
@@ -10,13 +12,7 @@ const DemoVideo = (props: Props) => {
   return (
     <StyledDemoVideo>
       <Col xs={24} md={12}>
-        <iframe
-          width="100%"
-          className="h-[375px] md:h-[558px]"
-          src="https://www.youtube.com/embed/cio0_6dN21w?si=avyX2cCLyYGFnF5y"
-          title="YouTube video player"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-        ></iframe>
+        <Image src={productPlaneImg} alt="image" className="product-img" />
       </Col>
 
       <Col xs={24} md={12} className="right-bar min-h-[300px]">
@@ -32,7 +28,7 @@ const DemoVideo = (props: Props) => {
         </Text>
 
         <Row className="justify-start md:justify-end">
-          <ViewMoreButton className="p-0 mt-4">Xem thêm</ViewMoreButton>
+          <ViewMoreButton className="p-0 mt-4" fill="#fff">Xem thêm</ViewMoreButton>
         </Row>
       </Col>
     </StyledDemoVideo>
@@ -40,6 +36,13 @@ const DemoVideo = (props: Props) => {
 };
 
 const StyledDemoVideo = styled(Row)`
+  .product-img,
+  .product-img img {
+    height: 100%;
+  }
+  .product-img img {
+    object-fit: cover;
+  }
   .right-bar {
     background-color: var(--app-main-color);
     padding: 16px;

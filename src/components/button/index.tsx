@@ -3,6 +3,7 @@ import { Button, ButtonProps } from "antd";
 
 type Props = {
   className?: string;
+  fill?: string;
 } & ButtonProps;
 
 const StyledButton = (props: Props) => {
@@ -20,14 +21,14 @@ const StyledButton = (props: Props) => {
 };
 
 const ViewMoreButton = (props: Props) => {
-  const { className, children = "Xem tất cả" } = props;
+  const { className, children = "Xem tất cả", fill } = props;
   return (
     <Button
       {...props}
       className={`flex items-center gap-2 font-[600] text-[var(--app-main-color)] ${className}`}
       type="link"
     >
-      {children} <NextIcon fill="#fff"/>
+      {children} <NextIcon fill={fill} />
     </Button>
   );
 };

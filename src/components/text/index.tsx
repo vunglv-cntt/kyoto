@@ -13,7 +13,7 @@ const Text = (props: Props) => {
   return (
     <Typography.Text
       {...props}
-      className={`text-default text-[16px] block ${className}`}
+      className={`${className} text-default text-[16px] block`}
     />
   );
 };
