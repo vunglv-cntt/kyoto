@@ -1,8 +1,9 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useMemo } from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
 import { Text } from "@component/text";
 import { Container } from "@component/container";
+import { useAppContext } from "@context/app/AppContext";
 import { formatAddress } from "helpers/address";
 import { LocationIcon } from "@assets/icons";
 import { Image } from "@component/image";
@@ -13,9 +14,9 @@ import {
   youtubeImg,
   zaloImg,
 } from "@constants/images";
-// import { BranchType } from "services/main/models";
-// import { useAsync } from "@hooks/useAsync";
-// import { apiGetBranchs } from "services/branch";
+import { BranchType } from "services/main/models";
+import { useAsync } from "@hooks/useAsync";
+import { apiGetBranchs } from "services/branch";
 
 const StyledContainer = styled(Container)`
   .title::before {
@@ -67,6 +68,21 @@ const StyledContainer = styled(Container)`
     cursor: pointer;
     background-color: #fff;
   }
+  @media (max-width: 767px) {
+    .text-container {
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .text {
+      flex: 0 0 calc(50% - 10px);
+      text-align: left;
+    }
+    .align-right {
+      text-align: left;
+    }
+  }
 `;
 
 const titleStyle: CSSProperties = {
@@ -74,32 +90,21 @@ const titleStyle: CSSProperties = {
   alignItems: "center",
 };
 const Footer: React.FC = () => {
-  // const [, branchsData] = useAsync(apiGetBranchs, {
-  //   callOnFirst: true,
-  // });
-  // const branches: BranchType[] = useMemo(() => {
-  //   let newBranches =
-  //     branchsData?.data?.data?.slice(0, 3)?.map((branch) => ({
-  //       ...branch,
-  //       lat: branch.latitude,
-  //       lng: branch.longitude,
-  //     })) || [];
+  const [, branchsData] = useAsync(apiGetBranchs, {
+    callOnFirst: true,
+  });
+  const branches: BranchType[] = useMemo(() => {
+    let newBranches =
+      branchsData?.data?.data?.slice(0, 3)?.map((branch) => ({
+        ...branch,
+        lat: branch.latitude,
+        lng: branch.longitude,
+      })) || [];
 
-  //   const { dispatch } = useAppContext();
-  //   dispatch({ type: "SET_BRANCHES", payload: newBranches });
-  //   return newBranches;
-  // }, [branchsData]);
-
-  const branches = [
-    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
-    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
-    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
-    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
-    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
-    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
-    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
-    { label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai" },
-  ];
+    const { dispatch } = useAppContext();
+    dispatch({ type: "SET_BRANCHES", payload: newBranches });
+    return newBranches;
+  }, [branchsData]);
 
   const aboutInfors = {
     title: "Về TND GROUP",
@@ -134,13 +139,13 @@ const Footer: React.FC = () => {
         ),
         href: null,
       },
-      { label: "Các câu hỏi thường gặp", href: null },
-      { label: "Hướng dẫn đặt hàng", href: null },
-      { label: "Phương thức thanh toán", href: null },
-      { label: "Phương thức vận chuyển", href: null },
-      { label: "Chính sách đổi trả", href: null },
-      { label: "CSKH: ctykyoto@gmail.com", href: null },
-      { label: "Tin tức / Blog", href: null },
+      { id: 1, label: "Các câu hỏi thường gặp", href: null },
+      { id: 2, label: "Hướng dẫn đặt hàng", href: null },
+      { id: 3, label: "Phương thức thanh toán", href: null },
+      { id: 4, label: "Phương thức vận chuyển", href: null },
+      { id: 5, label: "Chính sách đổi trả", href: null },
+      { id: 6, label: "CSKH: ctykyoto@gmail.com", href: null },
+      { id: 7, label: "Tin tức / Blog", href: null },
     ],
   };
 
@@ -171,7 +176,11 @@ const Footer: React.FC = () => {
 
   const branchInfos = {
     title: "Hệ Thống kênh phân phối",
-    children: branches,
+    children: branches.map((branch) => ({
+      id: branch.id,
+      label: formatAddress(branch),
+      value: branch.id,
+    })),
   };
 
   return (
@@ -195,13 +204,17 @@ const Footer: React.FC = () => {
             <Text className="title" style={titleStyle}>
               {aboutInfors.title}
             </Text>
-            {helperInfors.children.map((info, id) => (
-              <Text key={id} className="text">
-                {info.label}
-              </Text>
-            ))}
+            <div className="text-container">
+              {helperInfors.children.map((info) => (
+                <Text
+                  key={info.id}
+                  className={`text ${info.id % 2 === 0 ? "align-right" : ""}`}
+                >
+                  {info.label}
+                </Text>
+              ))}
+            </div>
           </Col>
-
           <Col className="basis-[100%] md:basis-[35%]">
             <Text className="title" style={titleStyle}>
               {branchInfos.title}

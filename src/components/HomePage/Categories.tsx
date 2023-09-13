@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { StyledCategories } from "./homepagecss/Categories.style";
 import { useAsync } from "@hooks/useAsync";
 import { apiGetCategories } from "services/home";
-import { useMemo } from "react";
+import { useMemo ,useState} from "react";
 import { Col, Row } from "antd";
 import { Text } from "@component/text";
 import Link from "next/link";
@@ -13,6 +13,8 @@ const Categories = () => {
   const [, categoriesData] = useAsync(apiGetCategories, {
     callOnFirst: true,
   });
+
+  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const categoryParts = useMemo(() => {
     var array = [].concat(...(categoriesData?.data?.data || []));
     const chunkSize = 6;
@@ -36,7 +38,7 @@ const Categories = () => {
                 <Row gutter={[16, 16]}>
                   {categoryPart.map((category, idd) => (
                     <Col key={idd} className="items-start basis-1/6">
-                      <CategoryBox {...category} />
+                      <CategoryBox {...category} onCategoryClick={setSelectedCategoryId} />
                     </Col>
                   ))}
                 </Row>
@@ -64,7 +66,12 @@ const Categories = () => {
 };
 
 const CategoryBox = (category: any) => {
-  let { id, icon, name } = category;
+  let { id, icon, name ,onCategoryClick} = category;
+  const handleIconClick = () => {
+    console.log(`  ID: ${id}`);
+    
+    onCategoryClick(id);
+  };
   return (
     <Link href={PATHS.category(id.toString())}>
       <div className="category-box flex flex-col gap-2 justify-between">
