@@ -1,4 +1,3 @@
-// import Container from "../Container";
 import { Row, Col, Typography, Button, Drawer, Menu, Space } from "antd";
 import { Container, Text } from "..";
 import Link from "next/link";
@@ -15,8 +14,6 @@ type HeaderProps = {
   isFixed?: boolean;
   className?: string;
 };
-const { Title } = Typography;
-
 const logoImageStyleIcon = {
   width: "auto",
   height: "20px",
@@ -24,7 +21,7 @@ const logoImageStyleIcon = {
   marginRight: "8px",
 };
 
-const Header: React.FC<HeaderProps> = ({ className }) => {
+const Header: React.FC<HeaderProps> = () => {
   const [openMobileBar, setOpenMobileBar] = useState(false);
   const infors = [
     {
@@ -56,6 +53,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
   return (
     <div className="bg-white">
       <Container>
+        {/* Top box */}
         <StyledRowTop
           justify="space-between"
           className="items-center my-4"
@@ -112,6 +110,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           </Col>
         </StyledRowTop>
 
+        {/* Downbox */}
         <StyledRowDown justify="space-between" className="hidden lg:flex mb-4">
           {navbars.map((navbar, id) => (
             <Col key={id}>

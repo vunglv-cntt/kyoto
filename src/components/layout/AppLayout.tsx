@@ -1,6 +1,5 @@
 import Footer from "@component/footer/Footer";
 import Header from "@component/header/Header";
-import Sticky from "@component/sticky/Sticky";
 import Topbar from "@component/topbar/Topbar";
 import Head from "next/head";
 import React from "react";
@@ -24,16 +23,13 @@ const AppLayout: React.FC<Props> = ({
     </Head>
 
     <Topbar />
-
     <Header />
-
     {navbar && <div className="section-after-sticky">{navbar}</div>}
     {!navbar ? (
       <div className="section-after-sticky">{children}</div>
     ) : (
       children
     )}
-
     <Footer />
   </StyledAppLayout>
 );
