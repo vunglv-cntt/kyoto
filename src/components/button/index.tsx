@@ -27,7 +27,7 @@ const ViewMoreButton = (props: Props) => {
       className={`flex items-center gap-2 font-[600] text-[var(--app-main-color)] ${className}`}
       type="link"
     >
-      {children} <NextIcon />
+      {children} <NextIcon fill="#fff"/>
     </Button>
   );
 };

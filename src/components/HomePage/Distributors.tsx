@@ -8,9 +8,24 @@ import { Image } from "@component/image";
 
 function Distributors() {
   const informations = [
-    { icon: shipBoxImg, text: "300+", description: "Cửa hàng phân phối" },
-    { icon: shipCarImg, text: "1,000+", description: "Giao hàng tận nơi", className: "mt-0 md:mt-[16px]" },
-    { icon: shipImg, text: "500", description: "Nhập khẩu chính hãng", className: "mt-0 md:mt-[-16px]" },
+    {
+      icon: shipBoxImg,
+      text: "300+",
+      description: "Cửa hàng phân phối",
+      className: "mt-0 md:mt-[8px]",
+    },
+    {
+      icon: shipCarImg,
+      text: "1,000+",
+      description: "Giao hàng tận nơi",
+      className: "mt-0 md:mt-[16px]",
+    },
+    {
+      icon: shipImg,
+      text: "500",
+      description: "Nhập khẩu chính hãng",
+      className: "mt-0 md:mt-[-16px]",
+    },
     { icon: shipMapImg, text: "80", description: "Hậu mãi", className: "" },
   ];
 
@@ -35,12 +50,7 @@ function Distributors() {
       <Col xs={24} md={12}>
         <Row gutter={[16, 16]}>
           {informations.map((information, id) => (
-            <Col
-              key={id}
-              xs={24}
-              md={12}
-              className={information?.className}
-            >
+            <Col key={id} xs={24} md={12} className={information?.className}>
               <div className="distributor">
                 <Image
                   src={information.icon}

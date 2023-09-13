@@ -4,13 +4,11 @@ import { StyledAdvise } from "./homepagecss/Advise.style";
 import { Text } from "@component/text";
 import { BaseInput, BaseTextArea } from "@component/input";
 import { Button } from "@component/button";
-import { useAppContext } from "@context/app/AppContext";
 type HeaderProps = {
   isFixed?: boolean;
   className?: string;
 };
 const Advise: React.FC<HeaderProps> = ({ className }) => {
-  const { state } = useAppContext();
   return (
     <StyledAdvise>
       <Col xs={24} md={10} className={`px-4 py-6 ${className}`}>
@@ -56,7 +54,7 @@ const Advise: React.FC<HeaderProps> = ({ className }) => {
       <Col xs={24} md={14}>
         <Googlemap
           mapContainerClassName="h-[294px] md:h-[100%] "
-          marks={state.branch.branches}
+          marks={[{ lat: 10.858889, lng: 106.675362 }]}
         />
       </Col>
     </StyledAdvise>

@@ -7,7 +7,13 @@ import { useAppContext } from "@context/app/AppContext";
 import { formatAddress } from "helpers/address";
 import { LocationIcon } from "@assets/icons";
 import { Image } from "@component/image";
-import { facebookImg, instagramImg, tiktokImg, youtubeImg, zaloImg } from "@constants/images";
+import {
+  facebookImg,
+  instagramImg,
+  tiktokImg,
+  youtubeImg,
+  zaloImg,
+} from "@constants/images";
 
 const StyledContainer = styled(Container)`
   .title::before {
@@ -162,7 +168,7 @@ const Footer: React.FC = () => {
             <img src="/assets/images/badges/wmfXpoW 1.png" alt="chungnhan" />
           </Col>
 
-          <Col className="basis-[100%] md:basis-[19%]">
+          <Col className="basis-[100%] md:basis-[20%]">
             <Text className="title" style={titleStyle}>
               {aboutInfors.title}
             </Text>
@@ -173,7 +179,7 @@ const Footer: React.FC = () => {
             ))}
           </Col>
 
-          <Col className="basis-[100%] md:basis-[22%]">
+          <Col className="basis-[100%] md:basis-[35%]">
             <Text className="title" style={titleStyle}>
               {branchInfos.title}
             </Text>
@@ -185,7 +191,7 @@ const Footer: React.FC = () => {
             ))}
           </Col>
 
-          <Col className="basis-[100%] md:basis-[20%]">
+          <Col className="basis-[100%] md:basis-[25%]">
             <Text className="title" style={titleStyle}>
               {bankInfors.title}
             </Text>
@@ -195,7 +201,7 @@ const Footer: React.FC = () => {
               ))}
             </Row>
 
-            <Text className="title2 mt-4">{mediaSocialInfors.title}</Text>
+            <Text className="title mt-4">{mediaSocialInfors.title}</Text>
             <Row gutter={[8, 8]}>
               {mediaSocialInfors.children.map((bank, id) => (
                 <Col key={id} className="social-box">
@@ -203,11 +209,11 @@ const Footer: React.FC = () => {
                 </Col>
               ))}
             </Row>
-          </Col>
 
-          <Col className="basis-[100%] md:basis-[19%]">
-            <Text className="title">{downloadInfors.title}</Text>
-            <Image src={downloadInfors.children[0].image} alt="img" />
+            <Text className="title mt-4">{downloadInfors.title}</Text>
+            <Row className="basis-[100%] md:basis-[19%]">
+              <Image src={downloadInfors.children[0].image} alt="img" />
+            </Row>
           </Col>
         </Row>
 
