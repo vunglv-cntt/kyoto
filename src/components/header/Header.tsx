@@ -10,6 +10,8 @@ import LanguageDropdown from "@component/dropdown/language-dropdown";
 import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
 import ButtonSearch from "@component/HomePage/ButtonSearch";
 import { useState } from "react";
+import PhoneIcon from '../../assets/icons/phone';
+  
 type HeaderProps = {
   isFixed?: boolean;
   className?: string;
@@ -28,7 +30,7 @@ const Header: React.FC<HeaderProps> = () => {
       label: "8:00 đến 17:30 thứ 2 đến thứ 7",
       icon: <LocationIcon fill="#000" />,
     },
-    { label: "0377 222 777", icon: <LocationIcon fill="#000" /> },
+    { label: "0377 222 777", icon: <PhoneIcon fill="#000" /> },
     { label: "63 Cửa hàng", icon: <LocationIcon fill="#000" /> },
   ];
 
