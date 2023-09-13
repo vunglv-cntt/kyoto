@@ -10,6 +10,7 @@ const shipCarImg = `${IMAGE_DOMAIN}/ship/car.svg`;
 const shipMapImg = `${IMAGE_DOMAIN}/ship/map.svg`;
 const shipImg = `${IMAGE_DOMAIN}/ship/ship.svg`;
 const bannerPlaneImg = `${IMAGE_DOMAIN}/banner/maybay.png`;
+const logoKyotoImg = `${IMAGE_DOMAIN}/logos/KYOTO.png`;
 
 export {
   facebookImg,
@@ -21,5 +22,6 @@ export {
   shipCarImg,
   shipMapImg,
   shipImg,
-  bannerPlaneImg
+  bannerPlaneImg,
+  logoKyotoImg
 };

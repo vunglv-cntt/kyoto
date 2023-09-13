@@ -1,11 +1,15 @@
+import { breakpointDevice } from "@constants/breakpoints";
 import styled from "styled-components";
-import { getTheme } from "../../utils/utils";
 
 const StyledTopbar = styled.div`
-  background-color :#00ADEF;
+  background-color :var(--app-main-color);
   color: white;
-  height: 40px;
   font-size: 12px;
+  height: 38px;
+  
+  @media ${breakpointDevice.md} {
+    height: 56px;
+  }
 
   .topbar-left {
     .logo {

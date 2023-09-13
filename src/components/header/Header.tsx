@@ -1,184 +1,201 @@
 // import Container from "../Container";
-import React, { Fragment } from "react";
-import { Row, Col, Menu, Typography, Card } from "antd";
-import Logo from "./Logo";
+import { Row, Col, Typography, Button, Drawer, Menu, Space } from "antd";
+import { Container, Text } from "..";
+import Link from "next/link";
+import { Image } from "@component/image";
+import { logoKyotoImg } from "@constants/images";
+import styled from "styled-components";
+import { breakpointDevice } from "@constants/breakpoints";
+import { LocationIcon } from "@assets/icons";
+import LanguageDropdown from "@component/dropdown/language-dropdown";
+import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
+import ButtonSearch from "@component/HomePage/ButtonSearch";
+import { useState } from "react";
 type HeaderProps = {
   isFixed?: boolean;
   className?: string;
 };
 const { Title } = Typography;
-const menuItemStyle = {
-  flex: 1,
-  textAlign: "center" as const,
-  fontWeight: "normal",
-  fontSize: "18px",
-  fontFamily: "Montserrat, sans-serif",
-};
-const menuItemStyleTop = {
-  fontFamily: "Montserrat, sans-serif",
-  textAlign: "left" as const,
-  fontWeight: "bold",
-  fontSize: "13px",
-  color: " #00ADEF",
-  display: "flex",
-  justifyContent: "space-between",
-  padding: "0 20px",
-};
-const menuItemStylepplus = {
-  fontFamily: "Montserrat, sans-serif",
-  textAlign: "left" as const,
-  fontWeight: "bold",
-  fontSize: "13px",
-  color: " #DF3E23",
-  display: "flex",
-  justifyContent: "space-between",
-  padding: "0 20px",
-};
-const logoImageStyle = {
-  // width: '241px',
-  height: "85px",
-};
+
 const logoImageStyleIcon = {
   width: "auto",
   height: "20px",
   verticalAlign: "middle",
   marginRight: "8px",
 };
+
 const Header: React.FC<HeaderProps> = ({ className }) => {
+  const [openMobileBar, setOpenMobileBar] = useState(false);
+  const infors = [
+    {
+      label: "8:00 đến 17:30 thứ 2 đến thứ 7",
+      icon: <LocationIcon fill="#000" />,
+    },
+    { label: "0377 222 777", icon: <LocationIcon fill="#000" /> },
+    { label: "63 Cửa hàng", icon: <LocationIcon fill="#000" /> },
+  ];
+
+  const navbars = [
+    { label: "Trang chủ", href: "", key: 1 },
+    { label: "Bảo hành", href: "", key: 1 },
+    { label: "Bảo hành", href: "", key: 1 },
+    { label: "Hệ thống đại lí", href: "", key: 1 },
+    { label: "Tin tức", href: "", key: 1 },
+    { label: "Tuyển dụng", href: "", key: 1 },
+    { label: "Liên hệ", href: "", key: 1 },
+  ];
+
+  const showMobileBar = () => {
+    setOpenMobileBar(true);
+  };
+
+  const closeMobileBar = () => {
+    setOpenMobileBar(false);
+  };
+
   return (
-    <Fragment>
-      <Card style={{ width: "100%", height: "178px" }}>
-        <div className="header">
-          <Row>
-            <Col span={24}>
-              <Row justify="center">
-                <Col
-                  style={{ textAlign: "right", marginRight: "30px" }}
-                  span={6}
+    <div className="bg-white">
+      <Container>
+        <StyledRowTop
+          justify="space-between"
+          className="items-center my-4"
+          gutter={[16, 16]}
+        >
+          <Col className="block lg:hidden">
+            <Button type="text flex items-center" onClick={showMobileBar}>
+              <MenuOutlined className="cursor-pointer" />
+            </Button>
+          </Col>
+
+          <Col style={{ textAlign: "right", marginRight: "30px" }}>
+            <Link href="/link-cua-trang-chu">
+              <Image src={logoKyotoImg} alt="logo" className="logo" />
+            </Link>
+          </Col>
+
+          <Col className="hidden lg:block">
+            <Row justify="space-between" gutter={16}>
+              {infors.map((info, id) => (
+                <Col key={id} className="flex items-center gap-2">
+                  {info.icon}
+                  <Text className="font-bold">{info.label}</Text>
+                </Col>
+              ))}
+            </Row>
+          </Col>
+
+          <Col>
+            <Row gutter={16}>
+              <Col className="hidden lg:block">
+                <LanguageDropdown />
+              </Col>
+
+              <Col className="hidden lg:block">
+                <Text className="font-bold text-[#DF3E23]">
+                  Đăng Nhập/đăng Ký
+                </Text>
+              </Col>
+
+              <Col className="flex items-center">
+                <img
+                  src="/assets/images/icons/cart.png"
+                  alt="logo"
+                  style={logoImageStyleIcon}
+                />
+                <img
+                  src="/assets/images/icons/notifi.png"
+                  alt="logo"
+                  style={logoImageStyleIcon}
+                />
+              </Col>
+            </Row>
+          </Col>
+        </StyledRowTop>
+
+        <StyledRowDown justify="space-between" className="hidden lg:flex mb-4">
+          {navbars.map((navbar, id) => (
+            <Col key={id}>
+              <Link href={navbar.href}>
+                <Text
+                  className={`text-[20px] font-[600] cursor-pointer ${
+                    id === 0 ? "selected" : ""
+                  }`}
                 >
-                  <a href="/link-cua-trang-chu">
-                    <img
-                      src="/assets/images/logokyoto.svg"
-                      alt="logo"
-                      style={{ ...logoImageStyle, float: "right" }}
-                    />
-                  </a>
-                </Col>
-                <Col span={16}>
-                  <div style={{ display: " flex", marginTop: "25px" , width : "100%"}}>
-                    <div key="warranty" style={menuItemStyleTop}>
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <div>
-                          <img
-                            src="/assets/images/logos/Place.png"
-                            alt="logo"
-                            style={logoImageStyleIcon}
-                          />
-                        </div>
-                        <div>
-                          <span>8:00 đến 17:30 thứ 2 đến thứ 7</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div key="warranty" style={menuItemStyleTop}>
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <div>
-                          <img
-                            src="/assets/images/logos/phone.png"
-                            alt="logo"
-                            style={logoImageStyleIcon}
-                          />
-                        </div>
-                        <div>
-                          <span>0377 222 777</span>
-                        </div>
-                      </div>
-                    </div>
-                    <div key="agents" style={menuItemStyleTop}>
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <div>
-                          <img
-                            src="/assets/images/logos/Place.png"
-                            alt="logo"
-                            style={logoImageStyleIcon}
-                          />
-                        </div>
-                        <div>
-                          <span> 63 Cửa hàng</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div key="vietnamese" style={menuItemStylepplus}>
-                      <div style={{ display: "flex", alignItems: "center" }}>
-                        <div>
-                          <img
-                            src="/assets/images/logos/Vietnam.png"
-                            alt="logo"
-                            style={logoImageStyleIcon}
-                          />
-                        </div>
-                        <div>
-                          <span> Tiếng Việt</span>
-                        </div>
-                      </div>
-                    </div>
-
-                    <div key="jobs" style={menuItemStylepplus}>
-                      <a
-                        href="
-                      "
-                      >
-                         <span style={{color : "#DF3E23"}}>  Đăng Nhập/đăng Ký</span>
-                      </a>
-                    </div>
-                    <img
-                      src="/assets/images/icons/cart.png"
-                      alt="logo"
-                      style={logoImageStyleIcon}
-                    />
-                    <img
-                      src="/assets/images/icons/notifi.png"
-                      alt="logo"
-                      style={logoImageStyleIcon}
-                    />
-                  </div>
-                </Col>
-              </Row>
+                  {navbar.label}
+                </Text>
+              </Link>
             </Col>
-          </Row>
-          <Row>
-            <Col span={24} style={{ marginTop: "30px" }}>
-              <Row justify="center">
-                <Col span={20}>
-                  <div style={{ display: "flex" }}>
-                    <div key="home" style={menuItemStyle}>
-                      <a href="">Trang chủ</a>
-                    </div>
-                    <div key="warranty" style={menuItemStyle}>
-                      <a href="">Bảo hành</a>
-                    </div>
-                    <div key="agents" style={menuItemStyle}>
-                      <a href="">Hệ thống đại lí</a>
-                    </div>
-                    <div key="news" style={menuItemStyle}>
-                      <a href="">Tin tức</a>
-                    </div>
-                    <div key="jobs" style={menuItemStyle}>
-                      <a href="">Tuyển dụng</a>
-                    </div>
-                    <div key="contact" style={menuItemStyle}>
-                      <a href="">Liên hệ</a>
-                    </div>
-                  </div>
-                </Col>
-              </Row>
-            </Col>
-          </Row>
-        </div>
-      </Card>
-    </Fragment>
+          ))}
+        </StyledRowDown>
+
+        <ButtonSearch className="block lg:hidden mb-4" />
+      </Container>
+
+      <StyledDrawer
+        open={openMobileBar}
+        onClose={closeMobileBar}
+        placement="left"
+      >
+        <Space direction="vertical">
+          <ArrowLeftOutlined
+            className="cursor-pointer w-[48px] h-[48px]"
+            onClick={closeMobileBar}
+          />
+          <LanguageDropdown />
+          <Menu
+            className="bg-[transparent]"
+            style={{ border: "none" }}
+            items={[{ label: "Đăng Nhập/đăng Ký", key: "0" }, ...navbars]}
+            defaultSelectedKeys={["0"]}
+          ></Menu>
+        </Space>
+      </StyledDrawer>
+    </div>
   );
 };
+
+const StyledRowTop = styled(Row)`
+  .logo {
+    width: 96px;
+    @media ${breakpointDevice.md} {
+      width: 196px;
+    }
+    img {
+      height: 100%;
+    }
+  }
+`;
+
+const StyledRowDown = styled(Row)`
+  .selected {
+    border-bottom: 2px solid var(--app-sub-color);
+  }
+`;
+
+const StyledDrawer = styled(Drawer)`
+  .ant-drawer-body {
+    background-color: var(--app-main-color);
+    span,
+    svg {
+      color: #fff;
+    }
+  }
+
+  .ant-drawer-header {
+    display: none;
+  }
+
+  .ant-menu li {
+    padding-inline: 0;
+
+    span {
+      padding: 16px;
+    }
+  }
+
+  .ant-menu-item-selected {
+    background-color: rgba(255, 255, 255, 0.2);
+  }
+`;
 
 export default Header;
