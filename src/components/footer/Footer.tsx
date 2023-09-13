@@ -1,4 +1,4 @@
-import React, { CSSProperties } from "react";
+import React, { CSSProperties, useMemo } from "react";
 import styled from "styled-components";
 import { Row, Col } from "antd";
 import { Text } from "@component/text";
@@ -14,6 +14,9 @@ import {
   youtubeImg,
   zaloImg,
 } from "@constants/images";
+import { BranchType } from "services/main/models";
+import { useAsync } from "@hooks/useAsync";
+import { apiGetBranchs } from "services/branch";
 
 const StyledContainer = styled(Container)`
   .title::before {
@@ -72,7 +75,21 @@ const titleStyle: CSSProperties = {
   alignItems: "center",
 };
 const Footer: React.FC = () => {
-  const { state } = useAppContext();
+  const [, branchsData] = useAsync(apiGetBranchs, {
+    callOnFirst: true,
+  });
+  const branches: BranchType[] = useMemo(() => {
+    let newBranches =
+      branchsData?.data?.data?.slice(0, 3)?.map((branch) => ({
+        ...branch,
+        lat: branch.latitude,
+        lng: branch.longitude,
+      })) || [];
+
+    const { dispatch } = useAppContext();
+    dispatch({ type: "SET_BRANCHES", payload: newBranches });
+    return newBranches;
+  }, [branchsData]);
 
   const aboutInfors = {
     title: "Về TND GROUP",
@@ -144,7 +161,7 @@ const Footer: React.FC = () => {
 
   const branchInfos = {
     title: "Hệ Thống kênh phân phối",
-    children: state.branch.branches.map((branch) => ({
+    children: branches.map((branch) => ({
       id: branch.id,
       label: formatAddress(branch),
       value: branch.id,

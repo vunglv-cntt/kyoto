@@ -1,9 +1,6 @@
 import { ViewMoreButton } from "@component/button";
 import { Title } from "@component/title";
-import { useAsync } from "@hooks/useAsync";
 import { Col, Row } from "antd";
-import { useMemo } from "react";
-import { apiGetBranchs } from "services/branch";
 import StyledBranches from "./homepagecss/Branches.style";
 import { Image } from "@component/image";
 import { BranchType } from "services/main/models";
@@ -12,21 +9,7 @@ import { formatAddress } from "helpers/address";
 import { useAppContext } from "@context/app/AppContext";
 
 function ShopSystem() {
-  const [, branchsData] = useAsync(apiGetBranchs, {
-    callOnFirst: true,
-  });
-  const branches: BranchType[] = useMemo(() => {
-    let newBranches =
-      branchsData?.data?.data?.slice(0, 3)?.map((branch) => ({
-        ...branch,
-        lat: branch.latitude,
-        lng: branch.longitude,
-      })) || [];
-
-    const { dispatch } = useAppContext();
-    dispatch({ type: "SET_BRANCHES", payload: newBranches });
-    return newBranches;
-  }, [branchsData]);
+  const { state } = useAppContext();
 
   const showInfors = (branch: BranchType) => {
     return [{ label: "Địa chỉ", value: formatAddress(branch) }];
@@ -45,7 +28,7 @@ function ShopSystem() {
 
       {/* Branches */}
       <Row gutter={[16, 16]} className="mt-4">
-        {branches?.map((branch) => {
+        {state.branch.branches?.map((branch) => {
           let { name, id, image } = branch;
 
           return (
