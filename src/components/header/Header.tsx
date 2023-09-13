@@ -130,10 +130,10 @@ const Header: React.FC<HeaderProps> = () => {
             </Col>
           ))}
         </StyledRowDown>
-
         <ButtonSearch className="block lg:hidden mb-4" />
       </Container>
 
+      {/* Drawer */}
       <StyledDrawer
         open={openMobileBar}
         onClose={closeMobileBar}
