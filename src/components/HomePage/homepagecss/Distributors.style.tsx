@@ -21,12 +21,12 @@ export const StyledDistributors = styled(Row)`
     padding: 32px;
     text-align: center;
     border-radius: 10px;
-    height: 100%;
 
     .title {
       color: #00ADEF;
       font-weight: 700;
       font-size: 40px;
+      line-height: 1.45;
     }
 
     .description {

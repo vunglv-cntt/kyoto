@@ -3,13 +3,15 @@ import { Title } from "@component/title";
 import { Text } from "@component/text";
 import { Button } from "@component/button";
 import { StyledDistributors } from "./homepagecss/Distributors.style";
+import { shipBoxImg, shipCarImg, shipImg, shipMapImg } from "@constants/images";
+import { Image } from "@component/image";
 
 function Distributors() {
   const informations = [
-    { icon: null, text: "300+", description: "Cửa hàng phân phối" },
-    { icon: null, text: "1,000+", description: "Giao hàng tận nơi" },
-    { icon: null, text: "500", description: "Nhập khẩu chính hãng" },
-    { icon: null, text: "80", description: "Hậu mãi" },
+    { icon: shipBoxImg, text: "300+", description: "Cửa hàng phân phối" },
+    { icon: shipCarImg, text: "1,000+", description: "Giao hàng tận nơi", className: "mt-0 md:mt-[16px]" },
+    { icon: shipImg, text: "500", description: "Nhập khẩu chính hãng", className: "mt-0 md:mt-[-16px]" },
+    { icon: shipMapImg, text: "80", description: "Hậu mãi", className: "" },
   ];
 
   return (
@@ -27,14 +29,24 @@ function Distributors() {
 
         <Row className="gap-4">
           <Button className="button left-button">Get Started</Button>
-          <Button className="button right-button">Get Started</Button>
+          <Button className="button right-button">Learn more</Button>
         </Row>
       </Col>
       <Col xs={24} md={12}>
         <Row gutter={[16, 16]}>
           {informations.map((information, id) => (
-            <Col key={id} xs={24} md={12}>
+            <Col
+              key={id}
+              xs={24}
+              md={12}
+              className={information?.className}
+            >
               <div className="distributor">
+                <Image
+                  src={information.icon}
+                  alt="icon"
+                  className="flex justify-center"
+                />
                 <Text className="title">{information.text}</Text>
                 <Text className="description">{information.description}</Text>
               </div>
