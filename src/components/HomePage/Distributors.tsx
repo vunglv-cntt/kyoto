@@ -43,8 +43,8 @@ function Distributors() {
         </Text>
 
         <Row className="gap-4">
-          <Button className="button left-button">Get Started</Button>
-          <Button className="button right-button">Learn more</Button>
+          <Button className="button left-button">Bắt Đầu</Button>
+          <Button className="button right-button">Tìm Hiểu Thêm</Button>
         </Row>
       </Col>
       <Col xs={24} md={12}>
