@@ -65,17 +65,13 @@ const Categories = () => {
 };
 
 const CategoryBox = (category: any) => {
-  let { id, icon, name ,onCategoryClick} = category;
-  const handleIconClick = () => {
-    console.log(`  ID: ${id}`);
-    
-    onCategoryClick(id);
-  };
+  let { id, icon, name } = category;
+
   return (
     <Link href={PATHS.category(id.toString())}>
       <div className="category-box flex flex-col gap-2 justify-between">
         <div>
-          <Logo onClick={handleIconClick} src={icon} alt="icon" />
+          <Logo src={icon} alt="icon" />
           <Text className="font-bold">{name}</Text>
         </div>
 
