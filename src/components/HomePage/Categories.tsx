@@ -14,7 +14,6 @@ const Categories = () => {
     callOnFirst: true,
   });
 
-  const [selectedCategoryId, setSelectedCategoryId] = useState(null);
   const categoryParts = useMemo(() => {
     var array = [].concat(...(categoriesData?.data?.data || []));
     const chunkSize = 6;
@@ -38,7 +37,7 @@ const Categories = () => {
                 <Row gutter={[16, 16]}>
                   {categoryPart.map((category, idd) => (
                     <Col key={idd} className="items-start basis-1/6">
-                      <CategoryBox {...category} onCategoryClick={setSelectedCategoryId} />
+                      <CategoryBox {...category} />
                     </Col>
                   ))}
                 </Row>

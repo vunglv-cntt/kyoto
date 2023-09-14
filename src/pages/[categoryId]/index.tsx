@@ -5,10 +5,13 @@ import FlashSale from "@component/HomePage/FlashSale";
 import Breadcrumbs from "@component/breadcrumbs";
 import { Container } from "@component/container";
 import AppLayout from "@component/layout/AppLayout";
+import useNavigate from "@hooks/useNavigate";
 
 type Props = {};
 
 const Category = (props: Props) => {
+  const { categoryId } = useNavigate().router.query;
+
   return (
     <main>
       <Banners />
