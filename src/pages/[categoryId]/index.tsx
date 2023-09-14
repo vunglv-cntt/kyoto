@@ -2,6 +2,7 @@ import { Banners, Categories, Features } from "@component/HomePage";
 import Advise from "@component/HomePage/Advise";
 import ButtonSearch from "@component/HomePage/ButtonSearch";
 import FlashSale from "@component/HomePage/FlashSale";
+import ProductCategoryDetail from "@component/HomePage/ProductCategoryDetail";
 import Breadcrumbs from "@component/breadcrumbs";
 import { Container } from "@component/container";
 import AppLayout from "@component/layout/AppLayout";
@@ -12,6 +13,8 @@ type Props = {};
 const Category = (props: Props) => {
   const { categoryId } = useNavigate().router.query;
 
+  console.log(categoryId);
+
   return (
     <main>
       <Banners />
@@ -19,7 +22,7 @@ const Category = (props: Props) => {
         <Categories />
         <ButtonSearch />
         <Breadcrumbs />
-        <FlashSale />
+        <ProductCategoryDetail id={categoryId} />
         <Advise />
       </Container>
       <Features />

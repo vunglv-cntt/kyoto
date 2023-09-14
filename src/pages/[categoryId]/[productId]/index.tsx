@@ -3,7 +3,7 @@ import ButtonSearch from "@component/HomePage/ButtonSearch";
 import FlashSale from "@component/HomePage/FlashSale";
 import { Container } from "@component/container";
 import AppLayout from "@component/layout/AppLayout";
-
+import ProductCategoryDetail from "@component/HomePage/ProductCategoryDetail";
 type Props = {};
 
 const Product = (props: Props) => {
@@ -13,7 +13,8 @@ const Product = (props: Props) => {
       <Container className="gap-[40px]">
         <Categories />
         <ButtonSearch />
-        <FlashSale />
+        <ProductCategoryDetail/>
+        {/* <FlashSale /> */}
       </Container>
     </main>
   );
