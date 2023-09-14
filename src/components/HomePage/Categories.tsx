@@ -76,7 +76,7 @@ const CategoryBox = (category: any) => {
     <Link href={PATHS.category(id.toString())}>
       <div className="category-box flex flex-col gap-2 justify-between">
         <div>
-          <Logo src={icon} alt="icon" />
+          <Logo onClick={handleIconClick} src={icon} alt="icon" />
           <Text className="font-bold">{name}</Text>
         </div>
 

@@ -5,10 +5,16 @@ import FlashSale from "@component/HomePage/FlashSale";
 import Breadcrumbs from "@component/breadcrumbs";
 import { Container } from "@component/container";
 import AppLayout from "@component/layout/AppLayout";
-
+import ProductCategoryDetail from "@component/HomePage/ProductCategoryDetail";
+import useNavigate from "@hooks/useNavigate";
+import { useRouter } from "next/router";
 type Props = {};
 
 const Category = (props: Props) => {
+  const router = useRouter()
+  const {categoryId} = router.query
+  console.log("iddd", categoryId);
+  
   return (
     <main>
       <Banners />
@@ -16,7 +22,7 @@ const Category = (props: Props) => {
         <Categories />
         <ButtonSearch />
         <Breadcrumbs />
-        <FlashSale />
+        <ProductCategoryDetail id={categoryId} />
         <Advise />
       </Container>
       <Features />
