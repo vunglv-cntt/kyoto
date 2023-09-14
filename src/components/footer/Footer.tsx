@@ -82,6 +82,23 @@ const StyledContainer = styled(Container)`
     .align-right {
       text-align: left;
     }
+    .image-notifiedInbranch{
+      display : block !important
+    }
+
+
+    .image-notified{
+      display : none !important
+    }
+  }
+  @media (min-width: 767px) {
+ 
+    .image-notifiedInbranch{
+      display : none !important
+    }
+
+
+   
   }
 `;
 
@@ -197,7 +214,7 @@ const Footer: React.FC = () => {
               </Text>
             ))}
 
-            <img src="/assets/images/badges/wmfXpoW 1.png" alt="chungnhan" />
+            <img className="image-notified" src="/assets/images/badges/wmfXpoW 1.png" alt="chungnhan" />
           </Col>
 
           <Col className="basis-[100%] md:basis-[20%]">
@@ -225,6 +242,7 @@ const Footer: React.FC = () => {
                 {info.label}
               </Text>
             ))}
+             <img className="image-notifiedInbranch" src="/assets/images/badges/wmfXpoW 1.png" alt="chungnhan" />
           </Col>
 
           <Col className="basis-[100%] md:basis-[25%]">
@@ -263,13 +281,10 @@ const Footer: React.FC = () => {
               Thành Phố Hồ Chí Minh
             </Text>
             <Text className="mb-4">
-              Giấy chứng nhận Đăng ký Kinh doanh số 031555666 do Sở Kế hoạch và
-              Đầu tư Thành phố Hồ Chí Minh cấp ngày 23/10/2017
+              Giấy chứng nhận Đăng ký Kinh doanh số 0313746484 do Sở Kế hoạch và
+              Đầu tư Thành phố Hồ Chí Minh
             </Text>
-            <Text
-              style={{ color: "var(--app-sub-color)" }}
-              className="font-[500]"
-            >
+            <Text style={{ color: "black" }} className="font-[500]">
               Thuộc bản quyền TND Group @2023 được phát triển bới
               tasvietnam.com.vn
             </Text>
