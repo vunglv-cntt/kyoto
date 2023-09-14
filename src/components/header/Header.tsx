@@ -10,8 +10,8 @@ import LanguageDropdown from "@component/dropdown/language-dropdown";
 import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
 import ButtonSearch from "@component/HomePage/ButtonSearch";
 import { useState } from "react";
-import PhoneIcon from '../../assets/icons/phone';
-  
+import PhoneIcon from "../../assets/icons/phone";
+
 type HeaderProps = {
   isFixed?: boolean;
   className?: string;
@@ -67,8 +67,7 @@ const Header: React.FC<HeaderProps> = () => {
               className="flex items-center"
               onClick={showMobileBar}
             >
-              <MenuOutlined className="cursor-pointer" rev={undefined} >
-              </MenuOutlined>
+              {/* <MenuOutlined className="cursor-pointer"></MenuOutlined> */}
             </Button>
             <div className="px-2 lg:px-0" />
           </Col>
@@ -146,7 +145,8 @@ const Header: React.FC<HeaderProps> = () => {
         <Space direction="vertical" className="w-full">
           <ArrowLeftOutlined
             className="cursor-pointer w-[48px] h-[48px]"
-            onClick={closeMobileBar} rev={undefined}          />
+            onClick={closeMobileBar}
+          />
           <LanguageDropdown />
           <Menu
             className="bg-[transparent]"
@@ -199,7 +199,7 @@ const StyledDrawer = styled(Drawer)`
       font-weight: 600;
     }
   }
-  
+
   .ant-drawer-content-wrapper {
     width: 75% !important;
   }

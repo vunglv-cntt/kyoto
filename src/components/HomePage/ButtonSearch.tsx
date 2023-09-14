@@ -22,7 +22,7 @@ function ButtonSearch(props: RowProps) {
         <Row>
           <Col className="flex-1">
             <BaseInput
-              addonBefore={<SearchOutlined rev={undefined} ></SearchOutlined>}
+              addonBefore={<SearchOutlined   ></SearchOutlined>}
               className="bg-[#fff] block lg:hidden p-[0 !important]"
               placeholder="Nhập từ tên sản phẩm cần tìm"
             />
