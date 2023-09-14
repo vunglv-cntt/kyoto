@@ -202,7 +202,7 @@ const Footer: React.FC = () => {
 
           <Col className="basis-[100%] md:basis-[20%]">
             <Text className="title" style={titleStyle}>
-              {aboutInfors.title}
+              {helperInfors.title}
             </Text>
             <div className="text-container">
               {helperInfors.children.map((info) => (

@@ -67,7 +67,8 @@ const Header: React.FC<HeaderProps> = () => {
               className="flex items-center"
               onClick={showMobileBar}
             >
-              <MenuOutlined className="cursor-pointer" />
+              <MenuOutlined className="cursor-pointer" rev={undefined} >
+              </MenuOutlined>
             </Button>
             <div className="px-2 lg:px-0" />
           </Col>
@@ -145,8 +146,7 @@ const Header: React.FC<HeaderProps> = () => {
         <Space direction="vertical" className="w-full">
           <ArrowLeftOutlined
             className="cursor-pointer w-[48px] h-[48px]"
-            onClick={closeMobileBar}
-          />
+            onClick={closeMobileBar} rev={undefined}          />
           <LanguageDropdown />
           <Menu
             className="bg-[transparent]"

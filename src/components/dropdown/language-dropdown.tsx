@@ -19,7 +19,8 @@ const LanguageDropdown = (props: Props) => {
         <a onClick={(e) => e.preventDefault()}>
           <Space>
             <LanguageBox text="Tiếng Việt" />
-            <CaretDownOutlined />{" "}
+            {/* <CaretDownOutlined rev={undefined} />{" "} */}
+            <CaretDownOutlined rev={undefined}></CaretDownOutlined>
           </Space>
         </a>
       </Dropdown>
