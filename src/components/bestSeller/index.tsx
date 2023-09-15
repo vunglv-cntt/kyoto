@@ -1,9 +1,8 @@
-import { Card, Col, Row } from "antd";
+import { Col, Row } from "antd";
 import React, { memo } from "react";
 import { ProductType } from "services/main/models";
 import { ProductBestSeller } from "@component/product-bestseller";
 import { Title } from "@component/title";
-import { StyledBestSeller } from "./bestSellerStyled";
 type Props = {
   categoryName: string;
   products?: ProductType[];
@@ -12,8 +11,7 @@ type Props = {
 const BestSellerProduct = memo((props: Props) => {
   const { categoryName = "", products = [] } = props;
 
-  const leftProducts = products.slice(0, 4);
-  const rightProducts = products.slice(4, 7);
+ 
 
   return (
     <div>
