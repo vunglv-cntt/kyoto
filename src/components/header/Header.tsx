@@ -18,7 +18,7 @@ type HeaderProps = {
 };
 const logoImageStyleIcon = {
   width: "auto",
-  height: "20px",
+  height: "25px",
   verticalAlign: "middle",
   marginRight: "8px",
 };
@@ -67,7 +67,7 @@ const Header: React.FC<HeaderProps> = () => {
               className="flex items-center"
               onClick={showMobileBar}
             >
-              {/* <MenuOutlined className="cursor-pointer"></MenuOutlined> */}
+              <MenuOutlined className="cursor-pointer"/> 
             </Button>
             <div className="px-2 lg:px-0" />
           </Col>

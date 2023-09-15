@@ -31,7 +31,7 @@ const StyledContainer = styled(Container)`
   .title,
   .title2 {
     margin-bottom: 16px;
-    color: var(--app-sub-color);
+    color: #ffffff;
     font-weight: 700;
   }
 
@@ -49,7 +49,9 @@ const StyledContainer = styled(Container)`
       color: #fff;
     }
   }
-
+  .hotline {
+    color: #f7dd04;
+  }
   .end-box {
     p,
     span {
@@ -82,23 +84,18 @@ const StyledContainer = styled(Container)`
     .align-right {
       text-align: left;
     }
-    .image-notifiedInbranch{
-      display : block !important
+    .image-notifiedInbranch {
+      display: block !important;
     }
 
-
-    .image-notified{
-      display : none !important
+    .image-notified {
+      display: none !important;
     }
   }
   @media (min-width: 767px) {
- 
-    .image-notifiedInbranch{
-      display : none !important
+    .image-notifiedInbranch {
+      display: none !important;
     }
-
-
-   
   }
 `;
 
@@ -150,8 +147,7 @@ const Footer: React.FC = () => {
         label: (
           <>
             <b>Hotline</b>
-            <b color="var(--app-sub-color)"> 0377 222 777</b> (1000đ/phút ,
-            24/7)
+            <b className="hotline"> 0377 222 777</b> (1000đ/phút , 24/7)
           </>
         ),
         href: null,
@@ -214,7 +210,11 @@ const Footer: React.FC = () => {
               </Text>
             ))}
 
-            <img className="image-notified" src="/assets/images/badges/wmfXpoW 1.png" alt="chungnhan" />
+            <img
+              className="image-notified"
+              src="/assets/images/badges/wmfXpoW 1.png"
+              alt="chungnhan"
+            />
           </Col>
 
           <Col className="basis-[100%] md:basis-[20%]">
@@ -232,7 +232,7 @@ const Footer: React.FC = () => {
               ))}
             </div>
           </Col>
-          <Col className="basis-[100%] md:basis-[35%]">
+          <Col className="basis-[100%] md:basis-[35%]" style={{}}>
             <Text className="title" style={titleStyle}>
               {branchInfos.title}
             </Text>
@@ -242,7 +242,11 @@ const Footer: React.FC = () => {
                 {info.label}
               </Text>
             ))}
-             <img className="image-notifiedInbranch" src="/assets/images/badges/wmfXpoW 1.png" alt="chungnhan" />
+            <img
+              className="image-notifiedInbranch"
+              src="/assets/images/badges/wmfXpoW 1.png"
+              alt="chungnhan"
+            />
           </Col>
 
           <Col className="basis-[100%] md:basis-[25%]">
