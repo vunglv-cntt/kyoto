@@ -190,26 +190,7 @@ const Footer: React.FC = () => {
   const branchInfos = {
     title: "Hệ Thống kênh phân phối",
     children: [
-      { id: 1, label: "141 Phan Đăng Lưu, P.7, Q. Phú Nhuận", href: null },
-      { id: 2, label: "314 Đ. Trường Chinh, P.13, Q. Tân Bình", href: null },
-      {
-        id: 3,
-        label: "198A Mã Lò, P. Bình Trị Đông A, Q. Bình Tân",
-        href: null,
-      },
-      { id: 4, label: "236K Lê Văn Sỹ, P. 1, Q. Tân Bình", href: null },
-      {
-        id: 5,
-        label: "388 - 390 Nguyễn Thị Thập, P. Tân Quy, Q.7",
-        href: null,
-      },
-      {
-        id: 6,
-        label: "198 Lũy Bán Bích, P. Hòa Thạnh, Q. Tân Phú ",
-        href: null,
-      },
-      { id: 7, label: "410 Hậu Giang, Phường 12, Quận 6", href: null },
-      { id: 8, label: "509 Quang Trung, Quận Gò Vấp", href: null },
+      { id: 1, label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai", href: null },
     ],
   };
 
