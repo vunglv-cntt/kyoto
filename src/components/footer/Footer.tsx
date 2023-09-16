@@ -78,7 +78,7 @@ const StyledContainer = styled(Container)`
       justify-content: space-between;
     }
     .text {
-      flex: 0 0 calc(50% - 10px);
+      width: 100%;
       text-align: left;
     }
     .align-right {
@@ -190,7 +190,11 @@ const Footer: React.FC = () => {
   const branchInfos = {
     title: "Hệ Thống kênh phân phối",
     children: [
-      { id: 1, label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai", href: null },
+      {
+        id: 1,
+        label: "Ấp Tân Thành, Xã Thanh Bình, Huyện Trảng Bom, Đồng Nai",
+        href: null,
+      },
     ],
   };
 
@@ -221,10 +225,7 @@ const Footer: React.FC = () => {
             </Text>
             <div className="text-container">
               {helperInfors.children.map((info) => (
-                <Text
-                  key={info.id}
-                  className={`text ${info.id % 2 === 0 ? "align-right" : ""}`}
-                >
+                <Text key={info.id} className="text">
                   {info.label}
                 </Text>
               ))}
