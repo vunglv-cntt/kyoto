@@ -4,7 +4,7 @@ import { Row, Col } from "antd";
 import { Text } from "@component/text";
 import { Container } from "@component/container";
 import { useAppContext } from "@context/app/AppContext";
-import { formatAddress } from "helpers/address";
+// import { formatAddress } from "helpers/address";
 import { LocationIcon } from "@assets/icons";
 import { Image } from "@component/image";
 import {
@@ -104,21 +104,21 @@ const titleStyle: CSSProperties = {
   alignItems: "center",
 };
 const Footer: React.FC = () => {
-  const [, branchsData] = useAsync(apiGetBranchs, {
-    callOnFirst: true,
-  });
-  const branches: BranchType[] = useMemo(() => {
-    let newBranches =
-      branchsData?.data?.data?.slice(0, 3)?.map((branch) => ({
-        ...branch,
-        lat: branch.latitude,
-        lng: branch.longitude,
-      })) || [];
+  // const [, branchsData] = useAsync(apiGetBranchs, {
+  //   callOnFirst: true,
+  // });
+  // const branches: BranchType[] = useMemo(() => {
+  //   let newBranches =
+  //     branchsData?.data?.data?.slice(0, 3)?.map((branch) => ({
+  //       ...branch,
+  //       lat: branch.latitude,
+  //       lng: branch.longitude,
+  //     })) || [];
 
-    const { dispatch } = useAppContext();
-    dispatch({ type: "SET_BRANCHES", payload: newBranches });
-    return newBranches;
-  }, [branchsData]);
+  //   const { dispatch } = useAppContext();
+  //   dispatch({ type: "SET_BRANCHES", payload: newBranches });
+  //   return newBranches;
+  // }, [branchsData]);
 
   const aboutInfors = {
     title: "Về TND GROUP",
