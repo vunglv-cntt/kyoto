@@ -35,9 +35,8 @@ const Header: React.FC<HeaderProps> = () => {
   ];
 
   const navbars = [
-    { label: "Trang chủ", href: "", key: 1 },
-    { label: "Bảo hành", href: "", key: 1 },
-    { label: "Bảo hành", href: "", key: 1 },
+    { label: "Trang chủ", href: "/", key: 1 },
+    { label: "Bảo hành", href: "/", key: 1 },
     { label: "Hệ thống đại lí", href: "", key: 1 },
     { label: "Tin tức", href: "", key: 1 },
     { label: "Tuyển dụng", href: "", key: 1 },
@@ -73,8 +72,8 @@ const Header: React.FC<HeaderProps> = () => {
           </Col>
 
           <Col>
-            <Link href="/link-cua-trang-chu">
-              <Image src={logoKyotoImg} alt="logo" className="logo" />
+            <Link href="/">
+              <Image src={logoKyotoImg} alt="logo" className="logo cursor-pointer" />
             </Link>
           </Col>
 
@@ -123,7 +122,7 @@ const Header: React.FC<HeaderProps> = () => {
             <Col key={id}>
               <Link href={navbar.href}>
                 <Text
-                  className={`text-[20px] font-[600] cursor-pointer ${
+                  className={`text-[20px] cursor-pointer ${
                     id === 0 ? "selected" : ""
                   }`}
                 >
