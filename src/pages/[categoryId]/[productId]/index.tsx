@@ -1,19 +1,20 @@
 import { Banners, Categories } from "@component/HomePage";
-import ButtonSearch from "@component/HomePage/ButtonSearch";
-import FlashSale from "@component/HomePage/FlashSale";
 import { Container } from "@component/container";
 import AppLayout from "@component/layout/AppLayout";
+import useNavigate from "@hooks/useNavigate";
+import ProductDetail from "@component/HomePage/ProductDetail";
+import FlashSale from "@component/HomePage/FlashSale";
 type Props = {};
 
 const Product = (props: Props) => {
+  const { productId } = useNavigate().router.query;
+  console.log(productId, "ProductID");
   return (
     <main>
-      <Banners />
       <Container className="gap-[40px]">
-        <Categories />
-        <ButtonSearch />
-        <FlashSale />
+        <ProductDetail id={productId} />
       </Container>
+      <Categories />
     </main>
   );
 };

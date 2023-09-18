@@ -6,3 +6,6 @@ export const apiGetProductsByCategoryId = (id: string) =>
 
 export const apiGetCategories = () =>
   http.get<BaseAPIResponse<GetCategories | any>>(`/api/category/home/all`);
+
+export const apiGetProductDetail= (id : string) =>
+  http.get<BaseAPIResponse<GetCategories | any>>(`/api/product/${id}`);
