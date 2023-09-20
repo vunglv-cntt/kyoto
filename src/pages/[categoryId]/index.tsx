@@ -1,7 +1,6 @@
 import { Banners, Categories, Features } from "@component/HomePage";
 import Advise from "@component/HomePage/Advise";
 import ButtonSearch from "@component/HomePage/ButtonSearch";
-import FlashSale from "@component/HomePage/FlashSale";
 import ProductCategoryDetail from "@component/HomePage/ProductCategoryDetail";
 import Breadcrumbs from "@component/breadcrumbs";
 import { Container } from "@component/container";

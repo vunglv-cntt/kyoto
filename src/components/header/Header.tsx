@@ -9,9 +9,10 @@ import { LocationIcon } from "@assets/icons";
 import LanguageDropdown from "@component/dropdown/language-dropdown";
 import { ArrowLeftOutlined, MenuOutlined } from "@ant-design/icons";
 import ButtonSearch from "@component/HomePage/ButtonSearch";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import PhoneIcon from "../../assets/icons/phone";
-
+import LoginDialog from "app/login/page";
+import { authStorage } from "helpers/locale-storage";
 type HeaderProps = {
   isFixed?: boolean;
   className?: string;
@@ -24,7 +25,27 @@ const logoImageStyleIcon = {
 };
 
 const Header: React.FC<HeaderProps> = () => {
+  const accessToken = authStorage.get("auth");
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
+  useEffect(() => {
+    const accessToken = authStorage.get("auth");
+    if (accessToken) {
+      setIsLoggedIn(true);
+    }
+  }, []);
+
   const [openMobileBar, setOpenMobileBar] = useState(false);
+
+  const [isLoginDialogVisible, setLoginDialogVisible] = useState(false);
+
+  const showLoginDialog = () => {
+    setLoginDialogVisible(true);
+  };
+
+  const closeLoginDialog = () => {
+    setLoginDialogVisible(false);
+  };
+
   const infors = [
     {
       label: "8:00 đến 17:30 thứ 2 đến thứ 7",
@@ -66,14 +87,18 @@ const Header: React.FC<HeaderProps> = () => {
               className="flex items-center"
               onClick={showMobileBar}
             >
-              <MenuOutlined className="cursor-pointer"/> 
+              <MenuOutlined className="cursor-pointer" />
             </Button>
             <div className="px-2 lg:px-0" />
           </Col>
 
           <Col>
             <Link href="/">
-              <Image src={logoKyotoImg} alt="logo" className="logo cursor-pointer" />
+              <Image
+                src={logoKyotoImg}
+                alt="logo"
+                className="logo cursor-pointer"
+              />
             </Link>
           </Col>
 
@@ -95,17 +120,30 @@ const Header: React.FC<HeaderProps> = () => {
               </Col>
 
               <Col className="hidden lg:block">
-                <Text className="font-bold text-[#DF3E23]">
-                  Đăng Nhập/đăng Ký
-                </Text>
+                {isLoggedIn ? (
+                  <Text className="font-bold">Xin chào</Text>
+                ) : (
+                  // Nếu chưa đăng nhập, hiển thị "Đăng Nhập/Đăng Ký"
+                  <Text className="font-bold text-[#DF3E23]">
+                    <a
+                      type="text"
+                      onClick={showLoginDialog}
+                      style={{ cursor: "pointer" }}
+                    >
+                      Đăng Nhập/Đăng Ký
+                    </a>
+                  </Text>
+                )}
               </Col>
 
               <Col className="flex items-center">
-                <img
-                  src="/assets/images/icons/cart.png"
-                  alt="logo"
-                  style={logoImageStyleIcon}
-                />
+                <Link href={"/CartList"}>
+                  <img
+                    src="/assets/images/icons/cart.png"
+                    alt="logo"
+                    style={logoImageStyleIcon}
+                  />
+                </Link>
                 <img
                   src="/assets/images/icons/notifi.png"
                   alt="logo"
@@ -155,6 +193,7 @@ const Header: React.FC<HeaderProps> = () => {
           ></Menu>
         </Space>
       </StyledDrawer>
+      <LoginDialog visible={isLoginDialogVisible} onClose={closeLoginDialog} />
     </div>
   );
 };

@@ -1,4 +1,6 @@
 interface BaseAPIResponse<R = unknown, E = unknown> {
+  details: any[];
+  total_price: number;
   code: number;
   success: string;
   errors: E;
