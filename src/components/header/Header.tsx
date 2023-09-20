@@ -125,24 +125,25 @@ const Header: React.FC<HeaderProps> = () => {
                 ) : (
                   // Nếu chưa đăng nhập, hiển thị "Đăng Nhập/Đăng Ký"
                   <Text className="font-bold text-[#DF3E23]">
-                    <a
-                      type="text"
+                    <button
                       onClick={showLoginDialog}
                       style={{ cursor: "pointer" }}
                     >
                       Đăng Nhập/Đăng Ký
-                    </a>
+                    </button>
                   </Text>
                 )}
               </Col>
 
               <Col className="flex items-center">
                 <Link href={"/CartList"}>
+                  <button>
                   <img
                     src="/assets/images/icons/cart.png"
                     alt="logo"
                     style={logoImageStyleIcon}
                   />
+                  </button>
                 </Link>
                 <img
                   src="/assets/images/icons/notifi.png"
@@ -185,12 +186,15 @@ const Header: React.FC<HeaderProps> = () => {
             onClick={closeMobileBar}
           />
           <LanguageDropdown />
+          <a onClick={showLoginDialog} >
           <Menu
             className="bg-[transparent]"
             style={{ border: "none" }}
             items={[{ label: "Đăng Nhập/đăng Ký", key: "0" }, ...navbars]}
             defaultSelectedKeys={["0"]}
           ></Menu>
+          </a>
+         
         </Space>
       </StyledDrawer>
       <LoginDialog visible={isLoginDialogVisible} onClose={closeLoginDialog} />

@@ -55,7 +55,7 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ visible, onClose }) => {
         console.log("vungle2001");
       } else {
         // Handle login error
-        console.error("Đăng nhập thất bại, vui lòng kiểm tra lại thông tin.");
+        alert("Đăng nhập thất bại, vui lòng kiểm tra lại thông tin.");
       }
     } catch (error) {
       console.error("An error occurred during login", error);

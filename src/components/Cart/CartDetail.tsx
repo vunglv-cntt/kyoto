@@ -24,12 +24,11 @@ function CartDetail() {
     image: detail.product.images[0].url,
   }));
 
-
   return (
     <StyledCartList>
       <div>
         <Row gutter={[16, 16]} className="rowStyle">
-          <Col span={16} >
+          <Col xs={24} sm={24} md={24} lg={24} xl={16}>
             <Card
               className="Col-left"
               style={{
@@ -113,14 +112,13 @@ function CartDetail() {
             </Card>
           </Col>
 
-          <Col span={8}>
+          <Col >
             <Row gutter={16}>
-              <Col span={24}>
+              <Col xs={24} sm={24} md={24} lg={24} xl={24} >
                 <Card className="Col-right">
                   <div className="row-left-price">
                     <Row style={{ height: "100%" }}>
                       <Col
-                        span={24}
                         style={{
                           display: "flex",
                           flexDirection: "column",
@@ -175,11 +173,18 @@ function CartDetail() {
             </Row>
 
             <Row gutter={16}>
-              <Col span={24} className="col-rightDown">
+              <Col
+                className="col-rightDown"
+                xs={24}
+                sm={24}
+                md={24}
+                lg={24}
+                xl={24}
+              >
                 <Card className="Col-right-hand">
                   <Card style={{ height: "173px" }}>
                     <Row>
-                      <Col span={24}>
+                      <Col>
                         <span style={{ fontWeight: "400" }}>
                           Các hình thức gửi hàng đến khách lẻ
                         </span>
@@ -187,7 +192,6 @@ function CartDetail() {
                     </Row>
                     <Row>
                       <Col
-                        span={24}
                         style={{
                           display: "flex",
                           marginTop: "15px",
@@ -200,7 +204,6 @@ function CartDetail() {
                     </Row>
                     <Row>
                       <Col
-                        span={24}
                         style={{
                           display: "flex",
                           marginTop: "15px",
