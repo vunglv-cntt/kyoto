@@ -13,7 +13,7 @@ import { useState, useEffect } from "react";
 import PhoneIcon from "../../assets/icons/phone";
 import LoginDialog from "app/login/page";
 import { authStorage } from "helpers/locale-storage";
-
+import router from "next/router";
 type HeaderProps = {
   isFixed?: boolean;
   className?: string;
@@ -34,7 +34,15 @@ const Header: React.FC<HeaderProps> = () => {
       setIsLoggedIn(true);
     }
   }, []);
-
+  const handleCartIconClick = () => {
+    if (accessToken) {
+      // Nếu có access token, chuyển hướng đến trang mong muốn (ví dụ: "/cart")
+      router.push("/CartList");
+    } else {
+      // Nếu không có access token, hiển thị cảnh báo
+      alert("Vui lòng đăng nhập để xem giỏ hàng.");
+    }
+  };
   const [openMobileBar, setOpenMobileBar] = useState(false);
 
   const [isLoginDialogVisible, setLoginDialogVisible] = useState(false);
@@ -143,15 +151,15 @@ const Header: React.FC<HeaderProps> = () => {
               </Col>
 
               <Col className="flex items-center">
-                <Link href={"/CartList"}>
-                  <button>
+             
+                  <button onClick={handleCartIconClick}>
                     <img
                       src="/assets/images/icons/cart.png"
                       alt="logo"
                       style={logoImageStyleIcon}
                     />
                   </button>
-                </Link>
+               
                 <img
                   src="/assets/images/icons/notifi.png"
                   alt="logo"
@@ -208,7 +216,6 @@ const Header: React.FC<HeaderProps> = () => {
               defaultSelectedKeys={["0"]}
             ></Menu>
           </a>
-          
         </Space>
       </StyledDrawer>
       <LoginDialog visible={isLoginDialogVisible} onClose={closeLoginDialog} />

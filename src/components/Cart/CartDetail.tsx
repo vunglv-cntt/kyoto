@@ -17,7 +17,7 @@ function CartDetail() {
   if (!cartDetail) {
     return (
       <span style={{ fontFamily: "fantasy", fontSize: 20 }}>
-        Bạn phải đăng nhập để xem giỏ hàng
+        Bạn chưa có sản phẩm nào
       </span>
     );
   }
