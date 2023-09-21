@@ -166,7 +166,7 @@ function CartDetail() {
                           {" "}
                           {formatCurrency(total_price)}{" "}
                         </span>
-                      </div>
+                      </div> 
                       <div className="btn-price">
                         <Button className="btn-order"> Đặt hàng</Button>
                       </div>

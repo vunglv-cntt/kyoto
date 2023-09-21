@@ -1,9 +1,11 @@
 import React from "react";
+import Link from "next/dist/client/link";
 import { Modal, Form, Input, Button } from "antd";
 import { DOMAIN } from "@constants/schema";
 import { authStorage } from "helpers/locale-storage";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
+import Register from "app/register/page";
 type LoginDialogProps = {
   visible: boolean;
   onClose: () => void;
@@ -16,6 +18,15 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ visible, onClose }) => {
     phone_number: "",
     password: "",
   });
+  const [isLoginDialogVisible, setLoginDialogVisible] = useState(false);
+
+  const showLoginDialog = () => {
+    setLoginDialogVisible(true);
+  };
+
+  const closeLoginDialog = () => {
+    setLoginDialogVisible(false);
+  };
 
   const [isPasswordShown, setIsPasswordShown] = useState(false);
 
@@ -46,10 +57,10 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ visible, onClose }) => {
       if (response.status === 200) {
         const { data } = await response.json();
         const accessToken = data.accessToken;
-        
+
         await authStorage.set("auth", accessToken);
-        console.log( authStorage,"authth");
-       
+        console.log(authStorage, "authth");
+
         window.location.reload();
         onClose();
         console.log("vungle2001");
@@ -71,8 +82,6 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ visible, onClose }) => {
     >
       <div>
         <div>
-          
-          
           <p>Chào Mừng Đăng nhập</p>
           <Form
             onSubmitCapture={() => {}}
@@ -98,22 +107,18 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ visible, onClose }) => {
                 placeholder={"Password"}
                 suffix={
                   isPasswordShown ? (
-                    <img
-                      onClick={() => handleChangePasswordStatus()}
-                      src="/icons/password_not_hidden.svg"
-                      alt="password_hidden"
-                    />
+                    <Button onClick={() => handleChangePasswordStatus()}>
+                      Hidden Password
+                    </Button>
                   ) : (
-                    <img
-                      onClick={() => handleChangePasswordStatus()}
-                      src="/icons/password_hidden.svg"
-                      alt="password_hidden"
-                    />
+                    <Button onClick={() => handleChangePasswordStatus()}>
+                      Show Password
+                    </Button>
                   )
                 }
               />
             </Item>
-           
+
             <Button
               disabled={isLoginBtnDisabled}
               // className={cn([
@@ -125,11 +130,13 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ visible, onClose }) => {
               // ])}
               htmlType="submit"
             >
-             Đăng Nhập
+              Đăng Nhập
             </Button>
+            <Button onClick={showLoginDialog}>Tạo tài khoản mới</Button>
           </Form>
         </div>
       </div>
+      <Register visible={isLoginDialogVisible} onClose={closeLoginDialog} />
     </Modal>
   );
 };

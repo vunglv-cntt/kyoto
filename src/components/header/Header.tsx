@@ -13,6 +13,7 @@ import { useState, useEffect } from "react";
 import PhoneIcon from "../../assets/icons/phone";
 import LoginDialog from "app/login/page";
 import { authStorage } from "helpers/locale-storage";
+
 type HeaderProps = {
   isFixed?: boolean;
   className?: string;
@@ -70,6 +71,12 @@ const Header: React.FC<HeaderProps> = () => {
 
   const closeMobileBar = () => {
     setOpenMobileBar(false);
+  };
+  const handleLogout = () => {
+    alert("Bạn có muốn đăng xuất ?");
+    authStorage.remove("auth");
+    authStorage.remove("user");
+    window.location.reload();
   };
 
   return (
@@ -138,11 +145,11 @@ const Header: React.FC<HeaderProps> = () => {
               <Col className="flex items-center">
                 <Link href={"/CartList"}>
                   <button>
-                  <img
-                    src="/assets/images/icons/cart.png"
-                    alt="logo"
-                    style={logoImageStyleIcon}
-                  />
+                    <img
+                      src="/assets/images/icons/cart.png"
+                      alt="logo"
+                      style={logoImageStyleIcon}
+                    />
                   </button>
                 </Link>
                 <img
@@ -150,6 +157,13 @@ const Header: React.FC<HeaderProps> = () => {
                   alt="logo"
                   style={logoImageStyleIcon}
                 />
+                {isLoggedIn ? (
+                  <Button onClick={handleLogout} className="font-bold">
+                    Đăng xuất
+                  </Button>
+                ) : (
+                  <div></div>
+                )}
               </Col>
             </Row>
           </Col>
@@ -186,15 +200,15 @@ const Header: React.FC<HeaderProps> = () => {
             onClick={closeMobileBar}
           />
           <LanguageDropdown />
-          <a onClick={showLoginDialog} >
-          <Menu
-            className="bg-[transparent]"
-            style={{ border: "none" }}
-            items={[{ label: "Đăng Nhập/đăng Ký", key: "0" }, ...navbars]}
-            defaultSelectedKeys={["0"]}
-          ></Menu>
+          <a onClick={showLoginDialog}>
+            <Menu
+              className="bg-[transparent]"
+              style={{ border: "none" }}
+              items={[{ label: "Đăng Nhập/đăng Ký", key: "0" }, ...navbars]}
+              defaultSelectedKeys={["0"]}
+            ></Menu>
           </a>
-         
+          
         </Space>
       </StyledDrawer>
       <LoginDialog visible={isLoginDialogVisible} onClose={closeLoginDialog} />
