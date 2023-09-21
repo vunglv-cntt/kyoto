@@ -166,7 +166,7 @@ export const StyledCartList = styled.div`
   color: #FFFFFF
  }
  .btn-order{
-  width: 200px;
+  width: 150px;
   height: 54px;
   border: 5px;
   background-color:#00ADEF;
@@ -178,13 +178,7 @@ export const StyledCartList = styled.div`
   margin: 5px;
   border: 1px solid;
  }
- @media (max-width: 1260px) {
 
-.btn-order{
-  width:180px !important; 
-  margin-left:15px !important;
-  
-}
 @media (max-width: 1200px) {
 
   .btn-order{
