@@ -192,32 +192,20 @@ export const StyledCartList = styled.div`
     margin-left:20px !important
   }
  }
- @media (max-width: 1100px) {
+ 
+ 
+@media (max-width: 767px) {
 
-  .btn-order{
-    width:120px !important;
-    margin-left:20px !important
-  }
- }
- @media (max-width: 987px) {
-
-  .btn-order{
-    width:100px !important;
-    margin-left:20px !important
-  }
-  .btn-buynow{
-    width:100px
-  }
- }
-// @media (max-width: 767px) {
-//   .rowStyle {
-//     flex-direction: column; /* Chuyển sang layout dọc */
-//   }
-
-//   .Col {
-//     width: 100%; /* Đảm bảo các Col chiếm toàn bộ chiều rộng */
-//     margin-bottom: 16px; /* Khoảng cách giữa các Col */
-//   }
-// }
+.title-price{
+  display: none ! important;
+}
+.product-container  {
+  display: grid;  
+  margin-bottom: 16px; 
+}
+.product-name {
+  width: 300px;
+}
+}
 
 `;

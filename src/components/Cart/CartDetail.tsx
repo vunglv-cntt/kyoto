@@ -5,6 +5,7 @@ import { Row, Col, Card, Button } from "antd";
 import { StyledCartList } from "./Cardstyle/CarStyled";
 
 import { formatCurrency } from "helpers/string";
+import styled from "styled-components";
 
 function CartDetail() {
   const [, cartData] = useAsync(apiGetListCart, {
@@ -14,7 +15,11 @@ function CartDetail() {
   console.log("products", cartDetail);
 
   if (!cartDetail) {
-    return <div>Loading...</div>;
+    return (
+      <span style={{ fontFamily: "fantasy", fontSize: 20 }}>
+        Bạn phải đăng nhập để xem giỏ hàng
+      </span>
+    );
   }
   const { total_price } = cartDetail;
   const products = cartDetail.details.map((detail, index) => ({
@@ -38,7 +43,7 @@ function CartDetail() {
                 overflowY: "auto",
               }}
             >
-              <Row gutter={[16, 16]}>
+              <Row gutter={[16, 16]} className="title-price">
                 <Col span={24}>
                   <Row>
                     <Col span={12} style={{ justifyContent: "flex-start" }}>
@@ -78,7 +83,6 @@ function CartDetail() {
                               src={product.image}
                               alt={product.name}
                             />
-
                             <div className="product-name">{product.name}</div>
                           </div>
                         </Col>
@@ -112,9 +116,9 @@ function CartDetail() {
             </Card>
           </Col>
 
-          <Col >
+          <Col>
             <Row gutter={16}>
-              <Col xs={24} sm={24} md={24} lg={24} xl={24} >
+              <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <Card className="Col-right">
                   <div className="row-left-price">
                     <Row style={{ height: "100%" }}>
