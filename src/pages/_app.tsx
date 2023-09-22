@@ -7,6 +7,8 @@ import { ConfigProvider } from "antd";
 import { AppProvider } from "../contexts/app/AppContext";
 import { GlobalStyles } from "../utils/globalStyles";
 import { theme } from "../utils/theme";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import antTheme from "themes/ant-theme";
 
@@ -30,6 +32,7 @@ const App = ({ Component, pageProps }: any) => {
         <GlobalStyles />
         <AppProvider>
           <Layout>
+          <ToastContainer />
             <Component {...pageProps} />
           </Layout>
         </AppProvider>
