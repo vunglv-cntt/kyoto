@@ -6,6 +6,8 @@ import { StyledCartList } from "./Cardstyle/CarStyled";
 
 import { formatCurrency } from "helpers/string";
 import styled from "styled-components";
+import Link from "next/link";
+import { PATHS } from "@constants/routes";
 
 function CartDetail() {
   const [, cartData] = useAsync(apiGetListCart, {
@@ -164,7 +166,9 @@ function CartDetail() {
                         </span>
                       </div>
                       <div className="btn-price">
-                        <Button className="btn-order"> Đặt hàng</Button>
+                        <Link href={PATHS.checkout}>
+                          <Button className="btn-order">Đặt hàng</Button>
+                        </Link>
                       </div>
                     </Col>
                   </Row>

@@ -27,6 +27,7 @@
       "@reducer/*": ["reducers/*"],
       "@constants/*": ["constants/*"],
       "@assets/*": ["assets/*"],
+      "@ui/*": ["ui/*"],
     }
   },
   "exclude": ["node_modules"],

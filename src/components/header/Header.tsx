@@ -37,7 +37,7 @@ const Header: React.FC<HeaderProps> = () => {
   const handleCartIconClick = () => {
     if (accessToken) {
       // Nếu có access token, chuyển hướng đến trang mong muốn (ví dụ: "/cart")
-      router.push("/CartList");
+      router.push("/cart");
     } else {
       // Nếu không có access token, hiển thị cảnh báo
       alert("Vui lòng đăng nhập để xem giỏ hàng.");

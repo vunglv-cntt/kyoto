@@ -6,6 +6,12 @@
   --app-main-color: #01abec;
   --app-sub-color: #f7dd04;
   --app-input-bg: #f0f0f3;
+  --app-main-bg: #f5f6f8;
+  --app-border-color: #e0e0e0;
+}
+
+body {
+  background-color: var(--app-main-bg);
 }
 
 .ant-form-item {
@@ -19,4 +25,9 @@
 .styled-scroll::-webkit-scrollbar-thumb {
   background-color: #d9d9d9;
   border-radius: 4px;
+}
+
+.center-row {
+  display: flex;
+  align-items: center;
 }

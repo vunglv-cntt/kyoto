@@ -1,20 +1,18 @@
-import { Banners } from "@component/HomePage";
-
 import { Container } from "@component/container";
 import AppLayout from "@component/layout/AppLayout";
-import CartDetail from "@component/Cart/CartDetail";
+import CheckoutDetail from "@ui/checkout";
 type Props = {};
 
-const CartList = (props: Props) => {
+const Checkout = (props: Props) => {
   return (
     <main>
       <Container className="gap-[40px] mb-6">
-        <CartDetail />
+        <CheckoutDetail />
       </Container>
     </main>
   );
 };
 
-CartList.layout = AppLayout;
+Checkout.layout = AppLayout;
 
-export default CartList;
+export default Checkout;
