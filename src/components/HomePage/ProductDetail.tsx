@@ -13,6 +13,7 @@ import PhoneIcon from "./Icons/Phone";
 import { DOMAIN } from "@constants/schema";
 
 import { authStorage } from "helpers/locale-storage";
+import { apiAddProductToCart } from "services/cart";
 function ProductDetail({ id }) {
   const authenToken = authStorage.get("auth");
   const [, productsDetail] = useAsync(apiGetProductDetail, {
@@ -48,31 +49,15 @@ function ProductDetail({ id }) {
     return formattedPrice;
   }
 
-
   const handleAddtoCart = async () => {
-    try {
-      const product_id = id;
-      const quantity = 1;
-      const requestData = JSON.stringify({ product_id, quantity });
+    const quantity = 1;
+    const requestData = { product_id: parseInt(id), quantity };
 
-      const response: any = await fetch(`${DOMAIN}/api/cart`, {
-        method: "POST",
-        body: requestData,
-        headers: {
-          Authorization: `Bearer ${authenToken}`,
-          "Content-Type": "application/json",
-        },
+    apiAddProductToCart(requestData)
+      .then((res) => console.log(requestData))
+      .catch((error) => {
+        console.error("An error occurred during login", error);
       });
-      console.log(`${DOMAIN}/api/cart`, "saaaaaa");
-      if (response.status === 201) {
-        console.log(requestData);
-      } else {
-        // Handle login error
-        alert("Thêm sản phẩm thất bại.");
-      }
-    } catch (error) {
-      console.error("An error occurred during login", error);
-    }
   };
 
   return (
@@ -168,7 +153,10 @@ function ProductDetail({ id }) {
                 </div>
               </div>
               <div className="add-to-cart">
-                <Button onClick={handleAddtoCart} className="add-to-cart-button">
+                <Button
+                  onClick={handleAddtoCart}
+                  className="add-to-cart-button"
+                >
                   Thêm vào giỏ hàng
                 </Button>
               </div>

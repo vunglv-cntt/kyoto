@@ -26,23 +26,6 @@ const App = ({ Component, pageProps }: any) => {
         <Head>
           <meta name="viewport" content="width=device-width, initial-scale=1" />
           <meta httpEquiv="Content-Type" content="text/html; charset=utf-8" />
-         
-
-          {/* Google analytics */}
-          <script
-            async
-            src="https://www.googletagmanager.com/gtag/js?id=G-SGG7GE7HZC"
-          ></script>
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-SGG7GE7HZC');
-          `,
-            }}
-          ></script>
         </Head>
         <GlobalStyles />
         <AppProvider>

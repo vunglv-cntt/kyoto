@@ -13,3 +13,6 @@ export * from "./shipcar.icon";
 export * from "./setting.icon";
 export * from "./guarantee";
 export * from "./gift";
+export * from "./gift1";
+export * from "./phone1";
+export * from "./zalo";

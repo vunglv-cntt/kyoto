@@ -15,3 +15,9 @@ export type GetCart = {
     data: Cart[];
   };
 };
+
+export type AddProductToCart = {
+  product_attribute_name?: string;
+  product_id: number;
+  quantity: number;
+};

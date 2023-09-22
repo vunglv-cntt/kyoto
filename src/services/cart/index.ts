@@ -1,15 +1,8 @@
 import http from "../http";
-import { GetCart } from "../main/models";
-import { authStorage } from "helpers/locale-storage";
-import { AddCart } from "../main/models";
-
-import axiosConfig from "core/axios";
-
-const authenToken = authStorage.get("auth");
+import { AddProductToCart, GetCart } from "../main/models";
 
 export const apiGetListCart = () =>
-  http.get<BaseAPIResponse<GetCart | any>>(`/api/cart`, {
-    headers: {
-      Authorization: authenToken ? `Bearer ${authenToken}` : "",
-    },
-  });
+  http.get<BaseAPIResponse<GetCart | any>>(`/api/cart`);
+
+export const apiAddProductToCart = (data: AddProductToCart) =>
+  http.post<BaseAPIResponse<any>>(`/api/cart`, data);

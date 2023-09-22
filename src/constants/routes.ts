@@ -1,5 +1,6 @@
 export enum SOURCE_ROUTES {
   HOME = "/",
+  CART = "/cart",
 }
 
 export const PATHS = {
@@ -10,6 +11,7 @@ export const PATHS = {
   item(categoryId: string, productId: string) {
     return `${this.home}${categoryId}/${productId}`;
   },
+  cart: `${SOURCE_ROUTES.CART}`
 };
 
 export const ROUTES = [
@@ -20,5 +22,9 @@ export const ROUTES = [
   {
     title: "Máy bay nông nghiệp",
     href: PATHS.category(":categoryId"),
+  },
+  {
+    title: "Giỏ hàng",
+    href: PATHS.cart,
   },
 ];

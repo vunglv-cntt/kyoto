@@ -15,11 +15,7 @@ function CartDetail() {
   console.log("products", cartDetail);
 
   if (!cartDetail) {
-    return (
-      <span style={{ fontFamily: "fantasy", fontSize: 20 }}>
-        Bạn chưa có sản phẩm nào
-      </span>
-    );
+    return <span style={{ fontSize: 20 }}>Bạn chưa có sản phẩm nào</span>;
   }
   const { total_price } = cartDetail;
   const products = cartDetail.details.map((detail, index) => ({
@@ -166,7 +162,7 @@ function CartDetail() {
                           {" "}
                           {formatCurrency(total_price)}{" "}
                         </span>
-                      </div> 
+                      </div>
                       <div className="btn-price">
                         <Button className="btn-order"> Đặt hàng</Button>
                       </div>

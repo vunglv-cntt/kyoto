@@ -1,5 +1,8 @@
 import { DOMAIN } from "@constants/schema";
 import axios from "axios";
+import { authStorage } from "helpers/locale-storage";
+
+const authenToken = authStorage.get("auth");
 
 declare module "axios" {
   export interface AxiosInstance {
@@ -45,6 +48,11 @@ const http = axios.create({
   headers: {
     "Content-Type": undefined,
     Accept: "application/json",
+    ...(authenToken
+      ? {
+          Authorization: `Bearer ${authenToken}`,
+        }
+      : {}),
   },
 });
 
