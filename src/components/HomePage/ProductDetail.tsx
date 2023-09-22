@@ -3,17 +3,16 @@ import { useAsync } from "@hooks/useAsync";
 import { apiGetProductDetail } from "services/product";
 import { Card, Button, Row, Col } from "antd";
 import he from "he";
+import { toast } from "react-toastify";
 import { Carousel } from "react-responsive-carousel";
 import { StyledProductDetail } from "./homepagecss/ProductDetail";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
 import GiftIcon from "./Icons/Gift";
 import ZaloIcon from "./Icons/Zalo";
 import PhoneIcon from "./Icons/Phone";
-
-import { DOMAIN } from "@constants/schema";
-
 import { authStorage } from "helpers/locale-storage";
-import { apiAddProductToCart } from "services/cart";
+import { apiAddProductToCart } from "services/cart"
+import 'react-toastify/dist/ReactToastify.css';
 function ProductDetail({ id }) {
   const authenToken = authStorage.get("auth");
   const [, productsDetail] = useAsync(apiGetProductDetail, {
@@ -52,12 +51,18 @@ function ProductDetail({ id }) {
   const handleAddtoCart = async () => {
     const quantity = 1;
     const requestData = { product_id: parseInt(id), quantity };
+    try {
+      const response = await apiAddProductToCart(requestData);
 
-    apiAddProductToCart(requestData)
-      .then((res) => console.log(requestData))
-      .catch((error) => {
-        console.error("An error occurred during login", error);
-      });
+      if (response.status === 201) {
+        toast.success("Thêm thành công");
+      } else {
+        toast.error("Thêm thất bại");
+      }
+    } catch (error) {
+      console.error("Lỗi khi thực hiện cuộc gọi API", error);
+      // Xử lý lỗi nếu cần
+    }
   };
 
   return (
