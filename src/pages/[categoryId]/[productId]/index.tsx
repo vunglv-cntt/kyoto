@@ -3,7 +3,6 @@ import { Container } from "@component/container";
 import AppLayout from "@component/layout/AppLayout";
 import useNavigate from "@hooks/useNavigate";
 import ProductDetail from "@component/HomePage/ProductDetail";
-import FlashSale from "@component/HomePage/FlashSale";
 type Props = {};
 
 const Product = (props: Props) => {

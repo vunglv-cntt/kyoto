@@ -1,6 +1,7 @@
 import http from "../http";
 import { GetCart } from "../main/models";
 import { authStorage } from "helpers/locale-storage";
+import { AddCart } from "../main/models";
 
 import axiosConfig from "core/axios";
 

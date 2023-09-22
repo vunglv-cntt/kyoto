@@ -30,3 +30,9 @@ export type Detail = {
   }
 
 };
+
+export type AddCart ={
+  data: {
+    data: Detail[]
+  }
+}

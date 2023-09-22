@@ -1,4 +1,4 @@
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useAsync } from "@hooks/useAsync";
 import { apiGetProductDetail } from "services/product";
 import { Card, Button, Row, Col } from "antd";
@@ -10,7 +10,11 @@ import GiftIcon from "./Icons/Gift";
 import ZaloIcon from "./Icons/Zalo";
 import PhoneIcon from "./Icons/Phone";
 
+import { DOMAIN } from "@constants/schema";
+
+import { authStorage } from "helpers/locale-storage";
 function ProductDetail({ id }) {
+  const authenToken = authStorage.get("auth");
   const [, productsDetail] = useAsync(apiGetProductDetail, {
     callOnFirst: true,
     callOnFirstArgs: [id],
@@ -43,6 +47,33 @@ function ProductDetail({ id }) {
 
     return formattedPrice;
   }
+
+
+  const handleAddtoCart = async () => {
+    try {
+      const product_id = id;
+      const quantity = 1;
+      const requestData = JSON.stringify({ product_id, quantity });
+
+      const response: any = await fetch(`${DOMAIN}/api/cart`, {
+        method: "POST",
+        body: requestData,
+        headers: {
+          Authorization: `Bearer ${authenToken}`,
+          "Content-Type": "application/json",
+        },
+      });
+      console.log(`${DOMAIN}/api/cart`, "saaaaaa");
+      if (response.status === 201) {
+        console.log(requestData);
+      } else {
+        // Handle login error
+        alert("Thêm sản phẩm thất bại.");
+      }
+    } catch (error) {
+      console.error("An error occurred during login", error);
+    }
+  };
 
   return (
     <StyledProductDetail>
@@ -137,7 +168,7 @@ function ProductDetail({ id }) {
                 </div>
               </div>
               <div className="add-to-cart">
-                <Button className="add-to-cart-button">
+                <Button onClick={handleAddtoCart} className="add-to-cart-button">
                   Thêm vào giỏ hàng
                 </Button>
               </div>
