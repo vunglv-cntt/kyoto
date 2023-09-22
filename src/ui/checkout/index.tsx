@@ -1,13 +1,31 @@
 import Breadcrumbs from "@component/breadcrumbs";
 import { Col, Row, Space } from "antd";
-import { PaymentMethods, ShipInformation, TemplateStep } from "./components";
+import {
+  ChooseVoucher,
+  Note,
+  PaymentMethods,
+  ShipInformation,
+  TemplateStep,
+} from "./components";
 import { Text } from "@component/text";
+import styled from "styled-components";
+import { CartTotal } from "@component/cart";
+import { useAsync } from "@hooks/useAsync";
+import { apiGetListCart } from "services/cart";
+import { useMemo } from "react";
 
 type Props = {};
 
 const Checkout = (props: Props) => {
+  const [, cartData] = useAsync(apiGetListCart, {
+    callOnFirst: true,
+  });
+  const cartDetail = useMemo(() => cartData?.data?.data || {}, [cartData]);
+
+  const { total_price } = cartDetail;
+
   return (
-    <>
+    <StyledContent>
       <Breadcrumbs />
 
       <Row gutter={[24, 24]}>
@@ -30,11 +48,24 @@ const Checkout = (props: Props) => {
         </Col>
 
         <Col md={8} xs={24}>
-          Right bar
+          <Space direction="vertical" size={16} className="w-full">
+            <ChooseVoucher />
+            <Note />
+            <CartTotal totalPrice={total_price} hideOrderBtn />
+          </Space>
         </Col>
       </Row>
-    </>
+    </StyledContent>
   );
 };
+
+const StyledContent = styled.div`
+  .content-box {
+    padding: 24px;
+    background-color: #fff;
+    border-radius: 12px;
+    font-weight: 500;
+  }
+`;
 
 export default Checkout;

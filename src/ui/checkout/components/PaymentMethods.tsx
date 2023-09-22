@@ -12,27 +12,7 @@ const PaymentMethods = (props: Props) => {
       icon: null,
       label: "Tiền mặt",
       description: "Thanh toán bằng tiền mặt khi nhận hàng",
-    },
-    {
-      icon: null,
-      label: "Thanh toán điểm VIP",
-      description: "Điểm tích VIP",
-    },
-    {
-      icon: null,
-      label: "Tiền mặt",
-      description: "Thanh toán bằng tiền mặt khi nhận hàng",
-    },
-    {
-      icon: null,
-      label: "Tiền mặt",
-      description: "Thanh toán bằng tiền mặt khi nhận hàng",
-    },
-    {
-      icon: null,
-      label: "Tiền mặt",
-      description: "Thanh toán bằng tiền mặt khi nhận hàng",
-    },
+    }
   ];
 
   return (

@@ -158,20 +158,6 @@ export const StyledCartList = styled.div`
   font-size:14px;
   font-family: "Montserrat", sans-serif;
  }
- .btn-buynow{
-  width: 140px;
-  height: 54px;
-  border: 5px;
-  background-color:#F7DD04;
-  color: #FFFFFF
- }
- .btn-order{
-  width: 150px;
-  height: 54px;
-  border: 5px;
-  background-color:#00ADEF;
-  color: #FFFFFF
- }
  .ship{
   height:30px;
   border : 20px;

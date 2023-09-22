@@ -1,20 +1,17 @@
-import { useMemo, useState } from "react";
+import { useMemo } from "react";
 import { useAsync } from "@hooks/useAsync";
 import { apiGetListCart } from "services/cart";
 import { Row, Col, Card, Button } from "antd";
 import { StyledCartList } from "./Cardstyle/CarStyled";
 
 import { formatCurrency } from "helpers/string";
-import styled from "styled-components";
-import Link from "next/link";
-import { PATHS } from "@constants/routes";
+import { CartTotal } from "@component/cart";
 
 function CartDetail() {
   const [, cartData] = useAsync(apiGetListCart, {
     callOnFirst: true,
   });
   const cartDetail = useMemo(() => cartData?.data?.data, [cartData]);
-  console.log("products", cartDetail);
 
   if (!cartDetail) {
     return <span style={{ fontSize: 20 }}>Bạn chưa có sản phẩm nào</span>;
@@ -117,62 +114,7 @@ function CartDetail() {
           <Col>
             <Row gutter={16}>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
-                <Card className="Col-right">
-                  <div className="row-left-price">
-                    <Row style={{ height: "100%" }}>
-                      <Col
-                        style={{
-                          display: "flex",
-                          flexDirection: "column",
-                          justifyContent: "center",
-                        }}
-                      >
-                        <div className="tite-ToltalPrice">
-                          <span className="priceTotalTitle"> Tổng Tiền</span>
-                        </div>
-                      </Col>
-                    </Row>
-                  </div>
-
-                  <Row style={{ height: "100%" }} className="row-second-price">
-                    <Col
-                      span={8}
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        textAlign: "left",
-                      }}
-                    >
-                      <div className="total-price">
-                        <span className="text-totalprice"> Tạm tính: </span>
-                      </div>
-                      <div className="btn-price">
-                        <Button className="btn-buynow"> Mua Ngay</Button>
-                      </div>
-                    </Col>
-
-                    <Col
-                      span={16}
-                      style={{
-                        display: "flex",
-                        flexDirection: "column",
-                        textAlign: "right",
-                      }}
-                    >
-                      <div className="price-after">
-                        <span className="text-totalprice">
-                          {" "}
-                          {formatCurrency(total_price)}{" "}
-                        </span>
-                      </div>
-                      <div className="btn-price">
-                        <Link href={PATHS.checkout}>
-                          <Button className="btn-order">Đặt hàng</Button>
-                        </Link>
-                      </div>
-                    </Col>
-                  </Row>
-                </Card>
+                <CartTotal totalPrice={total_price} />
               </Col>
             </Row>
 
