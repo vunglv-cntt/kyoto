@@ -1,11 +1,9 @@
-import { breakpointDevice } from "@constants/breakpoints";
-import { Row } from "antd";
 import styled from "styled-components";
 
 export const StyledCartList = styled.div`
   .rowStyle {
-    margin-top: 88px;
-    margin-bottom: 147px;
+    /* margin-top: 88px;
+    margin-bottom: 147px; */
   }
   .Col-left {
     height: 453px;
@@ -30,35 +28,6 @@ export const StyledCartList = styled.div`
     flex-direction: column;
   }
 
-  .product-item {
-    display: flex;
-    align-items: center; 
-    margin-bottom: 10px; 
-  }
-
- 
-  .product-item img {
-    height: 72px;  
-  }
-
-  .product-item div,
-  .product-item h1,
-  .product-item Button {
-    flex: 1;  
-  }
-  .product-name {
-    display: flex;
-    align-items: center;
-    padding-left: 5px;
-    font-weight: bold;
-    font-family: "Montserrat", sans-serif;
-  }
-  .price-product {
-    font-weight: 500;
-    font-size: 16px;
-    font-weight: bold;
-    font-family: "Montserrat", sans-serif;
-  }
   .Giohang {
     font-size: 24px;
     font-weight: bold;
@@ -83,60 +52,7 @@ export const StyledCartList = styled.div`
     font-weight: bold;
     font-family: "Montserrat", sans-serif;
   }
-  .quantity-card {
-    width: 122px;
-    height: 38px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    padding: 4px;
-  }
 
-  .quantity-button {
-    width: 30px;
-    height: 30px;
-    background-color: transparent;
-    color: #fff;
-    border: none;
-    border-radius: 4px;
-    font-size: 16px;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-
-  .subtract,
-  .add {
-    color: #000;  
-  }
-
-  .subtract {
-    margin-right: 4px;
-  }
-
-  .add {
-    margin-left: 4px;
-  }
-
-  .quantity-value {
-    flex: 1;
-    text-align: center;
-    background-color: #00adef;
-    color: #fff;
-    border-radius: 4px;
-    font-size: 16px
-    width:10px;
-    padding: 0 10px;
-  }
-  .product-price{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
- 
  .col-left-price{
   text-align: left;
  }  

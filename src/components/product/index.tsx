@@ -20,7 +20,7 @@ const Product = memo((props: Props) => {
 
   return (
     <Link href={PATHS.item(category_detail_id.toString(), id.toString())}>
-      <StyledProduct>
+      <StyledProduct className="p-[16px] md:p-[24px]">
         <Image
           src={images.length > 0 ? images[0].url : null}
           alt="image"

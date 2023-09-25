@@ -50,7 +50,7 @@ const Features = () => {
         "Bảo hành chính hãng, thời gian bảo hành 12 tháng đối với toàn bộ",
     },
     {
-      icon: <GiftIcon />,
+      icon: <GiftIcon stroke="#00ADEF" />,
       title: "Chăm sóc & hậu mãi",
       description:
         "Chương trình sau bán hàng và chăm sóc khách hàng thường xuyên",

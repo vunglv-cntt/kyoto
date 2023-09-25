@@ -1,6 +1,6 @@
 import { Container } from "@component/container";
 import AppLayout from "@component/layout/AppLayout";
-import CartDetail from "@component/Cart/CartDetail";
+import CartDetail from "@component/cart/CartDetail";
 type Props = {};
 
 const Cart = (props: Props) => {

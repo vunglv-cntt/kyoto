@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const StyledProduct = styled.div`
   box-shadow: 0px 4px 20px 0px rgba(2, 53, 95, 0.1);
   border-radius: 16px;
-  padding: 24px;
   height: 100%;
   display: flex;
   background-color: #fff;
