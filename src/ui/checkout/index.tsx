@@ -9,14 +9,22 @@ import {
 } from "./components";
 import { Text } from "@component/text";
 import styled from "styled-components";
-import { CartTotal } from "@component/cart";
+import { CartTotal } from "@component/Cart";
 import { useAsync } from "@hooks/useAsync";
 import { apiGetListCart } from "services/cart";
 import { useMemo } from "react";
-
-type Props = {};
+import CartItem from "@component/Cart/CartItem";
+type Props = {
+  products: Array<{
+    name: string;
+    price: number;
+    quantity: number;
+    image: string;
+  }>;
+};
 
 const Checkout = (props: Props) => {
+  const { products } = props;
   const [, cartData] = useAsync(apiGetListCart, {
     callOnFirst: true,
   });
@@ -37,7 +45,17 @@ const Checkout = (props: Props) => {
               rightHeaderElement={
                 <Text className="text-[#112950]">Xóa tất cả giỏ hàng</Text>
               }
-            />
+            >
+              {products.map((product, index) => (
+                <CartItem
+                  key={index}
+                  image={product.image}
+                  name={product.name}
+                  quantity={product.quantity}
+                  price={product.price}
+                />
+              ))}
+            </TemplateStep>
             <TemplateStep number={2} label="Thông tin giao hàng">
               <ShipInformation />
             </TemplateStep>

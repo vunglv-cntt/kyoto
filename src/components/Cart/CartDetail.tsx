@@ -3,10 +3,10 @@ import { useAsync } from "@hooks/useAsync";
 import { apiGetListCart } from "services/cart";
 import { Row, Col, Card, Button } from "antd";
 import { StyledCartList } from "./Cardstyle/CarStyled";
-
+import Checkout from "@ui/checkout";
 import { formatCurrency } from "helpers/string";
-import { CartTotal } from "@component/cart";
-
+import { CartTotal } from "./CartTotal";
+import CartItem from "./CartItem";
 function CartDetail() {
   const [, cartData] = useAsync(apiGetListCart, {
     callOnFirst: true,
@@ -23,7 +23,6 @@ function CartDetail() {
     quantity: detail.quantity,
     image: detail.product.images[0].url,
   }));
-
   return (
     <StyledCartList>
       <div>
@@ -70,41 +69,15 @@ function CartDetail() {
                 <Col span={24}>
                   <div className="product-container">
                     {products.map((product, index) => (
-                      <div key={index} className="product-item">
-                        <Col span={10}>
-                          <div style={{ display: "flex" }}>
-                            <img
-                              className="image-card"
-                              src={product.image}
-                              alt={product.name}
-                            />
-                            <div className="product-name">{product.name}</div>
-                          </div>
-                        </Col>
-                        <Col span={4}>
-                          <div className="quantity-card">
-                            <Button className="quantity-button subtract">
-                              -
-                            </Button>
-                            <span className="quantity-value">
-                              {product.quantity}
-                            </span>
-                            <Button className="quantity-button add">+</Button>
-                          </div>
-                        </Col>
-                        <Col span={8}>
-                          <div className="price-product">
-                            <span className="product-price">
-                              {" "}
-                              {formatCurrency(product.price)} / Máy
-                            </span>
-                          </div>
-                        </Col>
-                        <Col span={2}>
-                          <Button> X Xóa</Button>
-                        </Col>
-                      </div>
+                      <CartItem
+                        key={index}
+                        image={product.image}
+                        name={product.name}
+                        quantity={product.quantity}
+                        price={product.price}
+                      />
                     ))}
+                    
                   </div>
                 </Col>
               </Row>
@@ -112,12 +85,12 @@ function CartDetail() {
           </Col>
 
           <Col>
+            s
             <Row gutter={16}>
               <Col xs={24} sm={24} md={24} lg={24} xl={24}>
                 <CartTotal totalPrice={total_price} />
               </Col>
             </Row>
-
             <Row gutter={16}>
               <Col
                 className="col-rightDown"

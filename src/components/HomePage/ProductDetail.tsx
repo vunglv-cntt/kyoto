@@ -60,8 +60,8 @@ function ProductDetail({ id }) {
         toast.error("Thêm thất bại");
       }
     } catch (error) {
-      console.error("Lỗi khi thực hiện cuộc gọi API", error);
-      // Xử lý lỗi nếu cần
+      toast.error("Vui lòng đăng nhập");
+  
     }
   };
 
