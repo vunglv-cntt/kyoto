@@ -11,7 +11,7 @@ import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import "./globals.css";
 import antTheme from "themes/ant-theme";
-
+import withUserApiData from "hocs/withUserApiData";
 //Binding events.
 Router.events.on("routeChangeStart", () => NProgress.start());
 Router.events.on("routeChangeComplete", () => NProgress.done());
@@ -32,7 +32,7 @@ const App = ({ Component, pageProps }: any) => {
         <GlobalStyles />
         <AppProvider>
           <Layout>
-          <ToastContainer />
+            <ToastContainer />
             <Component {...pageProps} />
           </Layout>
         </AppProvider>
@@ -53,4 +53,4 @@ const App = ({ Component, pageProps }: any) => {
 //   return { ...appProps }
 // }
 
-export default App;
+export default withUserApiData(App);
