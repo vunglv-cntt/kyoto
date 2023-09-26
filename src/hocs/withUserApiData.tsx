@@ -1,6 +1,6 @@
 // withUserApiData.js
 import React, { Component } from "react";
-
+import { authStorage } from "helpers/locale-storage";
 function withUserApiData(WrappedComponent) {
   return class extends Component {
     state = {
@@ -10,7 +10,13 @@ function withUserApiData(WrappedComponent) {
     };
 
     componentDidMount() {
-      fetch("https://kyoto-api-dev.tasvietnam.com/api/user/me")
+      const authenToken = authStorage.get("auth");
+      fetch("https://kyoto-api-dev.tasvietnam.com/api/user/me", {
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${authenToken}`,
+        },
+      })
         .then((response) => {
           if (!response.ok) {
             localStorage.removeItem("auth");
