@@ -16,4 +16,16 @@ export const apiGetListCart = () =>
   });
 
 export const apiAddProductToCart = (data: AddProductToCart) =>
-  http.post<BaseAPIResponse<any>>(`/api/cart`, data);
+  http.post<BaseAPIResponse<any>>(
+    `/api/cart`,
+    data, // Đưa dữ liệu `data` vào trong hàm `post`
+    {
+      headers: {
+        ...(authenToken
+          ? {
+              Authorization: `Bearer ${authenToken}`,
+            }
+          : {}),
+      },
+    }
+  );
