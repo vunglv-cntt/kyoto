@@ -2,18 +2,17 @@ import React, { useMemo, useState } from "react";
 import { useAsync } from "@hooks/useAsync";
 import { apiGetProductDetail } from "services/product";
 import { Card, Button, Row, Col } from "antd";
-
+import he from "he";
 import { toast } from "react-toastify";
 import { Carousel } from "react-responsive-carousel";
-import { StyledProductDetail } from "./components/styledProduct/ProductDetail";
+import { StyledProductDetail } from "../../ui/product/components/styledProduct/ProductDetail";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import GiftIcon from "../../components/HomePage/Icons/Gift";
-import ZaloIcon from "../../components/HomePage/Icons/Zalo";
-import PhoneIcon from "../../components/HomePage/Icons/Phone";
+import GiftIcon from "./Icons/Gift";
+import ZaloIcon from "./Icons/Zalo";
+import PhoneIcon from "./Icons/Phone";
 import { authStorage } from "helpers/locale-storage";
-import { apiAddProductToCart } from "services/cart";
-import "react-toastify/dist/ReactToastify.css";
-import { ProductTabs } from "./components";
+import { apiAddProductToCart } from "services/cart"
+import 'react-toastify/dist/ReactToastify.css';
 function ProductDetail({ id }) {
   const authenToken = authStorage.get("auth");
   const [, productsDetail] = useAsync(apiGetProductDetail, {
@@ -30,7 +29,15 @@ function ProductDetail({ id }) {
 
   const { name, price, discount, images, description, phone_number } = products;
 
+  function sanitizeDescription(description) {
+    const decodedDescription = he.decode(description);
 
+    const replacedDescription = decodedDescription.replace(/<br\s*\/?>/g, "\n");
+
+    const parser = new DOMParser();
+    const doc = parser.parseFromString(replacedDescription, "text/html");
+    return doc.body.innerText;
+  }
 
   function formatPrice(price) {
     const formattedPrice = new Intl.NumberFormat("vi-VN", {
@@ -54,6 +61,7 @@ function ProductDetail({ id }) {
       }
     } catch (error) {
       toast.error("Vui lòng đăng nhập");
+  
     }
   };
 
@@ -160,9 +168,6 @@ function ProductDetail({ id }) {
             </div>
           </Col>
         </Row>
-      </Card>
-      <Card>
-        <ProductTabs description={description} images={images}/>
       </Card>
     </StyledProductDetail>
   );

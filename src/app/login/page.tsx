@@ -6,6 +6,7 @@ import { authStorage } from "helpers/locale-storage";
 import { ChangeEvent, useState } from "react";
 import { useRouter } from "next/router";
 import Register from "app/register/page";
+import { StyledLogin } from "./styledLogin";
 type LoginDialogProps = {
   visible: boolean;
   onClose: () => void;
@@ -80,63 +81,61 @@ const LoginDialog: React.FC<LoginDialogProps> = ({ visible, onClose }) => {
       onCancel={onClose}
       footer={null}
     >
-      <div>
-        <div>
-          <p>Chào Mừng Đăng nhập</p>
-          <Form
-            onSubmitCapture={() => {}}
-            onFinish={onFinish}
-            className={""}
-            onChange={(e) => onChangeInput(e as any)}
-          >
-            <Item>
-              <Input
-                onChange={(e) => onChangeInput(e)}
-                name="phone_number"
-                className={"styles.input"}
-                placeholder={"Số điện thoại"}
-              />
-            </Item>
-
-            <Item>
-              <Input
-                onChange={(e) => onChangeInput(e)}
-                name="password"
-                type={isPasswordShown ? "text" : "password"}
-                className={"styles.input"}
-                placeholder={"Password"}
-                suffix={
-                  isPasswordShown ? (
-                    <Button onClick={() => handleChangePasswordStatus()}>
-                      Hidden Password
-                    </Button>
-                  ) : (
-                    <Button onClick={() => handleChangePasswordStatus()}>
-                      Show Password
-                    </Button>
-                  )
-                }
-              />
-            </Item>
-
-            <Button
-              disabled={isLoginBtnDisabled}
-              // className={cn([
-              //   "mt-[68px]",
-              //   "font-medium",
-              //   isLoginBtnDisabled
-              //     ? styles.loginBtnDisabled
-              //     : styles.loginBtnActive,
-              // ])}
-              htmlType="submit"
+      <StyledLogin>
+        <div className="form-container">
+          <div>
+            <p className="form-title">Chào Mừng Đăng nhập</p>
+            <Form
+              onSubmitCapture={() => {}}
+              onFinish={onFinish}
+              className={""}
+              onChange={(e) => onChangeInput(e as any)}
             >
-              Đăng Nhập
-            </Button>
-            <Button onClick={showLoginDialog}>Tạo tài khoản mới</Button>
-          </Form>
+              <Item className="input-container">
+                <Input
+                  onChange={(e) => onChangeInput(e)}
+                  name="phone_number"
+                  className="styles.input"
+                  placeholder="Số điện thoại"
+                />
+              </Item>
+
+              <Item className="input-container">
+                <Input
+                  onChange={(e) => onChangeInput(e)}
+                  name="password"
+                  type={isPasswordShown ? "text" : "password"}
+                  className="styles.input"
+                  placeholder="Password"
+                  suffix={
+                    isPasswordShown ? (
+                      <Button onClick={() => handleChangePasswordStatus()}>
+                        Hidden Password
+                      </Button>
+                    ) : (
+                      <Button onClick={() => handleChangePasswordStatus()}>
+                        Show Password
+                      </Button>
+                    )
+                  }
+                />
+              </Item>
+
+              <Button
+                disabled={isLoginBtnDisabled}
+                className="login-button"
+                htmlType="submit"
+              >
+                Đăng Nhập
+              </Button>
+              <Button onClick={showLoginDialog} className="register-button">
+                Tạo tài khoản mới
+              </Button>
+            </Form>
+          </div>
         </div>
-      </div>
-      <Register visible={isLoginDialogVisible} onClose={closeLoginDialog} />
+        <Register visible={isLoginDialogVisible} onClose={closeLoginDialog} />
+      </StyledLogin>
     </Modal>
   );
 };
