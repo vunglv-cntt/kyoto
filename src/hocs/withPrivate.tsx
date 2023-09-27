@@ -1,28 +1,28 @@
-import React from "react";
+  // components/withAuth.tsx
+  import { authStorage } from "helpers/locale-storage";
+  import { useRouter } from "next/router";
+  import { useEffect } from "react";
 
-import { PATHS } from "constants/routes";
-import { DOMAIN } from "constants/schema";
-import { useAsync } from "../hooks/useAsync";
-import { authStorage } from "helpers/locale-storage";
-import useNavigate from "@hooks/useNavigate";
+  const withAuth = (WrappedComponent: React.ComponentType<any>) => {
+    const WrapperComponent: React.FC = (props) => {
+      const router = useRouter();
 
-export const withPrivate =
-  (WrappedComponent: React.FC<any>) => (props: any) => {
-    const { router } = useNavigate();
-    const token = authStorage.get("token");
+      const token = authStorage.get("auth");
 
-    // useAsync({
-    //   onSuccess: (res) => {},
-    //   onFailed: () => {
-    //     router.push(PATHS.home);
-    //   },
-    //   callOnFirst: token,
-    // });
+      // Simulating authentication check
+      const isAuthenticated = !!token;
 
-    if (!token) {
-      router.push(PATHS.home);
-      console.log("show login form");
-    }
+      useEffect(() => {
+        if (!isAuthenticated) {
+          // User is not authenticated, redirect to login page
+          router.replace("/login");
+        }
+      }, [isAuthenticated, router]);
 
-    return <WrappedComponent {...props} />;
+      return <WrappedComponent {...props} />;
+    };
+
+    return WrapperComponent;
   };
+
+  export default withAuth;
