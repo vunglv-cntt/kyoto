@@ -37,21 +37,21 @@ const ProductTabs = ({ description, images }) => {
             onClick={() => handleNavItemClick("Technical")}
             className={selectedNavItem === "Technical" ? "active" : ""}
           >
-            Kĩ thuật
+            Thông số kỹ thuật
           </a>
           <a
             href="#hinh-anh"
             onClick={() => handleNavItemClick("Images")}
             className={selectedNavItem === "Images" ? "active" : ""}
           >
-            Hình ảnh
+            Ảnh sản phẩm
           </a>
           <a
             href="#video"
             onClick={() => handleNavItemClick("Video")}
             className={selectedNavItem === "Video" ? "active" : ""}
           >
-            Video
+            Video sản phẩm
           </a>
           <div className="content">
             {selectedNavItem === "Description" && (
