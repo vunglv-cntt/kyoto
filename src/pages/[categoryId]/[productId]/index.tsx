@@ -1,8 +1,8 @@
-import { Banners, Categories } from "@component/HomePage";
+import { Categories } from "@component/HomePage";
 import { Container } from "@component/container";
 import AppLayout from "@component/layout/AppLayout";
 import useNavigate from "@hooks/useNavigate";
-import ProductDetail from "@component/HomePage/ProductDetail";
+import ProductDetail from "@ui/product";
 type Props = {};
 
 const Product = (props: Props) => {

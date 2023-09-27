@@ -5,14 +5,15 @@ import { Card, Button, Row, Col } from "antd";
 import he from "he";
 import { toast } from "react-toastify";
 import { Carousel } from "react-responsive-carousel";
-import { StyledProductDetail } from "./homepagecss/ProductDetail";
+import { StyledProductDetail } from "../../components/HomePage/homepagecss/ProductDetail";
 import "react-responsive-carousel/lib/styles/carousel.min.css";
-import GiftIcon from "./Icons/Gift";
-import ZaloIcon from "./Icons/Zalo";
-import PhoneIcon from "./Icons/Phone";
+import GiftIcon from "../../components/HomePage/Icons/Gift";
+import ZaloIcon from "../../components/HomePage/Icons/Zalo";
+import PhoneIcon from "../../components/HomePage/Icons/Phone";
 import { authStorage } from "helpers/locale-storage";
 import { apiAddProductToCart } from "services/cart"
 import 'react-toastify/dist/ReactToastify.css';
+import { ProductTabs } from "./components";
 function ProductDetail({ id }) {
   const authenToken = authStorage.get("auth");
   const [, productsDetail] = useAsync(apiGetProductDetail, {
@@ -168,6 +169,10 @@ function ProductDetail({ id }) {
             </div>
           </Col>
         </Row>
+
+
+        {/* PRODUCT TABS */}
+        <ProductTabs />
       </Card>
     </StyledProductDetail>
   );
